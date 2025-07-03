@@ -17,8 +17,8 @@ struct ExerciseCard {
 struct ExerciseCardView: View {
     private let exercises = [
         ExerciseCard(
-            title: "Awareness",
-            caption: "Mindful moments to connect with your mind and body",
+            title: String(localized: "Awareness"),
+            caption: String(localized: "Mindful moments to connect with your mind and body"),
             symbol: "eye.fill",
             gradient: LinearGradient(
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],
@@ -27,8 +27,8 @@ struct ExerciseCardView: View {
             )
         ),
         ExerciseCard(
-            title: "Balance",
-            caption: "Simple actions that create order and stability",
+            title: String(localized: "Balance"),
+            caption: String(localized: "Simple actions that create order and stability"),
             symbol: "scale.3d",
             gradient: LinearGradient(
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],
@@ -37,8 +37,8 @@ struct ExerciseCardView: View {
             )
         ),
         ExerciseCard(
-            title: "Reflect",
-            caption: "Process your experiences and emotions",
+            title: String(localized: "Reflect"),
+            caption: String(localized: "Process your experiences and emotions"),
             symbol: "brain.head.profile",
             gradient: LinearGradient(
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],

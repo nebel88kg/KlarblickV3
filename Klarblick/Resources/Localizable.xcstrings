@@ -1,0 +1,133 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+
+    },
+    "Awareness" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achtsamkeit"
+          }
+        }
+      }
+    },
+    "Balance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
+          }
+        }
+      }
+    },
+    "Hey there, Dominik!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo, Dominik"
+          }
+        }
+      }
+    },
+    "How are you feeling today?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie geht es dir heute?"
+          }
+        }
+      }
+    },
+    "Level: 2" : {
+
+    },
+    "Library" : {
+
+    },
+    "Mindful moments to connect with your mind and body" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achtsame Momente um eins mit deinem Körper und Geist zu werden"
+          }
+        }
+      }
+    },
+    "Process your experiences and emotions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozessiere deine Erfahrungen und Emotionen"
+          }
+        }
+      }
+    },
+    "Reflect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflektieren"
+          }
+        }
+      }
+    },
+    "Simple actions that create order and stability" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfache Handlungen für Ordnung und Struktur "
+          }
+        }
+      }
+    },
+    "Streak: 5 days" : {
+
+    },
+    "Stressed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestresst"
+          }
+        }
+      }
+    },
+    "This is the Library view" : {
+
+    },
+    "Today's Exercises" : {
+
+    },
+    "Very Happy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fröhlich"
+          }
+        }
+      }
+    },
+    "XP: 100" : {
+
+    },
+    "Your Library" : {
+
+    },
+    "Your Progress" : {
+
+    }
+  },
+  "version" : "1.0"
+}
