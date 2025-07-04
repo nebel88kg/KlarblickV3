@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TopStatsBar: View {
-    let streakCount: Int
-    let xpCount: Int
+    @Environment(\.modelContext) private var modelContext
+    @Query private var users: [User]
     
     var body: some View {
+        let user = users.first
+        
         VStack(spacing: 0) {
             HStack {
                 // Streak Counter (Left)
@@ -20,17 +23,17 @@ struct TopStatsBar: View {
                         .foregroundColor(.afterBurn)
                         .font(.body)
                     
-                        Text("\(streakCount)")
+                    Text("\(user?.currentStreak ?? 0)")
                             .font(.body)
                             .fontWeight(.bold)
                             .foregroundColor(.afterBurn)
                 }
                 
                 Spacer()
-                
+
                 // XP Counter (Right)
                 HStack(spacing: 8) {
-                    Text("\(xpCount)")
+                    Text("\(user?.currentXp ?? 0)")
                         .font(.body)
                         .fontWeight(.bold)
                         .foregroundColor(.pharaohsSeas)
@@ -48,11 +51,20 @@ struct TopStatsBar: View {
                 .fill(Color.gray2.opacity(0.3))
                 .frame(height: 2)
         }
+        .onAppear(perform: ensureUserExists)
         .background(Color.backgroundSecondary.opacity(0.3))
+    }
+    
+    private func ensureUserExists() {
+        guard users.isEmpty else { return }
+        
+        let defaultUser = User(name: "Default User")
+        modelContext.insert(defaultUser)
     }
 }
 
 #Preview {
-    TopStatsBar(streakCount: 7, xpCount: 1250)
+    TopStatsBar()
         .background(Color.backgroundSecondary)
-} 
+        .modelContainer(for: [User.self, MoodEntry.self])
+}

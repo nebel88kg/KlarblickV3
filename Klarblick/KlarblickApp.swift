@@ -14,6 +14,6 @@ struct KlarblickApp: App {
         WindowGroup {
             MainView()
         }
-        .modelContainer(for: MoodEntry.self)
+        .modelContainer(for: [User.self, MoodEntry.self])
     }
 }

@@ -4,6 +4,12 @@
     "%lld" : {
 
     },
+    "%lld entries" : {
+
+    },
+    "Are you sure you want to delete all %lld mood entries? This action cannot be undone." : {
+
+    },
     "Awareness" : {
       "localizations" : {
         "de" : {
@@ -24,12 +30,21 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
+    "Delete All" : {
+
+    },
+    "Delete All Mood Entries" : {
+
+    },
     "Hey there, Dominik!" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hallo, Dominik"
+            "value" : "Hallo, Dominik!"
           }
         }
       }
@@ -44,9 +59,6 @@
         }
       }
     },
-    "Level: 2" : {
-
-    },
     "Library" : {
 
     },
@@ -60,6 +72,12 @@
         }
       }
     },
+    "Mood History" : {
+
+    },
+    "No mood entries yet. Start tracking your mood!" : {
+
+    },
     "Process your experiences and emotions" : {
       "localizations" : {
         "de" : {
@@ -69,6 +87,9 @@
           }
         }
       }
+    },
+    "Profile" : {
+
     },
     "Reflect" : {
       "localizations" : {
@@ -90,9 +111,6 @@
         }
       }
     },
-    "Streak: 5 days" : {
-
-    },
     "Stressed" : {
       "localizations" : {
         "de" : {
@@ -107,20 +125,24 @@
 
     },
     "Today's Exercises" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heutige Übungen"
+          }
+        }
+      }
     },
     "Very Happy" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fröhlich"
+            "value" : "Sehr Glücklich"
           }
         }
       }
-    },
-    "XP: 100" : {
-
     },
     "Your Library" : {
 

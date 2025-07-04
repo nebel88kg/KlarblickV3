@@ -11,11 +11,11 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TopStatsBar(streakCount: 7, xpCount: 1500)
+                TopStatsBar()
                 
                 HeaderView()
 
-                MoodEmojiSelector(selectedMood: .constant(3))
+                MoodEmojiSelector()
                 
                 HStack() {
                     Text("Today's Exercises")

@@ -24,7 +24,9 @@ struct HeaderView: View {
             
             Spacer()
         }
-        .padding(20)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
+        .padding(.bottom, 10)
     }
 }
 

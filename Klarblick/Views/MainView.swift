@@ -36,4 +36,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .modelContainer(for: [User.self, MoodEntry.self])
 }
