@@ -7,6 +7,12 @@
     "%lld entries" : {
 
     },
+    "+10" : {
+
+    },
+    "5" : {
+
+    },
     "Are you sure you want to delete all %lld mood entries? This action cannot be undone." : {
 
     },
@@ -33,10 +39,19 @@
     "Cancel" : {
 
     },
+    "CONTINUE" : {
+
+    },
     "Delete All" : {
 
     },
     "Delete All Mood Entries" : {
+
+    },
+    "Exercise Complete!" : {
+
+    },
+    "Great job!" : {
 
     },
     "Hey there, Dominik!" : {
@@ -72,10 +87,16 @@
         }
       }
     },
+    "minutes" : {
+
+    },
     "Mood History" : {
 
     },
     "No mood entries yet. Start tracking your mood!" : {
+
+    },
+    "PAUSE TIMER" : {
 
     },
     "Process your experiences and emotions" : {
@@ -101,6 +122,12 @@
         }
       }
     },
+    "Session Summary" : {
+
+    },
+    "Share Progress" : {
+
+    },
     "Simple actions that create order and stability" : {
       "localizations" : {
         "de" : {
@@ -110,6 +137,12 @@
           }
         }
       }
+    },
+    "START TIMER" : {
+
+    },
+    "Step %lld" : {
+
     },
     "Stressed" : {
       "localizations" : {
@@ -134,6 +167,9 @@
         }
       }
     },
+    "Type" : {
+
+    },
     "Very Happy" : {
       "localizations" : {
         "de" : {
@@ -143,6 +179,9 @@
           }
         }
       }
+    },
+    "XP" : {
+
     },
     "Your Library" : {
 

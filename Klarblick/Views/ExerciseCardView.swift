@@ -12,9 +12,13 @@ struct ExerciseCard {
     let caption: String
     let symbol: String
     let gradient: LinearGradient
+    let category: ExerciseCategory
 }
 
 struct ExerciseCardView: View {
+    @State private var selectedExercise: Exercise?
+    @State private var showingExercise = false
+    
     private let exercises = [
         ExerciseCard(
             title: String(localized: "Awareness"),
@@ -24,7 +28,8 @@ struct ExerciseCardView: View {
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],
                 startPoint: .leading,
                 endPoint: .trailing
-            )
+            ),
+            category: .awareness
         ),
         ExerciseCard(
             title: String(localized: "Balance"),
@@ -34,7 +39,8 @@ struct ExerciseCardView: View {
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],
                 startPoint: .leading,
                 endPoint: .trailing
-            )
+            ),
+            category: .balance
         ),
         ExerciseCard(
             title: String(localized: "Reflect"),
@@ -44,7 +50,8 @@ struct ExerciseCardView: View {
                 colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.8)],
                 startPoint: .leading,
                 endPoint: .trailing
-            )
+            ),
+            category: .reflect
         )
     ]
     
@@ -78,8 +85,19 @@ struct ExerciseCardView: View {
                 .padding(.trailing, 20)
                 .background(exercises[index].gradient)
                 .cornerRadius(20)
-
+                .onTapGesture {
+                    selectRandomExercise(from: exercises[index].category)
+                }
             }
+        }
+        .fullScreenCover(item: $selectedExercise) { exercise in
+            ExerciseDetailView(exercise: exercise)
+        }
+    }
+    
+    private func selectRandomExercise(from category: ExerciseCategory) {
+        if let randomExercise = ExerciseLibrary.getRandomExercise(from: category) {
+            selectedExercise = randomExercise
         }
     }
 }

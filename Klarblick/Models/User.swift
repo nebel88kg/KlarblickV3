@@ -14,11 +14,13 @@ class User {
     var currentStreak: Int
     var currentXp: Int
     var lastMoodCheckIn: Date?
+    var lastExerciseDate: Date?
     
-    init(name: String, currentStreak: Int = 7, currentXp: Int = 500) {
+    init(name: String, currentStreak: Int = 0, currentXp: Int = 0) {
         self.name = name
         self.currentStreak = currentStreak
         self.currentXp = currentXp
         self.lastMoodCheckIn = nil
+        self.lastExerciseDate = nil
     }
 }
