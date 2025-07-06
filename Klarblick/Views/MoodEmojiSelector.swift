@@ -12,6 +12,7 @@ struct MoodEmojiSelector: View {
     @State private var selectedMood: Int? = nil
     @Environment(\.modelContext) private var modelContext
     @State private var midnightTimer: Timer?
+    @State private var isInitialLoad = true
     
     private let moods: [(imageName: String, id: Int)] = [
         ("smiley1", 0),
@@ -31,7 +32,8 @@ struct MoodEmojiSelector: View {
                     MoodPill(
                         imageName: moods[index].imageName,
                         isSelected: selectedMood == index,
-                        moodIndex: index
+                        moodIndex: index,
+                        isInitialLoad: isInitialLoad
                     ) {
                         selectedMood = index
                     }
@@ -54,6 +56,11 @@ struct MoodEmojiSelector: View {
         .onAppear {
             loadTodaysMoodSelection()
             scheduleAutomaticReset()
+            
+            // Enable animations after initial load
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                isInitialLoad = false
+            }
         }
         .onDisappear {
             midnightTimer?.invalidate()
@@ -101,6 +108,7 @@ struct MoodPill: View {
     let imageName: String
     let isSelected: Bool
     let moodIndex: Int
+    let isInitialLoad: Bool
     let onTap: () -> Void
     
     @Environment(\.modelContext) private var modelContext
@@ -135,7 +143,7 @@ struct MoodPill: View {
                     )
             )
             .scaleEffect(isSelected ? 1.05 : 1.0)
-            .animation(.easeInOut(duration: 0.2), value: isSelected)
+            .animation(isInitialLoad ? .none : .easeInOut(duration: 0.2), value: isSelected)
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -162,7 +170,7 @@ extension MoodPill {
         
         // 4. Award XP only if first mood today
         if !hasMoodEntryToday {
-            awardXp(50)
+            awardXp(5)
         }
         // 5. Make selection persistent until midnight
         // Selection persistence is handled by onAppear in the parent view
@@ -225,7 +233,7 @@ extension MoodPill {
             .fontWeight(.semibold)
         
         MoodEmojiSelector()
-            .modelContainer(for: [User.self, MoodEntry.self])
+            .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
 
         
         Text("No Selection")
@@ -233,7 +241,7 @@ extension MoodPill {
             .foregroundColor(.secondary)
         
         MoodEmojiSelector()
-            .modelContainer(for: [User.self, MoodEntry.self])
+            .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
     }
     .padding()
 } 

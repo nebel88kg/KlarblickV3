@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    
     var body: some View {
         TabView {
             Group{
@@ -36,5 +38,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .modelContainer(for: [User.self, MoodEntry.self])
+        .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
 }

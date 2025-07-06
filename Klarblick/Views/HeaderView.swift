@@ -6,14 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HeaderView: View {
+    @Query private var users: [User]
+    
+    private var userName: String {
+        return users.first?.name ?? "Default User"
+    }
+    
+    private var timeBasedGreeting: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        switch hour {
+        case 0..<12:
+            return String(localized: "Good morning")
+        case 12..<17:
+            return String(localized: "Good afternoon")
+        case 17..<21:
+            return String(localized: "Good evening")
+        default:
+            return String(localized:"Good night")
+        }
+    }
+    
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 4) {
-                Text("Hey there, Dominik!")
+                Text("\(timeBasedGreeting), \(userName)!")
                     .font(.title)
-                    .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
 
                 
@@ -34,4 +55,5 @@ struct HeaderView: View {
     HeaderView()
         .padding()
         .background(Color.backgroundSecondary)
+        .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
 }

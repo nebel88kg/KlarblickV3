@@ -15,6 +15,10 @@ class User {
     var currentXp: Int
     var lastMoodCheckIn: Date?
     var lastExerciseDate: Date?
+    var userCreated: Date
+    var badges: [Badge]
+    var profilePictureData: Data?
+    
     
     init(name: String, currentStreak: Int = 0, currentXp: Int = 0) {
         self.name = name
@@ -22,5 +26,8 @@ class User {
         self.currentXp = currentXp
         self.lastMoodCheckIn = nil
         self.lastExerciseDate = nil
+        self.userCreated = Date()
+        self.badges = []
+        self.profilePictureData = nil
     }
 }

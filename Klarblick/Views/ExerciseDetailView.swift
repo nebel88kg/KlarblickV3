@@ -18,6 +18,11 @@ struct ExerciseDetailView: View {
     @State private var isTimerRunning = false
     @State private var timer: Timer?
     @State private var isBreathing = false
+    @State private var isAnimatingToCompletion = false
+    @State private var showSuccessIcon = false
+    @State private var showSuccessMessage = false
+    @State private var showSessionSummary = false
+    @State private var showBottomButtons = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -27,6 +32,10 @@ struct ExerciseDetailView: View {
     
     var progress: Double {
         Double(currentStepIndex + 1) / Double(exercise.instructions.count)
+    }
+    
+    var isLastStep: Bool {
+        currentStepIndex == exercise.instructions.count - 1
     }
     
     var body: some View {
@@ -90,7 +99,7 @@ struct ExerciseDetailView: View {
                 Button(action: { dismiss() }) {
                     Image(systemName: "xmark")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.ambrosiaIvory)
                 }
                 .padding(.horizontal, 20)
                 
@@ -104,7 +113,7 @@ struct ExerciseDetailView: View {
                             .frame(height: 12)
                         
                         RoundedRectangle(cornerRadius: 6)
-                            .fill(Color.orange)
+                            .fill(Color.afterBurn)
                             .frame(width: max(0, CGFloat(progress) * geometry.size.width), height: 12)
                     }
                 }
@@ -231,18 +240,6 @@ struct ExerciseDetailView: View {
             .frame(height: 168)
             .background(Color.white.opacity(0.1))
             .cornerRadius(20)
-            
-            // Timer button
-            Button(action: toggleTimer) {
-                Text(isTimerRunning ? "PAUSE TIMER" : "START TIMER")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(isTimerRunning ? Color.red : Color.cyan)
-                    .cornerRadius(12)
-            }
         }
     }
     
@@ -262,7 +259,7 @@ struct ExerciseDetailView: View {
                 .background(Color.white.opacity(0.1))
                 .cornerRadius(12)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.orange, lineWidth: textInputs.indices.contains(index) && !textInputs[index].isEmpty ? 2 : 0)
                 )
                 .foregroundColor(.white)
@@ -273,7 +270,7 @@ struct ExerciseDetailView: View {
     private var longTextAreaView: some View {
         VStack(spacing: 16) {
             ZStack(alignment: .topLeading) {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 20)
                     .fill(Color.white.opacity(0.1))
                     .frame(height: 200)
                 
@@ -294,18 +291,55 @@ struct ExerciseDetailView: View {
     
     private var bottomButton: some View {
         VStack(spacing: 16) {
-            Button(action: continueToNextStep) {
-                Text("CONTINUE")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(Color.orange)
-                    .cornerRadius(12)
+            if currentStep.hasInteractiveElement && currentStep.interactiveElementType == .timer {
+                // Timer-specific button
+                if timerSeconds == 0 {
+                    // Timer completed - show continue/complete button
+                    Button(action: continueToNextStep) {
+                        Text(isLastStep ? "COMPLETE EXERCISE" : "CONTINUE")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color.orange)
+                            .cornerRadius(12)
+                    }
+                } else {
+                    // Timer not completed - show timer control button
+                    Button(action: toggleTimer) {
+                        Text(isTimerRunning ? "PAUSE TIMER" : "START TIMER")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(isTimerRunning ? Color.red : Color.cyan)
+                            .cornerRadius(12)
+                    }
+                }
+            } else {
+                // Regular continue button for non-timer steps
+                ZStack {
+                    Button(action: continueToNextStep) {
+                        Text(isLastStep ? "COMPLETE EXERCISE" : "CONTINUE")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.ambrosiaIvory)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(canContinue ? Color.afterBurn : .gray)
+                            .cornerRadius(12)
+                    }
+                    .disabled(!canContinue)
+                    .background(
+                        // Background that extends 4px below the button with mangosteen violet
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.mangosteenViolet)
+                            .offset(y: 4)
+                    )
+                }
             }
-            .disabled(!canContinue)
-            .opacity(canContinue ? 1.0 : 0.6)
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 32)
@@ -358,6 +392,8 @@ struct ExerciseDetailView: View {
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
             }
+            .scaleEffect(showSuccessIcon ? 1.0 : 0.0)
+            .opacity(showSuccessIcon ? 1.0 : 0.0)
             .onAppear {
                 isBreathing = true
             }
@@ -373,6 +409,8 @@ struct ExerciseDetailView: View {
                     .font(.title2)
                     .foregroundColor(.orange)
             }
+            .scaleEffect(showSuccessMessage ? 1.0 : 0.0)
+            .opacity(showSuccessMessage ? 1.0 : 0.0)
             
             // Session summary
             VStack(spacing: 20) {
@@ -432,6 +470,8 @@ struct ExerciseDetailView: View {
             }
             .background(Color.white.opacity(0.1))
             .cornerRadius(20)
+            .scaleEffect(showSessionSummary ? 1.0 : 0.0)
+            .opacity(showSessionSummary ? 1.0 : 0.0)
             
             Spacer()
             
@@ -444,9 +484,16 @@ struct ExerciseDetailView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .background(Color.orange)
+                        .background(Color.afterBurn)
                         .cornerRadius(12)
                 }
+                .background(
+                    // Background that extends 4px below the button with mangosteen violet
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.mangosteenViolet)
+                        .offset(y: 4)
+                )
+
                 
                 Button(action: {}) {
                     Text("Share Progress")
@@ -454,8 +501,13 @@ struct ExerciseDetailView: View {
                         .foregroundColor(.orange)
                 }
             }
+            .scaleEffect(showBottomButtons ? 1.0 : 0.0)
+            .opacity(showBottomButtons ? 1.0 : 0.0)
         }
         .padding(.horizontal, 24)
+        .onAppear {
+            startCompletionAnimation()
+        }
     }
     
     // MARK: - Helper Functions
@@ -478,8 +530,10 @@ struct ExerciseDetailView: View {
             // Reset interactive elements for new step
             resetInteractiveElements()
         } else {
-            // Exercise completed
-            isCompleted = true
+            // Exercise completed - animate to completion screen
+            withAnimation(.easeInOut(duration: 2)) {
+                isCompleted = true
+            }
             awardXp(10)
             incrementStreakIfNeeded()
         }
@@ -561,6 +615,37 @@ struct ExerciseDetailView: View {
             if lastExerciseDay < today {
                 incrementStreak()
                 user.lastExerciseDate = Date()
+            }
+        }
+    }
+    
+    private func startCompletionAnimation() {
+        // Reset all animation states
+        showSuccessIcon = false
+        showSuccessMessage = false
+        showSessionSummary = false
+        showBottomButtons = false
+        
+        // Animate items sequentially from top to bottom
+        withAnimation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0)) {
+            showSuccessIcon = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0)) {
+                showSuccessMessage = true
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0)) {
+                showSessionSummary = true
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0)) {
+                showBottomButtons = true
             }
         }
     }

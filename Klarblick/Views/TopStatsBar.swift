@@ -51,20 +51,12 @@ struct TopStatsBar: View {
                 .fill(Color.gray2.opacity(0.3))
                 .frame(height: 2)
         }
-        .onAppear(perform: ensureUserExists)
         .background(Color.backgroundSecondary.opacity(0.3))
-    }
-    
-    private func ensureUserExists() {
-        guard users.isEmpty else { return }
-        
-        let defaultUser = User(name: "Default User")
-        modelContext.insert(defaultUser)
     }
 }
 
 #Preview {
     TopStatsBar()
         .background(Color.backgroundSecondary)
-        .modelContainer(for: [User.self, MoodEntry.self])
+        .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
 }

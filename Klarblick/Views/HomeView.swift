@@ -50,4 +50,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-} 
+        .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
+}

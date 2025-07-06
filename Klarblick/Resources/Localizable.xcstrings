@@ -1,16 +1,62 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "%@, %@!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@!"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
     "%lld entries" : {
 
     },
+    "%lld min" : {
+
+    },
+    "• Close your eyes and focus on your breath" : {
+
+    },
+    "• Find a quiet, comfortable space" : {
+
+    },
+    "• Let thoughts come and go without judgment" : {
+
+    },
+    "• Start with shorter sessions and build up" : {
+
+    },
     "+10" : {
 
     },
+    "✕" : {
+
+    },
+    "1.0.0" : {
+
+    },
+    "3-day free trial" : {
+
+    },
     "5" : {
+
+    },
+    "About" : {
+
+    },
+    "App" : {
+
+    },
+    "App Version" : {
 
     },
     "Are you sure you want to delete all %lld mood entries? This action cannot be undone." : {
@@ -26,6 +72,16 @@
         }
       }
     },
+    "Back" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück"
+          }
+        }
+      }
+    },
     "Balance" : {
       "localizations" : {
         "de" : {
@@ -36,30 +92,183 @@
         }
       }
     },
+    "Breathe deeply" : {
+
+    },
+    "By subscribing, you agree to our Terms of Service and Privacy Policy" : {
+
+    },
     "Cancel" : {
 
     },
-    "CONTINUE" : {
+    "Choose Your Plan" : {
 
     },
-    "Delete All" : {
+    "Clarity in Mind" : {
 
     },
-    "Delete All Mood Entries" : {
+    "COMPLETE EXERCISE" : {
 
     },
-    "Exercise Complete!" : {
-
-    },
-    "Great job!" : {
-
-    },
-    "Hey there, Dominik!" : {
+    "Continue" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hallo, Dominik!"
+            "value" : "Weiter"
+          }
+        }
+      }
+    },
+    "CONTINUE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WEITER"
+          }
+        }
+      }
+    },
+    "Daily reminders" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Erinnerungen"
+          }
+        }
+      }
+    },
+    "Delete All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
+          }
+        }
+      }
+    },
+    "Delete All Mood Entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Mood Logs löschen"
+          }
+        }
+      }
+    },
+    "Don't worry, you can change this later" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Sorge, du kannst das später immer noch ändern"
+          }
+        }
+      }
+    },
+    "Edit Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namen bearbeiten"
+          }
+        }
+      }
+    },
+    "Edit Your Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeite deinen Namen"
+          }
+        }
+      }
+    },
+    "Enter your name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib deinen Namen ein"
+          }
+        }
+      }
+    },
+    "Exercise Complete!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übung geschafft!"
+          }
+        }
+      }
+    },
+    "Get full access to all Klarblick features" : {
+
+    },
+    "Get Started" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass uns loslegen"
+          }
+        }
+      }
+    },
+    "Good afternoon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Mittag"
+          }
+        }
+      }
+    },
+    "Good evening" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Abend"
+          }
+        }
+      }
+    },
+    "Good morning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Morgen"
+          }
+        }
+      }
+    },
+    "Good night" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gute Nacht"
+          }
+        }
+      }
+    },
+    "Great job!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gut gemacht!"
           }
         }
       }
@@ -74,7 +283,39 @@
         }
       }
     },
+    "Joined in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seit %@"
+          }
+        }
+      }
+    },
+    "Klarblick" : {
+
+    },
+    "Let's Begin" : {
+
+    },
     "Library" : {
+
+    },
+    "Longer sessions to give your mind a real break" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Längere Sessions um dir eine echte Auszeit zu gönnen"
+          }
+        }
+      }
+    },
+    "Meditation" : {
+
+    },
+    "Meditation Tips:" : {
 
     },
     "Mindful moments to connect with your mind and body" : {
@@ -91,12 +332,38 @@
 
     },
     "Mood History" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood Historie"
+          }
+        }
+      }
     },
     "No mood entries yet. Start tracking your mood!" : {
 
     },
+    "No products available" : {
+
+    },
+    "Notifications" : {
+
+    },
+    "Overview" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überblick"
+          }
+        }
+      }
+    },
     "PAUSE TIMER" : {
+
+    },
+    "Privacy" : {
 
     },
     "Process your experiences and emotions" : {
@@ -109,8 +376,21 @@
         }
       }
     },
-    "Profile" : {
+    "Processing..." : {
 
+    },
+    "Products may be loading from StoreKit..." : {
+
+    },
+    "Profile" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
     },
     "Reflect" : {
       "localizations" : {
@@ -122,11 +402,50 @@
         }
       }
     },
+    "Restore Purchases" : {
+
+    },
+    "Retry Loading" : {
+
+    },
+    "Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        }
+      }
+    },
+    "Save 58%" : {
+
+    },
+    "Select Duration" : {
+
+    },
     "Session Summary" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusammenfassung"
+          }
+        }
+      }
+    },
+    "Settings" : {
 
     },
     "Share Progress" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen"
+          }
+        }
+      }
     },
     "Simple actions that create order and stability" : {
       "localizations" : {
@@ -138,10 +457,40 @@
         }
       }
     },
-    "START TIMER" : {
+    "Start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "Start Free Trial" : {
 
     },
+    "START TIMER" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STARTE TIMER"
+          }
+        }
+      }
+    },
     "Step %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schritt %lld"
+          }
+        }
+      }
+    },
+    "Stop" : {
 
     },
     "Stressed" : {
@@ -154,7 +503,10 @@
         }
       }
     },
-    "This is the Library view" : {
+    "Subscribe" : {
+
+    },
+    "Terms" : {
 
     },
     "Today's Exercises" : {
@@ -170,6 +522,9 @@
     "Type" : {
 
     },
+    "Unlock Premium" : {
+
+    },
     "Very Happy" : {
       "localizations" : {
         "de" : {
@@ -180,13 +535,35 @@
         }
       }
     },
+    "We'd love to personalize your experience" : {
+
+    },
+    "Welcome to" : {
+
+    },
+    "Welcome, %@!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wilkommen, %@!"
+          }
+        }
+      }
+    },
+    "Welcome!" : {
+
+    },
+    "What's your name?" : {
+
+    },
     "XP" : {
 
     },
-    "Your Library" : {
+    "You're all set to begin your journey to mental clarity and wellbeing." : {
 
     },
-    "Your Progress" : {
+    "Your journey to mental clarity starts here" : {
 
     }
   },
