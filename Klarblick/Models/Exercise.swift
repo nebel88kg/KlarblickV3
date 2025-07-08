@@ -12,12 +12,32 @@ enum ExerciseCategory: String, CaseIterable {
     case awareness = "Awareness"
     case balance = "Balance"
     case reflect = "Reflect"
+    
+    var localizedName: String {
+        switch self {
+        case .awareness:
+            return String(localized: "Awareness")
+        case .balance:
+            return String(localized: "Balance")
+        case .reflect:
+            return String(localized: "Reflect")
+        }
+    }
 }
 
 // MARK: - Exercise Types
 enum ExerciseType: String, CaseIterable {
     case textPrompt = "Text Prompt"
     case interactive = "Interactive"
+    
+    var localizedName: String {
+        switch self {
+        case .textPrompt:
+            return String(localized: "exercise.type.text_prompt")
+        case .interactive:
+            return String(localized: "exercise.type.interactive")
+        }
+    }
 }
 
 // MARK: - Interactive Element Types
@@ -25,6 +45,17 @@ enum InteractiveElementType: String, CaseIterable {
     case timer = "Timer"
     case singleWordField = "Single Word Field"
     case longTextArea = "Long Text Area"
+    
+    var localizedName: String {
+        switch self {
+        case .timer:
+            return String(localized: "exercise.interactive.timer")
+        case .singleWordField:
+            return String(localized: "exercise.interactive.single_word_field")
+        case .longTextArea:
+            return String(localized: "exercise.interactive.long_text_area")
+        }
+    }
 }
 
 // MARK: - Exercise Instruction
@@ -68,229 +99,229 @@ struct ExerciseLibrary {
     static let predefinedExercises: [Exercise] = [
         // AWARENESS EXERCISES
         Exercise(
-            title: "Mindful Breathing",
+            title: String(localized: "exercise.mindful_breathing.title"),
             category: .awareness,
             type: .interactive,
             duration: 60,
             instructions: [
-                ExerciseInstruction(text: "Find a comfortable position and close your eyes"),
-                ExerciseInstruction(text: "Focus on your breath and breathe deeply", hasInteractiveElement: true, interactiveElementType: .timer),
-                ExerciseInstruction(text: "Notice how you feel after this breathing exercise")
+                ExerciseInstruction(text: String(localized: "exercise.mindful_breathing.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.mindful_breathing.instruction.2"), hasInteractiveElement: true, interactiveElementType: .timer),
+                ExerciseInstruction(text: String(localized: "exercise.mindful_breathing.instruction.3"))
             ],
-            shortDescription: "60 seconds of mindful breathing"
+            shortDescription: String(localized: "exercise.mindful_breathing.description")
         ),
         
         Exercise(
-            title: "Window Gazing",
+            title: String(localized: "exercise.window_gazing.title"),
             category: .awareness,
             type: .interactive,
             duration: 60,
             instructions: [
-                ExerciseInstruction(text: "Look out the window for 60 seconds"),
-                ExerciseInstruction(text: "Breathe deeply and notice what you see", hasInteractiveElement: true, interactiveElementType: .timer),
-                ExerciseInstruction(text: "How do you feel after this moment of observation?")
+                ExerciseInstruction(text: String(localized: "exercise.window_gazing.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.window_gazing.instruction.2"), hasInteractiveElement: true, interactiveElementType: .timer),
+                ExerciseInstruction(text: String(localized: "exercise.window_gazing.instruction.3"))
             ],
-            shortDescription: "Look outside and breathe deeply"
+            shortDescription: String(localized: "exercise.window_gazing.description")
         ),
         
         Exercise(
-            title: "Body Awareness",
+            title: String(localized: "exercise.body_awareness.title"),
             category: .awareness,
             type: .interactive,
             duration: 120,
             instructions: [
-                ExerciseInstruction(text: "Sit comfortably and close your eyes"),
-                ExerciseInstruction(text: "Move gently for 2 minutes - stretch, walk, or dance", hasInteractiveElement: true, interactiveElementType: .timer),
-                ExerciseInstruction(text: "Notice how your body feels after movement")
+                ExerciseInstruction(text: String(localized: "exercise.body_awareness.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.body_awareness.instruction.2"), hasInteractiveElement: true, interactiveElementType: .timer),
+                ExerciseInstruction(text: String(localized: "exercise.body_awareness.instruction.3"))
             ],
-            shortDescription: "2 minutes of mindful movement"
+            shortDescription: String(localized: "exercise.body_awareness.description")
         ),
         
         Exercise(
-            title: "Mindful Pause",
+            title: String(localized: "exercise.mindful_pause.title"),
             category: .awareness,
             type: .interactive,
             duration: 30,
             instructions: [
-                ExerciseInstruction(text: "Breathe naturally and just be present"),
-                ExerciseInstruction(text: "Open your eyes when ready"),
-                ExerciseInstruction(text: "Close your eyes for 30 seconds", hasInteractiveElement: true, interactiveElementType: .timer)
+                ExerciseInstruction(text: String(localized: "exercise.mindful_pause.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.mindful_pause.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.mindful_pause.instruction.3"), hasInteractiveElement: true, interactiveElementType: .timer)
             ],
-            shortDescription: "30 seconds of mindful presence"
+            shortDescription: String(localized: "exercise.mindful_pause.description")
         ),
         
         Exercise(
-            title: "Hydration Check",
+            title: String(localized: "exercise.hydration_check.title"),
             category: .awareness,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Drink a glass of water"),
-                ExerciseInstruction(text: "Notice how the water feels and tastes"),
-                ExerciseInstruction(text: "Take a moment to appreciate staying hydrated")
+                ExerciseInstruction(text: String(localized: "exercise.hydration_check.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.hydration_check.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.hydration_check.instruction.3"))
             ],
-            shortDescription: "Stay hydrated mindfully"
+            shortDescription: String(localized: "exercise.hydration_check.description")
         ),
         
         Exercise(
-            title: "Digital Declutter",
+            title: String(localized: "exercise.digital_declutter.title"),
             category: .awareness,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Close one open tab or distracting app"),
-                ExerciseInstruction(text: "Notice how it feels to reduce digital clutter"),
-                ExerciseInstruction(text: "Consider what apps truly serve you")
+                ExerciseInstruction(text: String(localized: "exercise.digital_declutter.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.digital_declutter.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.digital_declutter.instruction.3"))
             ],
-            shortDescription: "Reduce digital distractions"
+            shortDescription: String(localized: "exercise.digital_declutter.description")
         ),
         
 //MARK: -  BALANCE EXERCISES
         Exercise(
-            title: "Priority Setting",
+            title: String(localized: "exercise.priority_setting.title"),
             category: .balance,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Think about your day ahead"),
-                ExerciseInstruction(text: "Write down 3 things you want to do today", hasInteractiveElement: true, interactiveElementType: .singleWordField),
-                ExerciseInstruction(text: "Choose which one is most important")
+                ExerciseInstruction(text: String(localized: "exercise.priority_setting.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.priority_setting.instruction.2"), hasInteractiveElement: true, interactiveElementType: .singleWordField),
+                ExerciseInstruction(text: String(localized: "exercise.priority_setting.instruction.3"))
             ],
             textFieldCount: 3,
-            shortDescription: "Set your daily priorities"
+            shortDescription: String(localized: "exercise.priority_setting.description")
         ),
         
         Exercise(
-            title: "Next Task Focus",
+            title: String(localized: "exercise.next_task_focus.title"),
             category: .balance,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Consider what you need to accomplish"),
-                ExerciseInstruction(text: "Write down one task you want to do next", hasInteractiveElement: true, interactiveElementType: .longTextArea),
-                ExerciseInstruction(text: "Commit to starting this task")
+                ExerciseInstruction(text: String(localized: "exercise.next_task_focus.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.next_task_focus.instruction.2"), hasInteractiveElement: true, interactiveElementType: .longTextArea),
+                ExerciseInstruction(text: String(localized: "exercise.next_task_focus.instruction.3"))
             ],
-            shortDescription: "Focus on your next action"
+            shortDescription: String(localized: "exercise.next_task_focus.description")
         ),
         
         Exercise(
-            title: "Quick Tidy",
+            title: String(localized: "exercise.quick_tidy.title"),
             category: .balance,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Look around your space"),
-                ExerciseInstruction(text: "Tidy up one single surface"),
-                ExerciseInstruction(text: "Enjoy the sense of order you've created")
+                ExerciseInstruction(text: String(localized: "exercise.quick_tidy.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.quick_tidy.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.quick_tidy.instruction.3"))
             ],
-            shortDescription: "Create order in your space"
+            shortDescription: String(localized: "exercise.quick_tidy.description")
         ),
         
         Exercise(
-            title: "Organization Boost",
+            title: String(localized: "exercise.organization_boost.title"),
             category: .balance,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Find 3 things that are out of place"),
-                ExerciseInstruction(text: "Put them back where they belong"),
-                ExerciseInstruction(text: "Notice how organization affects your mood")
+                ExerciseInstruction(text: String(localized: "exercise.organization_boost.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.organization_boost.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.organization_boost.instruction.3"))
             ],
-            shortDescription: "Restore order to your environment"
+            shortDescription: String(localized: "exercise.organization_boost.description")
         ),
         
         Exercise(
-            title: "Digital Cleanup",
+            title: String(localized: "exercise.digital_cleanup.title"),
             category: .balance,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Open your email or file manager"),
-                ExerciseInstruction(text: "Delete 5 unnecessary emails or files"),
-                ExerciseInstruction(text: "Feel the satisfaction of digital decluttering")
+                ExerciseInstruction(text: String(localized: "exercise.digital_cleanup.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.digital_cleanup.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.digital_cleanup.instruction.3"))
             ],
-            shortDescription: "Clean up digital clutter"
+            shortDescription: String(localized: "exercise.digital_cleanup.description")
         ),
         
         Exercise(
-            title: "Task Relief",
+            title: String(localized: "exercise.task_relief.title"),
             category: .balance,
             type: .textPrompt,
             instructions: [
-                ExerciseInstruction(text: "Think of an overdue task that's weighing on you"),
-                ExerciseInstruction(text: "Move it to tomorrow — guilt-free"),
-                ExerciseInstruction(text: "Remember: it's okay to reschedule")
+                ExerciseInstruction(text: String(localized: "exercise.task_relief.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.task_relief.instruction.2")),
+                ExerciseInstruction(text: String(localized: "exercise.task_relief.instruction.3"))
             ],
-            shortDescription: "Release task pressure"
+            shortDescription: String(localized: "exercise.task_relief.description")
         ),
         
         // REFLECT EXERCISES
         Exercise(
-            title: "Brain Dump",
+            title: String(localized: "exercise.brain_dump.title"),
             category: .reflect,
             type: .interactive,
             duration: 120,
             instructions: [
-                ExerciseInstruction(text: "Set a timer for 2 minutes"),
-                ExerciseInstruction(text: "Write everything on your mind", hasInteractiveElement: true, interactiveElementType: .longTextArea),
-                ExerciseInstruction(text: "Don't worry about organization, just let it flow")
+                ExerciseInstruction(text: String(localized: "exercise.brain_dump.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.brain_dump.instruction.2"), hasInteractiveElement: true, interactiveElementType: .longTextArea),
+                ExerciseInstruction(text: String(localized: "exercise.brain_dump.instruction.3"))
             ],
-            shortDescription: "Clear your mind through writing"
+            shortDescription: String(localized: "exercise.brain_dump.description")
         ),
         
         Exercise(
-            title: "Daily Acknowledgment",
+            title: String(localized: "exercise.daily_acknowledgment.title"),
             category: .reflect,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Think about your day so far"),
-                ExerciseInstruction(text: "Write down one thing you did well today", hasInteractiveElement: true, interactiveElementType: .longTextArea),
-                ExerciseInstruction(text: "Take a moment to appreciate your effort")
+                ExerciseInstruction(text: String(localized: "exercise.daily_acknowledgment.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.daily_acknowledgment.instruction.2"), hasInteractiveElement: true, interactiveElementType: .longTextArea),
+                ExerciseInstruction(text: String(localized: "exercise.daily_acknowledgment.instruction.3"))
             ],
-            shortDescription: "Recognize your achievements"
+            shortDescription: String(localized: "exercise.daily_acknowledgment.description")
         ),
         
         Exercise(
-            title: "Gratitude Moment",
+            title: String(localized: "exercise.gratitude_moment.title"),
             category: .reflect,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Pause and look around you"),
-                ExerciseInstruction(text: "Write down one thing you're grateful for", hasInteractiveElement: true, interactiveElementType: .longTextArea),
-                ExerciseInstruction(text: "Feel the warmth of gratitude")
+                ExerciseInstruction(text: String(localized: "exercise.gratitude_moment.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.gratitude_moment.instruction.2"), hasInteractiveElement: true, interactiveElementType: .longTextArea),
+                ExerciseInstruction(text: String(localized: "exercise.gratitude_moment.instruction.3"))
             ],
-            shortDescription: "Practice gratitude"
+            shortDescription: String(localized: "exercise.gratitude_moment.description")
         ),
         
         Exercise(
-            title: "Future Focus",
+            title: String(localized: "exercise.future_focus.title"),
             category: .reflect,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Reflect on your experiences today"),
-                ExerciseInstruction(text: "What do you want to try differently tomorrow?", hasInteractiveElement: true, interactiveElementType: .longTextArea),
-                ExerciseInstruction(text: "Set a gentle intention for tomorrow")
+                ExerciseInstruction(text: String(localized: "exercise.future_focus.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.future_focus.instruction.2"), hasInteractiveElement: true, interactiveElementType: .longTextArea),
+                ExerciseInstruction(text: String(localized: "exercise.future_focus.instruction.3"))
             ],
-            shortDescription: "Plan for tomorrow"
+            shortDescription: String(localized: "exercise.future_focus.description")
         ),
         
         Exercise(
-            title: "Day Summary",
+            title: String(localized: "exercise.day_summary.title"),
             category: .reflect,
             type: .interactive,
             instructions: [
-                ExerciseInstruction(text: "Think about your entire day"),
-                ExerciseInstruction(text: "Write a 3-word summary of your day", hasInteractiveElement: true, interactiveElementType: .singleWordField),
-                ExerciseInstruction(text: "Reflect on what those words mean to you")
+                ExerciseInstruction(text: String(localized: "exercise.day_summary.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.day_summary.instruction.2"), hasInteractiveElement: true, interactiveElementType: .singleWordField),
+                ExerciseInstruction(text: String(localized: "exercise.day_summary.instruction.3"))
             ],
             textFieldCount: 3,
-            shortDescription: "Summarize your day"
+            shortDescription: String(localized: "exercise.day_summary.description")
         ),
         
         Exercise(
-            title: "Creative Expression",
+            title: String(localized: "exercise.creative_expression.title"),
             category: .reflect,
             type: .interactive,
             duration: 60,
             instructions: [
-                ExerciseInstruction(text: "Get a piece of paper or open a drawing app"),
-                ExerciseInstruction(text: "Scribble or doodle for 1 minute", hasInteractiveElement: true, interactiveElementType: .timer),
-                ExerciseInstruction(text: "Let your creativity flow without judgment")
+                ExerciseInstruction(text: String(localized: "exercise.creative_expression.instruction.1")),
+                ExerciseInstruction(text: String(localized: "exercise.creative_expression.instruction.2"), hasInteractiveElement: true, interactiveElementType: .timer),
+                ExerciseInstruction(text: String(localized: "exercise.creative_expression.instruction.3"))
             ],
-            shortDescription: "Express yourself creatively"
+            shortDescription: String(localized: "exercise.creative_expression.description")
         )
     ]
     

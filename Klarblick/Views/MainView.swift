@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @State private var showPaywall = false
     
     var body: some View {
         TabView {
@@ -32,11 +33,32 @@ struct MainView: View {
             .toolbarBackground(.visible, for: .tabBar)
         }
         .accentColor(.ambrosiaIvory)
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+                .environmentObject(subscriptionManager)
+                .interactiveDismissDisabled(true)
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.hidden)
+        }
+        .onAppear {
+            // Show paywall if not subscribed
+            if !subscriptionManager.isSubscribed {
+                showPaywall = true
+            }
+        }
+        .onChange(of: subscriptionManager.isSubscribed) { _, isSubscribed in
+            if !isSubscribed {
+                showPaywall = true
+            } else {
+                showPaywall = false
+            }
+        }
     }
 }
 
 
 #Preview {
     MainView()
-        .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
+    .modelContainer(for: [User.self, MoodEntry.self, Badge.self])
+    .environmentObject(SubscriptionManager())
 }

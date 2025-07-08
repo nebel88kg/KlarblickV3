@@ -26,13 +26,13 @@ struct HomeView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 20)
                 
-                HStack() {
-                    VerticalProgressBarView(progress: 0.6, height: 277)
-                        .padding(.leading, 15)
-                        .padding(.trailing, 7)
+//                HStack() {
+//                    VerticalProgressBarView(progress: 0.6, height: 277)
+//                        .padding(.leading, 15)
+//                        .padding(.trailing, 7)
                     ExerciseCardView()
-                        .padding(.trailing, 20)
-                }
+                        .padding(.horizontal, 20)
+//                }
 
                 
                 Spacer()

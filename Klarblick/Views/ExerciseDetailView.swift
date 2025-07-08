@@ -7,9 +7,91 @@
 
 import SwiftUI
 import SwiftData
+import CoreHaptics
+
+// MARK: - Custom Button Component
+struct ExerciseButton: View {
+    let title: String
+    let backgroundColor: Color
+    let foregroundColor: Color
+    let isDisabled: Bool
+    let buttonId: String
+    @Binding var pressedButton: String?
+    let action: () -> Void
+    
+    init(
+        title: String,
+        backgroundColor: Color,
+        foregroundColor: Color = .white,
+        isDisabled: Bool = false,
+        buttonId: String,
+        pressedButton: Binding<String?>,
+        action: @escaping () -> Void
+    ) {
+        self.title = title
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
+        self.isDisabled = isDisabled
+        self.buttonId = buttonId
+        self._pressedButton = pressedButton
+        self.action = action
+    }
+    
+    var body: some View {
+        Button(action: {
+            if !isDisabled {
+                action()
+            }
+        }) {
+            Text(title)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundColor(foregroundColor)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(isDisabled ? .gray : backgroundColor)
+                .cornerRadius(10)
+        }
+        .disabled(isDisabled)
+        .scaleEffect(pressedButton == buttonId ? 0.95 : 1.0)
+        .shadow(color: .black.opacity(0.3), radius: pressedButton == buttonId ? 2 : 8, x: 0, y: pressedButton == buttonId ? 2 : 4)
+        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedButton)
+        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                pressedButton = pressing ? buttonId : nil
+            }
+        }, perform: {})
+    }
+}
+
+// MARK: - Secondary Button Component
+struct SecondaryExerciseButton: View {
+    let title: String
+    let foregroundColor: Color
+    let buttonId: String
+    @Binding var pressedButton: String?
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.subheadline)
+                .foregroundColor(foregroundColor)
+        }
+        .scaleEffect(pressedButton == buttonId ? 0.95 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedButton)
+        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                pressedButton = pressing ? buttonId : nil
+            }
+        }, perform: {})
+    }
+}
 
 struct ExerciseDetailView: View {
     let exercise: Exercise
+    let isFromCardView: Bool
+    let onCompletion: (() -> Void)?
     @State private var currentStepIndex = 0
     @State private var isCompleted = false
     @State private var textInputs: [String] = []
@@ -23,8 +105,17 @@ struct ExerciseDetailView: View {
     @State private var showSuccessMessage = false
     @State private var showSessionSummary = false
     @State private var showBottomButtons = false
+    @State private var pressedButton: String? = nil
+    @State private var hapticEngine: CHHapticEngine?
+    @State private var continuousPlayer: CHHapticAdvancedPatternPlayer?
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    
+    init(exercise: Exercise, isFromCardView: Bool = false, onCompletion: (() -> Void)? = nil) {
+        self.exercise = exercise
+        self.isFromCardView = isFromCardView
+        self.onCompletion = onCompletion
+    }
     
     var currentStep: ExerciseInstruction {
         exercise.instructions[currentStepIndex]
@@ -57,9 +148,11 @@ struct ExerciseDetailView: View {
         }
         .onAppear {
             setupExercise()
+            setupHapticEngine()
         }
         .onDisappear {
             stopTimer()
+            stopContinuousHapticFeedback()
         }
     }
     
@@ -257,7 +350,7 @@ struct ExerciseDetailView: View {
                 .textFieldStyle(PlainTextFieldStyle())
                 .padding(16)
                 .background(Color.white.opacity(0.1))
-                .cornerRadius(12)
+                .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.orange, lineWidth: textInputs.indices.contains(index) && !textInputs[index].isEmpty ? 2 : 0)
@@ -295,49 +388,41 @@ struct ExerciseDetailView: View {
                 // Timer-specific button
                 if timerSeconds == 0 {
                     // Timer completed - show continue/complete button
-                    Button(action: continueToNextStep) {
-                        Text(isLastStep ? "COMPLETE EXERCISE" : "CONTINUE")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 16)
-                            .background(Color.orange)
-                            .cornerRadius(12)
+                    ExerciseButton(
+                        title: isLastStep ? "COMPLETE EXERCISE" : "CONTINUE",
+                        backgroundColor: .orange,
+                        foregroundColor: .white,
+                        buttonId: "timer_complete",
+                        pressedButton: $pressedButton
+                    ) {
+                        performHapticFeedback(.medium)
+                        continueToNextStep()
                     }
                 } else {
                     // Timer not completed - show timer control button
-                    Button(action: toggleTimer) {
-                        Text(isTimerRunning ? "PAUSE TIMER" : "START TIMER")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 16)
-                            .background(isTimerRunning ? Color.red : Color.cyan)
-                            .cornerRadius(12)
+                    ExerciseButton(
+                        title: isTimerRunning ? "PAUSE TIMER" : "START TIMER",
+                        backgroundColor: isTimerRunning ? .red : .cyan,
+                        foregroundColor: .white,
+                        buttonId: "timer_control",
+                        pressedButton: $pressedButton
+                    ) {
+                        performHapticFeedback(.medium)
+                        toggleTimer()
                     }
                 }
             } else {
                 // Regular continue button for non-timer steps
-                ZStack {
-                    Button(action: continueToNextStep) {
-                        Text(isLastStep ? "COMPLETE EXERCISE" : "CONTINUE")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.ambrosiaIvory)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 16)
-                            .background(canContinue ? Color.afterBurn : .gray)
-                            .cornerRadius(12)
-                    }
-                    .disabled(!canContinue)
-                    .background(
-                        // Background that extends 4px below the button with mangosteen violet
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.mangosteenViolet)
-                            .offset(y: 4)
-                    )
+                ExerciseButton(
+                    title: isLastStep ? "COMPLETE EXERCISE" : "CONTINUE",
+                    backgroundColor: .afterBurn,
+                    foregroundColor: .ambrosiaIvory,
+                    isDisabled: !canContinue,
+                    buttonId: "continue",
+                    pressedButton: $pressedButton
+                ) {
+                    performHapticFeedback(.medium)
+                    continueToNextStep()
                 }
             }
         }
@@ -477,28 +562,24 @@ struct ExerciseDetailView: View {
             
             // Bottom buttons
             VStack(spacing: 16) {
-                Button(action: { dismiss() }) {
-                    Text("CONTINUE")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(Color.afterBurn)
-                        .cornerRadius(12)
+                ExerciseButton(
+                    title: "CONTINUE",
+                    backgroundColor: .afterBurn,
+                    foregroundColor: .ambrosiaIvory,
+                    buttonId: "completion_continue",
+                    pressedButton: $pressedButton
+                ) {
+                    performHapticFeedback(.medium)
+                    dismiss()
                 }
-                .background(
-                    // Background that extends 4px below the button with mangosteen violet
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.mangosteenViolet)
-                        .offset(y: 4)
-                )
-
                 
-                Button(action: {}) {
-                    Text("Share Progress")
-                        .font(.subheadline)
-                        .foregroundColor(.orange)
+                SecondaryExerciseButton(
+                    title: "Share Progress",
+                    foregroundColor: .orange,
+                    buttonId: "share_progress",
+                    pressedButton: $pressedButton
+                ) {
+                    performHapticFeedback(.light)
                 }
             }
             .scaleEffect(showBottomButtons ? 1.0 : 0.0)
@@ -527,15 +608,19 @@ struct ExerciseDetailView: View {
     private func continueToNextStep() {
         if currentStepIndex < exercise.instructions.count - 1 {
             currentStepIndex += 1
-            // Reset interactive elements for new step
             resetInteractiveElements()
         } else {
-            // Exercise completed - animate to completion screen
+            // Exercise completed
             withAnimation(.easeInOut(duration: 2)) {
                 isCompleted = true
             }
             awardXp(10)
             incrementStreakIfNeeded()
+            
+            // Call completion handler if from card view
+            if isFromCardView {
+                onCompletion?()
+            }
         }
     }
     
@@ -626,6 +711,9 @@ struct ExerciseDetailView: View {
         showSessionSummary = false
         showBottomButtons = false
         
+        // Start continuous haptic feedback for celebration
+        startContinuousHapticFeedback()
+        
         // Animate items sequentially from top to bottom
         withAnimation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0)) {
             showSuccessIcon = true
@@ -648,6 +736,84 @@ struct ExerciseDetailView: View {
                 showBottomButtons = true
             }
         }
+    }
+    
+    private func performHapticFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let impactFeedback = UIImpactFeedbackGenerator(style: style)
+        impactFeedback.impactOccurred()
+    }
+    
+    private func setupHapticEngine() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        do {
+            hapticEngine = try CHHapticEngine()
+            try hapticEngine?.start()
+        } catch {
+            print("Haptic engine failed to start: \(error.localizedDescription)")
+        }
+    }
+    
+    private func startContinuousHapticFeedback() {
+        guard let hapticEngine = hapticEngine else {
+            setupHapticEngine()
+            return
+        }
+        
+        // Create a continuous haptic pattern for celebration
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.6)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.8)
+        
+        // Create continuous haptic event (2 seconds duration)
+        let continuousEvent = CHHapticEvent(
+            eventType: .hapticContinuous,
+            parameters: [intensity, sharpness],
+            relativeTime: 0,
+            duration: 2.0
+        )
+        
+        // Add some dynamic parameter changes for more interesting feedback
+        let intensityParameter = CHHapticParameterCurve(
+            parameterID: .hapticIntensityControl,
+            controlPoints: [
+                CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 0.2),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 0.5, value: 0.3),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 1.0, value: 0.4),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 1.5, value: 0.8),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 2.0, value: 0.2)
+            ],
+            relativeTime: 0
+        )
+        
+        let sharpnessParameter = CHHapticParameterCurve(
+            parameterID: .hapticSharpnessControl,
+            controlPoints: [
+                CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 0.8),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 0.7, value: 0.3),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 1.4, value: 0.9),
+                CHHapticParameterCurve.ControlPoint(relativeTime: 2.0, value: 0.1)
+            ],
+            relativeTime: 0
+        )
+        
+        do {
+            let pattern = try CHHapticPattern(events: [continuousEvent], parameterCurves: [intensityParameter, sharpnessParameter])
+            continuousPlayer = try hapticEngine.makeAdvancedPlayer(with: pattern)
+            try continuousPlayer?.start(atTime: 0)
+        } catch {
+            print("Failed to create continuous haptic feedback: \(error.localizedDescription)")
+        }
+    }
+    
+    private func stopContinuousHapticFeedback() {
+        do {
+            try continuousPlayer?.stop(atTime: 0)
+        } catch {
+            print("Failed to stop continuous haptic feedback: \(error.localizedDescription)")
+        }
+        continuousPlayer = nil
     }
 
     

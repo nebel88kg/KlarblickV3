@@ -11,6 +11,7 @@ struct CategoryExerciseListView: View {
     let category: ExerciseCategory
     let exercises: [Exercise]
     @State private var selectedExercise: Exercise?
+    @State private var pressedExerciseId: UUID? = nil
     @Environment(\.dismiss) private var dismiss
     
     init(category: ExerciseCategory) {
@@ -55,11 +56,20 @@ struct CategoryExerciseListView: View {
                 LazyVStack(spacing: 10) {
                     ForEach(exercises) { exercise in
                         Button(action: {
+                            performHapticFeedback(.medium)
                             selectedExercise = exercise
                         }) {
                             CategoryExerciseCardView(exercise: exercise)
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .scaleEffect(pressedExerciseId == exercise.id ? 0.95 : 1.0)
+                        .shadow(color: .black.opacity(0.2), radius: pressedExerciseId == exercise.id ? 2 : 5, x: 0, y: pressedExerciseId == exercise.id ? 1 : 2)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedExerciseId)
+                        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                                pressedExerciseId = pressing ? exercise.id : nil
+                            }
+                        }, perform: {})
                     }
                 }
                 .padding(.horizontal, 20)
@@ -78,6 +88,11 @@ struct CategoryExerciseListView: View {
         .fullScreenCover(item: $selectedExercise) { exercise in
             ExerciseDetailView(exercise: exercise)
         }
+    }
+    
+    private func performHapticFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let impactFeedback = UIImpactFeedbackGenerator(style: style)
+        impactFeedback.impactOccurred()
     }
 }
 

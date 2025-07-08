@@ -6,9 +6,15 @@
     },
     "%@, %@!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@!"
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@, %2$@!"
           }
         }
@@ -18,49 +24,192 @@
 
     },
     "%lld entries" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Einträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld entries"
+          }
+        }
+      }
     },
     "%lld min" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Min"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        }
+      }
     },
     "• Close your eyes and focus on your breath" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Schließe deine Augen und konzentriere dich auf deinen Atem"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Close your eyes and focus on your breath"
+          }
+        }
+      }
     },
     "• Find a quiet, comfortable space" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Finde einen ruhigen, bequemen Ort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Find a quiet, comfortable space"
+          }
+        }
+      }
     },
     "• Let thoughts come and go without judgment" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Lass Gedanken kommen und gehen ohne zu urteilen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Let thoughts come and go without judgment"
+          }
+        }
+      }
     },
     "• Start with shorter sessions and build up" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Beginne mit kürzeren Sitzungen und steigere dich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Start with shorter sessions and build up"
+          }
+        }
+      }
     },
     "+10" : {
-
-    },
-    "✕" : {
 
     },
     "1.0.0" : {
 
     },
-    "3-day free trial" : {
-
+    "3 days free then %@ per year • Cancel anytime" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 Tage kostenlos dann %@ pro Jahr • Jederzeit kündbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 days free then %@ per year • Cancel anytime"
+          }
+        }
+      }
     },
     "5" : {
 
     },
     "About" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Add Note" : {
 
     },
     "App" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        }
+      }
     },
     "App Version" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Version"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Version"
+          }
+        }
+      }
     },
     "Are you sure you want to delete all %lld mood entries? This action cannot be undone." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du wirklich alle %lld Stimmungseinträge löschen? Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete all %lld mood entries? This action cannot be undone."
+          }
+        }
+      }
     },
     "Awareness" : {
       "localizations" : {
@@ -68,6 +217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Achtsamkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awareness"
           }
         }
       }
@@ -79,6 +234,12 @@
             "state" : "translated",
             "value" : "Zurück"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
         }
       }
     },
@@ -89,26 +250,78 @@
             "state" : "translated",
             "value" : "Balance"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
+          }
         }
       }
     },
     "Breathe deeply" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atme tief ein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathe deeply"
+          }
+        }
+      }
     },
     "By subscribing, you agree to our Terms of Service and Privacy Policy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit dem Abonnement stimmst du unseren Nutzungsbedingungen und Datenschutzrichtlinien zu"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By subscribing, you agree to our Terms of Service and Privacy Policy"
+          }
+        }
+      }
     },
     "Cancel" : {
-
-    },
-    "Choose Your Plan" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Clarity in Mind" : {
-
-    },
-    "COMPLETE EXERCISE" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klarheit im Geist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clarity in Mind"
+          }
+        }
+      }
     },
     "Continue" : {
       "localizations" : {
@@ -117,15 +330,11 @@
             "state" : "translated",
             "value" : "Weiter"
           }
-        }
-      }
-    },
-    "CONTINUE" : {
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "WEITER"
+            "value" : "Continue"
           }
         }
       }
@@ -137,6 +346,28 @@
             "state" : "translated",
             "value" : "Tägliche Erinnerungen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily reminders"
+          }
+        }
+      }
+    },
+    "Dear %@," : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liebe(r) %@,"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dear %@,"
+          }
         }
       }
     },
@@ -146,6 +377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alles löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All"
           }
         }
       }
@@ -157,6 +394,12 @@
             "state" : "translated",
             "value" : "Alle Mood Logs löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All Mood Entries"
+          }
         }
       }
     },
@@ -166,6 +409,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keine Sorge, du kannst das später immer noch ändern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't worry, you can change this later"
           }
         }
       }
@@ -177,6 +426,12 @@
             "state" : "translated",
             "value" : "Namen bearbeiten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Name"
+          }
         }
       }
     },
@@ -186,6 +441,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bearbeite deinen Namen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Your Name"
           }
         }
       }
@@ -197,6 +458,12 @@
             "state" : "translated",
             "value" : "Gib deinen Namen ein"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your name"
+          }
         }
       }
     },
@@ -207,11 +474,1535 @@
             "state" : "translated",
             "value" : "Übung geschafft!"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise Complete!"
+          }
         }
       }
     },
-    "Get full access to all Klarblick features" : {
-
+    "exercise.body_awareness.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Minuten bewusste Bewegung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 minutes of mindful movement"
+          }
+        }
+      }
+    },
+    "exercise.body_awareness.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze dich bequem hin und schließe deine Augen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sit comfortably and close your eyes"
+          }
+        }
+      }
+    },
+    "exercise.body_awareness.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewege dich sanft für 2 Minuten - strecke dich, gehe oder tanze"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move gently for 2 minutes - stretch, walk, or dance"
+          }
+        }
+      }
+    },
+    "exercise.body_awareness.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bemerke, wie sich dein Körper nach der Bewegung anfühlt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice how your body feels after movement"
+          }
+        }
+      }
+    },
+    "exercise.body_awareness.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körperwahrnehmung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body Awareness"
+          }
+        }
+      }
+    },
+    "exercise.brain_dump.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kläre deinen Geist durch Schreiben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear your mind through writing"
+          }
+        }
+      }
+    },
+    "exercise.brain_dump.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stelle einen Timer auf 2 Minuten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set a timer for 2 minutes"
+          }
+        }
+      }
+    },
+    "exercise.brain_dump.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe alles auf, was dir durch den Kopf geht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down everything that comes to mind"
+          }
+        }
+      }
+    },
+    "exercise.brain_dump.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mach dir keine Sorgen um Organisation, lass es einfach fließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't worry about organization, just let it flow"
+          }
+        }
+      }
+    },
+    "exercise.brain_dump.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gedanken-Entleerung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brain Dump"
+          }
+        }
+      }
+    },
+    "exercise.creative_expression.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drücke dich kreativ aus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Express yourself creatively"
+          }
+        }
+      }
+    },
+    "exercise.creative_expression.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hole dir ein Stück Papier oder öffne eine Zeichen-App"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get a piece of paper or open a drawing app"
+          }
+        }
+      }
+    },
+    "exercise.creative_expression.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kritzle oder zeichne für 1 Minute"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doodle or draw for 1 minute"
+          }
+        }
+      }
+    },
+    "exercise.creative_expression.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass deine Kreativität ohne Bewertung fließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let your creativity flow without judgment"
+          }
+        }
+      }
+    },
+    "exercise.creative_expression.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreativer Ausdruck"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creative Expression"
+          }
+        }
+      }
+    },
+    "exercise.daily_acknowledgment.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erkenne deine Erfolge an"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledge your achievements"
+          }
+        }
+      }
+    },
+    "exercise.daily_acknowledgment.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denke an deinen Tag bisher"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think about your day so far"
+          }
+        }
+      }
+    },
+    "exercise.daily_acknowledgment.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine Sache auf, die du heute gut gemacht hast"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down one thing you did well today"
+          }
+        }
+      }
+    },
+    "exercise.daily_acknowledgment.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimm dir einen Moment, um deine Anstrengung zu schätzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a moment to appreciate your effort"
+          }
+        }
+      }
+    },
+    "exercise.daily_acknowledgment.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Wertschätzung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Acknowledgment"
+          }
+        }
+      }
+    },
+    "exercise.day_summary.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fasse deinen Tag zusammen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize your day"
+          }
+        }
+      }
+    },
+    "exercise.day_summary.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denke an deinen ganzen Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think about your entire day"
+          }
+        }
+      }
+    },
+    "exercise.day_summary.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine 3-Wort-Zusammenfassung deines Tages"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write a 3-word summary of your day"
+          }
+        }
+      }
+    },
+    "exercise.day_summary.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflektiere darüber, was diese Worte für dich bedeuten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect on what these words mean to you"
+          }
+        }
+      }
+    },
+    "exercise.day_summary.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tageszusammenfassung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day Summary"
+          }
+        }
+      }
+    },
+    "exercise.digital_cleanup.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Räume digitalen Ballast auf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean up digital clutter"
+          }
+        }
+      }
+    },
+    "exercise.digital_cleanup.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne deine E-Mails oder deinen Dateimanager"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open your email or file manager"
+          }
+        }
+      }
+    },
+    "exercise.digital_cleanup.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lösche 5 unnötige E-Mails oder Dateien"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete 5 unnecessary emails or files"
+          }
+        }
+      }
+    },
+    "exercise.digital_cleanup.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fühle die Zufriedenheit des digitalen Entrümpelns"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feel the satisfaction of digital decluttering"
+          }
+        }
+      }
+    },
+    "exercise.digital_cleanup.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digitale Aufräumung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Cleanup"
+          }
+        }
+      }
+    },
+    "exercise.digital_declutter.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduziere digitale Ablenkungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduce digital distractions"
+          }
+        }
+      }
+    },
+    "exercise.digital_declutter.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließe einen offenen Tab oder eine ablenkende App"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close an open tab or distracting app"
+          }
+        }
+      }
+    },
+    "exercise.digital_declutter.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bemerke, wie es sich anfühlt, digitalen Ballast zu reduzieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice how it feels to reduce digital clutter"
+          }
+        }
+      }
+    },
+    "exercise.digital_declutter.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überlege, welche Apps dir wirklich dienen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consider which apps truly serve you"
+          }
+        }
+      }
+    },
+    "exercise.digital_declutter.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Entrümpeln"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Declutter"
+          }
+        }
+      }
+    },
+    "exercise.future_focus.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plane für morgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan for tomorrow"
+          }
+        }
+      }
+    },
+    "exercise.future_focus.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflektiere über deine Erfahrungen heute"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect on your experiences today"
+          }
+        }
+      }
+    },
+    "exercise.future_focus.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was möchtest du morgen anders machen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What would you like to do differently tomorrow?"
+          }
+        }
+      }
+    },
+    "exercise.future_focus.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze dir eine sanfte Absicht für morgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set a gentle intention for tomorrow"
+          }
+        }
+      }
+    },
+    "exercise.future_focus.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zukunfts-Fokus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Focus"
+          }
+        }
+      }
+    },
+    "exercise.gratitude_moment.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übe Dankbarkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice gratitude"
+          }
+        }
+      }
+    },
+    "exercise.gratitude_moment.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halte inne und schaue dich um"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause and look around you"
+          }
+        }
+      }
+    },
+    "exercise.gratitude_moment.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine Sache auf, für die du dankbar bist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down one thing you're grateful for"
+          }
+        }
+      }
+    },
+    "exercise.gratitude_moment.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spüre die Wärme der Dankbarkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feel the warmth of gratitude"
+          }
+        }
+      }
+    },
+    "exercise.gratitude_moment.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dankbarkeits-Moment"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratitude Moment"
+          }
+        }
+      }
+    },
+    "exercise.hydration_check.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewusst hydriert bleiben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay mindfully hydrated"
+          }
+        }
+      }
+    },
+    "exercise.hydration_check.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinke ein Glas Wasser"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink a glass of water"
+          }
+        }
+      }
+    },
+    "exercise.hydration_check.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bemerke, wie sich das Wasser anfühlt und schmeckt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice how the water feels and tastes"
+          }
+        }
+      }
+    },
+    "exercise.hydration_check.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimm dir einen Moment, um zu schätzen, dass du hydriert bleibst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a moment to appreciate staying hydrated"
+          }
+        }
+      }
+    },
+    "exercise.hydration_check.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydration Check"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydration Check"
+          }
+        }
+      }
+    },
+    "exercise.interactive.long_text_area" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langer Text Bereich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long text area"
+          }
+        }
+      }
+    },
+    "exercise.interactive.single_word_field" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einzelwort Feld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single word field"
+          }
+        }
+      }
+    },
+    "exercise.interactive.timer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        }
+      }
+    },
+    "exercise.mindful_breathing.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 Sekunden bewusstes Atmen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 seconds of mindful breathing"
+          }
+        }
+      }
+    },
+    "exercise.mindful_breathing.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finde eine bequeme Position und schließe deine Augen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a comfortable position and close your eyes"
+          }
+        }
+      }
+    },
+    "exercise.mindful_breathing.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konzentriere dich auf deinen Atem und atme tief ein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus on your breath and breathe deeply"
+          }
+        }
+      }
+    },
+    "exercise.mindful_breathing.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bemerke, wie du dich nach dieser Atemübung fühlst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice how you feel after this breathing exercise"
+          }
+        }
+      }
+    },
+    "exercise.mindful_breathing.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewusstes Atmen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindful Breathing"
+          }
+        }
+      }
+    },
+    "exercise.mindful_pause.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 Sekunden bewusste Präsenz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 seconds of mindful presence"
+          }
+        }
+      }
+    },
+    "exercise.mindful_pause.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atme natürlich und sei einfach präsent"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathe naturally and simply be present"
+          }
+        }
+      }
+    },
+    "exercise.mindful_pause.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne deine Augen wenn du bereit bist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open your eyes when you're ready"
+          }
+        }
+      }
+    },
+    "exercise.mindful_pause.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließe deine Augen für 30 Sekunden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close your eyes for 30 seconds"
+          }
+        }
+      }
+    },
+    "exercise.mindful_pause.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewusste Pause"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindful Pause"
+          }
+        }
+      }
+    },
+    "exercise.next_task_focus.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fokussiere dich auf deine nächste Aktion"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus on your next action"
+          }
+        }
+      }
+    },
+    "exercise.next_task_focus.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überlege, was du erreichen musst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consider what you need to accomplish"
+          }
+        }
+      }
+    },
+    "exercise.next_task_focus.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine Aufgabe auf, die du als nächstes machen möchtest"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down one task you want to do next"
+          }
+        }
+      }
+    },
+    "exercise.next_task_focus.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verpflichte dich, diese Aufgabe zu beginnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commit to starting this task"
+          }
+        }
+      }
+    },
+    "exercise.next_task_focus.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste Aufgabe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Task"
+          }
+        }
+      }
+    },
+    "exercise.organization_boost.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stelle die Ordnung in deiner Umgebung wieder her"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore order to your environment"
+          }
+        }
+      }
+    },
+    "exercise.organization_boost.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finde 3 Dinge, die nicht am richtigen Platz sind"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find 3 things that are not in their proper place"
+          }
+        }
+      }
+    },
+    "exercise.organization_boost.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bringe sie an ihren richtigen Platz zurück"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put them back in their proper place"
+          }
+        }
+      }
+    },
+    "exercise.organization_boost.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bemerke, wie Organisation deine Stimmung beeinflusst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice how organization affects your mood"
+          }
+        }
+      }
+    },
+    "exercise.organization_boost.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organisations-Boost"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organization Boost"
+          }
+        }
+      }
+    },
+    "exercise.priority_setting.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze deine täglichen Prioritäten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set your daily priorities"
+          }
+        }
+      }
+    },
+    "exercise.priority_setting.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denke an deinen Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think about your day"
+          }
+        }
+      }
+    },
+    "exercise.priority_setting.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe 3 Dinge auf, die du heute machen möchtest"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down 3 things you want to do today"
+          }
+        }
+      }
+    },
+    "exercise.priority_setting.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle aus, was am wichtigsten ist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose which one is most important"
+          }
+        }
+      }
+    },
+    "exercise.priority_setting.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prioritäten Setzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priority Setting"
+          }
+        }
+      }
+    },
+    "exercise.quick_tidy.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaffe Ordnung in deinem Raum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create order in your space"
+          }
+        }
+      }
+    },
+    "exercise.quick_tidy.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaue dich in deinem Raum um"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look around your space"
+          }
+        }
+      }
+    },
+    "exercise.quick_tidy.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Räume eine einzelne Oberfläche auf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean up one single surface"
+          }
+        }
+      }
+    },
+    "exercise.quick_tidy.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genieße das Gefühl von Ordnung, das du geschaffen hast"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enjoy the feeling of order you've created"
+          }
+        }
+      }
+    },
+    "exercise.quick_tidy.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnell Aufräumen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Tidy"
+          }
+        }
+      }
+    },
+    "exercise.task_relief.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lasse Aufgabendruck los"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let go of task pressure"
+          }
+        }
+      }
+    },
+    "exercise.task_relief.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denke an eine überfällige Aufgabe, die dich belastet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think of an overdue task that's weighing on you"
+          }
+        }
+      }
+    },
+    "exercise.task_relief.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschiebe sie auf morgen - ohne Schuldgefühle"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move it to tomorrow - without guilt"
+          }
+        }
+      }
+    },
+    "exercise.task_relief.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denke daran: es ist okay, Termine zu verschieben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remember: it's okay to reschedule"
+          }
+        }
+      }
+    },
+    "exercise.task_relief.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufgaben-Erleichterung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Task Relief"
+          }
+        }
+      }
+    },
+    "exercise.type.interactive" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interaktiv"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interactive"
+          }
+        }
+      }
+    },
+    "exercise.type.text_prompt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Eingabe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Prompt"
+          }
+        }
+      }
+    },
+    "exercise.window_gazing.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaue nach draußen und atme tief ein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look outside and breathe deeply"
+          }
+        }
+      }
+    },
+    "exercise.window_gazing.instruction.1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaue für 60 Sekunden aus dem Fenster"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look out a window for 60 seconds"
+          }
+        }
+      }
+    },
+    "exercise.window_gazing.instruction.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atme tief ein und bemerke, was du siehst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathe deeply and notice what you see"
+          }
+        }
+      }
+    },
+    "exercise.window_gazing.instruction.3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie fühlst du dich nach diesem Moment der Beobachtung?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do you feel after this moment of observation?"
+          }
+        }
+      }
+    },
+    "exercise.window_gazing.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fenster Blick"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Window Gazing"
+          }
+        }
+      }
     },
     "Get Started" : {
       "localizations" : {
@@ -219,6 +2010,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lass uns loslegen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
           }
         }
       }
@@ -230,6 +2027,12 @@
             "state" : "translated",
             "value" : "Guten Mittag"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good afternoon"
+          }
         }
       }
     },
@@ -239,6 +2042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guten Abend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good evening"
           }
         }
       }
@@ -250,6 +2059,12 @@
             "state" : "translated",
             "value" : "Guten Morgen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning"
+          }
         }
       }
     },
@@ -259,6 +2074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gute Nacht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good night"
           }
         }
       }
@@ -270,6 +2091,12 @@
             "state" : "translated",
             "value" : "Gut gemacht!"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great job!"
+          }
         }
       }
     },
@@ -279,6 +2106,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wie geht es dir heute?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How are you feeling today?"
           }
         }
       }
@@ -290,33 +2123,113 @@
             "state" : "translated",
             "value" : "Seit %@"
           }
-        }
-      }
-    },
-    "Klarblick" : {
-
-    },
-    "Let's Begin" : {
-
-    },
-    "Library" : {
-
-    },
-    "Longer sessions to give your mind a real break" : {
-      "localizations" : {
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Joined in %@"
+          }
+        }
+      }
+    },
+    "Journal Entry" : {
+
+    },
+    "Klarblick" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klarblick"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klarblick"
+          }
+        }
+      }
+    },
+    "Let's Begin" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass uns beginnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's Begin"
+          }
+        }
+      }
+    },
+    "Library" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliothek"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        }
+      }
+    },
+    "Longer sessions to give your mind a real break" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Längere Sessions um dir eine echte Auszeit zu gönnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longer sessions to give your mind a real break"
           }
         }
       }
     },
     "Meditation" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        }
+      }
     },
     "Meditation Tips:" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditations-Tipps:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation Tips:"
+          }
+        }
+      }
     },
     "Mindful moments to connect with your mind and body" : {
       "localizations" : {
@@ -325,11 +2238,30 @@
             "state" : "translated",
             "value" : "Achtsame Momente um eins mit deinem Körper und Geist zu werden"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindful moments to connect with your mind and body"
+          }
         }
       }
     },
     "minutes" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minutes"
+          }
+        }
+      }
     },
     "Mood History" : {
       "localizations" : {
@@ -338,16 +2270,67 @@
             "state" : "translated",
             "value" : "Mood Historie"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood History"
+          }
         }
       }
     },
     "No mood entries yet. Start tracking your mood!" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch keine Stimmungseinträge. Beginne mit der Stimmungsverfolgung!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mood entries yet. Start tracking your mood!"
+          }
+        }
+      }
     },
     "No products available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Produkte verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No products available"
+          }
+        }
+      }
+    },
+    "Not now" : {
 
     },
     "Notifications" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "OK" : {
 
     },
     "Overview" : {
@@ -357,14 +2340,30 @@
             "state" : "translated",
             "value" : "Überblick"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overview"
+          }
         }
       }
     },
-    "PAUSE TIMER" : {
-
-    },
     "Privacy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
+          }
+        }
+      }
     },
     "Process your experiences and emotions" : {
       "localizations" : {
@@ -373,14 +2372,46 @@
             "state" : "translated",
             "value" : "Prozessiere deine Erfahrungen und Emotionen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process your experiences and emotions"
+          }
         }
       }
     },
     "Processing..." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verarbeitung..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processing..."
+          }
+        }
+      }
     },
     "Products may be loading from StoreKit..." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Produkte werden eventuell aus StoreKit geladen..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Products may be loading from StoreKit..."
+          }
+        }
+      }
     },
     "Profile" : {
       "localizations" : {
@@ -388,6 +2419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profil"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
           }
         }
       }
@@ -399,14 +2436,33 @@
             "state" : "translated",
             "value" : "Reflektieren"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect"
+          }
         }
       }
     },
-    "Restore Purchases" : {
+    "Restore" : {
 
     },
     "Retry Loading" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut laden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry Loading"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -415,14 +2471,33 @@
             "state" : "translated",
             "value" : "Speichern"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
         }
       }
     },
-    "Save 58%" : {
+    "Select a plan above" : {
 
     },
     "Select Duration" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dauer wählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Duration"
+          }
+        }
+      }
     },
     "Session Summary" : {
       "localizations" : {
@@ -431,18 +2506,27 @@
             "state" : "translated",
             "value" : "Zusammenfassung"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session Summary"
+          }
         }
       }
     },
     "Settings" : {
-
-    },
-    "Share Progress" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Teilen"
+            "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         }
       }
@@ -454,6 +2538,12 @@
             "state" : "translated",
             "value" : "Einfache Handlungen für Ordnung und Struktur "
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple actions that create order and stability"
+          }
         }
       }
     },
@@ -464,18 +2554,27 @@
             "state" : "translated",
             "value" : "Start"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
         }
       }
     },
     "Start Free Trial" : {
-
-    },
-    "START TIMER" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "STARTE TIMER"
+            "value" : "Kostenlos testen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Free Trial"
           }
         }
       }
@@ -487,11 +2586,30 @@
             "state" : "translated",
             "value" : "Schritt %lld"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %lld"
+          }
         }
       }
     },
     "Stop" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
     },
     "Stressed" : {
       "localizations" : {
@@ -500,30 +2618,110 @@
             "state" : "translated",
             "value" : "Gestresst"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stressed"
+          }
         }
       }
     },
     "Subscribe" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonnieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscribe"
+          }
+        }
+      }
     },
     "Terms" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms"
+          }
+        }
+      }
+    },
+    "Test one month • It's less than a cocktail • Cancel anytime" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teste einen Monat • Kostet weniger als ein Cocktail • Jederzeit kündbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test one month • It's less than a cocktail • Cancel anytime"
+          }
+        }
+      }
     },
     "Today's Exercises" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Heutige Übungen"
+            "value" : "Deine Übungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Exercises"
+          }
+        }
+      }
+    },
+    "Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teste Klarblick für einen Monat. Es kostet weniger als ein Cocktail. Keine versteckten Kosten, jederzeit kündbar."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime."
           }
         }
       }
     },
     "Type" : {
-
-    },
-    "Unlock Premium" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
     },
     "Very Happy" : {
       "localizations" : {
@@ -532,14 +2730,78 @@
             "state" : "translated",
             "value" : "Sehr Glücklich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very Happy"
+          }
         }
       }
     },
     "We'd love to personalize your experience" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir würden gerne deine Erfahrung personalisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We'd love to personalize your experience"
+          }
+        }
+      }
+    },
+    "We're inviting you to a 3-day free trial. Cancel anytime, no strings attached." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir laden dich zu einer 3-tägigen kostenlosen Testversion ein. Jederzeit kündbar, ohne Verpflichtungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We're inviting you to a 3-day free trial. Cancel anytime, no strings attached."
+          }
+        }
+      }
     },
     "Welcome to" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to"
+          }
+        }
+      }
+    },
+    "Welcome to your mindfulness journey. We're excited to help you unlock your full potential." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen zu deiner Achtsamkeitsreise. Wir freuen uns, dir zu helfen, dein volles Potenzial zu entfalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to your mindfulness journey. We're excited to help you unlock your full potential."
+          }
+        }
+      }
     },
     "Welcome, %@!" : {
       "localizations" : {
@@ -548,23 +2810,97 @@
             "state" : "translated",
             "value" : "Wilkommen, %@!"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome, %@!"
+          }
         }
       }
     },
     "Welcome!" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome!"
+          }
+        }
+      }
     },
     "What's your name?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie ist dein Name?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's your name?"
+          }
+        }
+      }
+    },
+    "Write your thoughts..." : {
 
     },
     "XP" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XP"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XP"
+          }
+        }
+      }
     },
     "You're all set to begin your journey to mental clarity and wellbeing." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du bist bereit für deine Reise zu mentaler Klarheit und Wohlbefinden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're all set to begin your journey to mental clarity and wellbeing."
+          }
+        }
+      }
     },
     "Your journey to mental clarity starts here" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Reise zu mentaler Klarheit beginnt hier"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your journey to mental clarity starts here"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

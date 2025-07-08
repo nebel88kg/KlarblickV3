@@ -289,6 +289,7 @@ struct StatItem: View {
 
 struct MoodHistoryRow: View {
     let entry: MoodEntry
+    @State private var showingNote = false
     
     private var moodColor: Color {
         switch entry.mood {
@@ -305,13 +306,22 @@ struct MoodHistoryRow: View {
         HStack {
             // Mood Info
             VStack(alignment: .leading, spacing: 4) {
-                Text(entry.mood)
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .foregroundColor(.ambrosiaIvory)
-                    .padding(10)
-                    .background(moodColor.opacity(0.4))
-                    .cornerRadius(8)
+                HStack {
+                    Text(entry.mood)
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(.ambrosiaIvory)
+                        .padding(10)
+                        .background(moodColor.opacity(0.4))
+                        .cornerRadius(8)
+                    
+                    // Note indicator
+                    if entry.note != nil && !entry.note!.isEmpty {
+                        Image(systemName: "note.text")
+                            .font(.caption)
+                            .foregroundColor(.wildMaple)
+                    }
+                }
             }
             
             Spacer()
@@ -323,6 +333,16 @@ struct MoodHistoryRow: View {
         }
         .padding(4)
         .cornerRadius(8)
+        .onLongPressGesture {
+            if let note = entry.note, !note.isEmpty {
+                showingNote = true
+            }
+        }
+        .alert("Journal Entry", isPresented: $showingNote) {
+            Button("OK") { }
+        } message: {
+            Text(entry.note ?? "")
+        }
     }
     
     private func timeAgoString(from date: Date) -> String {

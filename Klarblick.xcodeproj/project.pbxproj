@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6DC28FF92E1C37CF0074213C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC28FF82E1C37CF0074213C /* StoreKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6DB3BC442E1489D60006CB3F /* Klarblick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klarblick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC28FF82E1C37CF0074213C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC28FF92E1C37CF0074213C /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB3BC462E1489D60006CB3F /* Klarblick */,
+				6DC28FF32E1C33280074213C /* Frameworks */,
 				6DB3BC452E1489D60006CB3F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +50,14 @@
 				6DB3BC442E1489D60006CB3F /* Klarblick.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6DC28FF32E1C33280074213C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DC28FF82E1C37CF0074213C /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

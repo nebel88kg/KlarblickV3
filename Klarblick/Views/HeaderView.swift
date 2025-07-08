@@ -10,13 +10,14 @@ import SwiftData
 
 struct HeaderView: View {
     @Query private var users: [User]
+    @State private var currentDate = Date()
     
     private var userName: String {
         return users.first?.name ?? "Default User"
     }
     
     private var timeBasedGreeting: String {
-        let hour = Calendar.current.component(.hour, from: Date())
+        let hour = Calendar.current.component(.hour, from: currentDate)
         
         switch hour {
         case 0..<12:
@@ -48,6 +49,16 @@ struct HeaderView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .padding(.bottom, 10)
+        .onAppear {
+            updateCurrentDate()
+        }
+        .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            updateCurrentDate()
+        }
+    }
+    
+    private func updateCurrentDate() {
+        currentDate = Date()
     }
 }
 

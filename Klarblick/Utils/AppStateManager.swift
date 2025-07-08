@@ -5,7 +5,6 @@ import SwiftUI
 enum AppState {
     case loading // Start directly with loading instead of splash
     case onboarding
-    case paywall
     case main
 }
 
@@ -81,12 +80,7 @@ class AppStateManager: ObservableObject {
         // For existing users, we need both checks to complete
         if hasUser && userCheckCompleted && subscriptionCheckCompleted {
             isLoading = false
-            
-            if isSubscribed {
-                transitionTo(.main)
-            } else {
-                transitionTo(.paywall)
-            }
+            transitionTo(.main)
         }
     }
     
@@ -104,10 +98,8 @@ class AppStateManager: ObservableObject {
             return isLoading
         case .onboarding:
             return !hasUser
-        case .paywall:
-            return hasUser && !isSubscribed
         case .main:
-            return hasUser && isSubscribed
+            return hasUser
         }
     }
 } 

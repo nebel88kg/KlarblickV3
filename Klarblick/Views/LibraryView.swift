@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+enum LibraryCardType {
+    case reflect, balance, meditation, awareness
+}
+
 struct LibraryView: View {
     @State private var showMeditation = false
+    @State private var pressedCard: LibraryCardType? = nil
     
     var body: some View {
         NavigationView {
@@ -30,6 +35,17 @@ struct LibraryView: View {
                                 .frame(width: 180, height: 353)
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .scaleEffect(pressedCard == .reflect ? 0.95 : 1.0)
+                        .shadow(color: .black.opacity(0.3), radius: pressedCard == .reflect ? 2 : 8, x: 0, y: pressedCard == .reflect ? 2 : 4)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedCard)
+                        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                                pressedCard = pressing ? .reflect : nil
+                            }
+                            if pressing {
+                                performHapticFeedback(.medium)
+                            }
+                        }, perform: {})
                         
                         // Right column with Balance and Meditation
                         VStack(spacing: 5) {
@@ -37,6 +53,17 @@ struct LibraryView: View {
                                 BalanceCard()
                             }
                             .buttonStyle(PlainButtonStyle())
+                            .scaleEffect(pressedCard == .balance ? 0.95 : 1.0)
+                            .shadow(color: .black.opacity(0.3), radius: pressedCard == .balance ? 2 : 8, x: 0, y: pressedCard == .balance ? 2 : 4)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedCard)
+                            .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                                    pressedCard = pressing ? .balance : nil
+                                }
+                                if pressing {
+                                    performHapticFeedback(.medium)
+                                }
+                            }, perform: {})
                             
                             Button(action: {
                                 showMeditation = true
@@ -44,6 +71,17 @@ struct LibraryView: View {
                                 MeditationCard()
                             }
                             .buttonStyle(PlainButtonStyle())
+                            .scaleEffect(pressedCard == .meditation ? 0.95 : 1.0)
+                            .shadow(color: .black.opacity(0.3), radius: pressedCard == .meditation ? 2 : 8, x: 0, y: pressedCard == .meditation ? 2 : 4)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedCard)
+                            .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                                    pressedCard = pressing ? .meditation : nil
+                                }
+                                if pressing {
+                                    performHapticFeedback(.medium)
+                                }
+                            }, perform: {})
                         }
                         .frame(height: 353)
                     }
@@ -54,6 +92,17 @@ struct LibraryView: View {
                             .frame(height: 220)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .scaleEffect(pressedCard == .awareness ? 0.95 : 1.0)
+                    .shadow(color: .black.opacity(0.3), radius: pressedCard == .awareness ? 2 : 8, x: 0, y: pressedCard == .awareness ? 2 : 4)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedCard)
+                    .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                            pressedCard = pressing ? .awareness : nil
+                        }
+                        if pressing {
+                            performHapticFeedback(.medium)
+                        }
+                    }, perform: {})
                 }
                 .padding(.horizontal, 20)
                 
@@ -69,6 +118,11 @@ struct LibraryView: View {
         .fullScreenCover(isPresented: $showMeditation) {
             MeditationView()
         }
+    }
+    
+    private func performHapticFeedback(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let impactFeedback = UIImpactFeedbackGenerator(style: style)
+        impactFeedback.impactOccurred()
     }
 }
 

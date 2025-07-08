@@ -16,7 +16,7 @@ struct KlarblickApp: App {
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: User.self, MoodEntry.self, Badge.self)
+            modelContainer = try ModelContainer(for: User.self, MoodEntry.self, Badge.self, ExerciseCompletion.self)
         } catch {
             fatalError("Failed to create model container: \(error)")
         }
@@ -39,11 +39,6 @@ struct KlarblickApp: App {
                         
                 case .onboarding:
                     OnboardingView(isOnboardingComplete: $appStateManager.isOnboardingComplete)
-                        .transition(.opacity)
-                        
-                case .paywall:
-                    PaywallView()
-                        .environmentObject(subscriptionManager)
                         .transition(.opacity)
                         
                 case .main:
@@ -128,15 +123,7 @@ struct KlarblickApp: App {
         
         Task {
             await subscriptionManager.updateSubscriptionStatus()
-            
-            await MainActor.run {
-                // If subscription is lost, show paywall
-                if !subscriptionManager.isSubscribed {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        appStateManager.transitionTo(.paywall)
-                    }
-                }
-            }
+            // MainView will handle showing the paywall sheet when subscription is lost
         }
     }
     

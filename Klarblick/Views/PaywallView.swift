@@ -1,232 +1,212 @@
 import SwiftUI
 import StoreKit
+import SwiftData
 
 struct PaywallView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
+    @Query private var users: [User]
     @State private var isLoading = false
     @State private var errorMessage: String?
+    @State private var selectedProduct: Product?
+    
+    private var userName: String {
+        return users.first?.name ?? "User"
+    }
     
     var body: some View {
         ZStack {
             // Background
             Color.backgroundSecondary
                 .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // Header
-                headerSection
-                
+
                 // Main content
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Benefits section
-//                        benefitsSection
+                        // Plan description
+                        topSection
+
                         
                         // Subscription options
                         subscriptionOptionsSection
+                                                
+                        // Single purchase button
+                        purchaseButtonSection
                         
                         // Footer
                         footerSection
                     }
-                    .padding(.horizontal, 24)
+                    .padding(20)
                 }
-            }
-        }
-        .overlay {
-            if isLoading {
-                loadingOverlay
-            }
         }
         .task {
             await subscriptionManager.loadProducts()
+            // Auto-select yearly product after loading
+            selectDefaultProduct()
+        }
+        .onAppear {
+            // Auto-select yearly product if products are already loaded
+            selectDefaultProduct()
         }
         .onChange(of: subscriptionManager.purchaseState) { _, newState in
             handlePurchaseStateChange(newState)
         }
-    }
-    
-    // MARK: - Header Section
-    private var headerSection: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Spacer()
-                Button("✕") {
-                    dismiss()
-                }
-                .font(.title2)
-                .foregroundColor(.ambrosiaIvory)
+        .onChange(of: subscriptionManager.availableSubscriptions) { _, newSubscriptions in
+            // Auto-select the yearly product when products load
+            if selectedProduct == nil && !newSubscriptions.isEmpty {
+                selectedProduct = newSubscriptions.first { $0.id == SubscriptionManager.ProductID.yearlySubscription } ?? newSubscriptions.first
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 16)
-            
-            Text("Unlock Premium")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.ambrosiaIvory)
-                .padding(.top, 8)
-            
-            Text("Get full access to all Klarblick features")
-                .font(.subheadline)
-                .foregroundColor(.gray2)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
-        }
-        .padding(.bottom, 32)
-    }
-    
-    // MARK: - Benefits Section
-    private var benefitsSection: some View {
-        VStack(spacing: 16) {
-            benefitRow(icon: "🧘‍♀️", title: "Unlimited Exercises", description: "Access all meditation and mindfulness exercises")
-            benefitRow(icon: "📊", title: "Advanced Analytics", description: "Track your progress with detailed insights")
-            benefitRow(icon: "🏆", title: "Achievement System", description: "Unlock badges and maintain streaks")
-            benefitRow(icon: "☁️", title: "Cloud Sync", description: "Sync your data across all devices")
         }
     }
-    
-    private func benefitRow(icon: String, title: String, description: String) -> some View {
-        HStack(spacing: 16) {
-            Text(icon)
-                .font(.title2)
-                .frame(width: 40, height: 40)
-                .background(Color.purpleCarolite.opacity(0.2))
-                .clipShape(Circle())
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.headline)
-                    .foregroundColor(.ambrosiaIvory)
-                Text(description)
-                    .font(.subheadline)
-                    .foregroundColor(.gray2)
-            }
-            
-            Spacer()
-        }
-        .padding(16)
-        .background(Color.mangosteenViolet.opacity(0.3))
-        .cornerRadius(12)
-    }
-    
+        
     // MARK: - Subscription Options
     private var subscriptionOptionsSection: some View {
-        VStack(spacing: 16) {
-            Text("Choose Your Plan")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .foregroundColor(.ambrosiaIvory)
-                .padding(.bottom, 8)
-            
-            if subscriptionManager.availableSubscriptions.isEmpty {
-                // Debug view when no products are available
-                VStack(spacing: 16) {
-                    Text("No products available")
-                        .font(.headline)
-                        .foregroundColor(.ambrosiaIvory)
-                    
-                    Text("Products may be loading from StoreKit...")
-                        .font(.caption)
-                        .foregroundColor(.gray2)
-                        .multilineTextAlignment(.center)
-                    
-                    Button("Retry Loading") {
-                        Task {
-                            await subscriptionManager.loadProducts()
+            HStack(spacing: 16) {
+                
+                if subscriptionManager.availableSubscriptions.isEmpty {
+                    // Debug view when no products are available
+                    VStack(spacing: 16) {
+                        Text("No products available")
+                            .font(.headline)
+                            .foregroundColor(.ambrosiaIvory)
+                        
+                        Text("Products may be loading from StoreKit...")
+                            .font(.caption)
+                            .foregroundColor(.gray2)
+                            .multilineTextAlignment(.center)
+                        
+                        Button("Retry Loading") {
+                            Task {
+                                await subscriptionManager.loadProducts()
+                            }
                         }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 8)
+                        .background(Color.pharaohsSeas)
+                        .foregroundColor(.ambrosiaIvory)
+                        .cornerRadius(8)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 8)
-                    .background(Color.pharaohsSeas)
-                    .foregroundColor(.ambrosiaIvory)
-                    .cornerRadius(8)
-                }
-                .padding(20)
-                .background(Color.mangosteenViolet.opacity(0.4))
-                .cornerRadius(16)
-            } else {
-                ForEach(subscriptionManager.availableSubscriptions, id: \.id) { product in
-                    subscriptionCard(for: product)
+                    .padding(20)
+                    .background(Color.mangosteenViolet.opacity(0.4))
+                    .cornerRadius(16)
+                } else {
+                    ForEach(subscriptionManager.availableSubscriptions, id: \.id) { product in
+                        subscriptionCard(for: product)
+                    }
                 }
             }
-        }
     }
     
     private func subscriptionCard(for product: Product) -> some View {
         let info = subscriptionManager.getSubscriptionInfo(for: product)
         let isYearly = product.id == SubscriptionManager.ProductID.yearlySubscription
+        let isSelected = selectedProduct?.id == product.id
         
-        return VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
+        return VStack(spacing: 8) {
+                VStack(spacing: 4) {
                     Text(info.title)
-                        .font(.headline)
+                        .font(.subheadline)
                         .foregroundColor(.ambrosiaIvory)
-                    
-                    if isYearly {
-                        Text("3-day free trial")
-                            .font(.caption)
-                            .foregroundColor(.pharaohsSeas)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 2)
-                            .background(Color.pharaohsSeas.opacity(0.2))
-                            .cornerRadius(4)
-                    }
                 }
-                
-                Spacer()
-                
+                                
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(info.price)
-                        .font(.title3)
+                        .font(.body)
                         .fontWeight(.bold)
                         .foregroundColor(.ambrosiaIvory)
-                    
-                    if isYearly {
-                        Text("Save 58%")
-                            .font(.caption)
-                            .foregroundColor(.afterBurn)
-                    }
                 }
-            }
-            
-            Text(info.description)
-                .font(.subheadline)
-                .foregroundColor(.gray2)
-            
-            Button(action: {
-                purchaseProduct(product)
-            }) {
-                Text(isYearly ? "Start Free Trial" : "Subscribe")
-                    .font(.headline)
-                    .foregroundColor(.mangosteenViolet)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(Color.ambrosiaIvory)
-                    .cornerRadius(8)
-            }
-            .disabled(isLoading)
         }
-        .padding(20)
+        .padding(14)
+        .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.mangosteenViolet.opacity(0.4))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(isYearly ? Color.pharaohsSeas : Color.clear, lineWidth: 2)
+                        .stroke(isSelected ? Color.pharaohsSeas : (isYearly ? Color.pharaohsSeas.opacity(0.5) : Color.clear), lineWidth: 2)
                 )
         )
+        .onTapGesture {
+            selectedProduct = product
+        }
+    }
+    
+    // MARK: - Plan Description
+        private var topSection: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Dear \(userName),")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.ambrosiaIvory)
+                
+                Text("Welcome to your mindfulness journey. We're excited to help you unlock your full potential.")
+                    .font(.body)
+                    .foregroundColor(.gray2)
+            
+
+            HStack() {
+                if let selectedProduct = selectedProduct {
+                    let isYearly = selectedProduct.id == SubscriptionManager.ProductID.yearlySubscription
+                    
+                    if isYearly {
+                        Text("We're inviting you to a 3-day free trial. Cancel anytime, no strings attached.")
+                            .font(.subheadline)
+                            .foregroundColor(.gray2)
+                        Spacer()
+                        
+                        
+                    } else {
+                        Text("Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime.")
+                            .font(.subheadline)
+                            .foregroundColor(.gray2)
+                        Spacer()
+                    }
+                }
+            }
+        }
+        } // Close the outer VStack for topSection
+    }
+    
+    // MARK: - Single Purchase Button
+    private var purchaseButtonSection: some View {
+        VStack(spacing: 12) {
+            if let selectedProduct = selectedProduct {
+                let isYearly = selectedProduct.id == SubscriptionManager.ProductID.yearlySubscription
+                let info = subscriptionManager.getSubscriptionInfo(for: selectedProduct)
+                
+                // Price description
+                Text(isYearly ? "3 days free then \(info.price) per year • Cancel anytime" : "Test one month • It's less than a cocktail • Cancel anytime")
+                    .font(.subheadline)
+                    .foregroundColor(.gray2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                
+                Button(action: {
+                    purchaseProduct(selectedProduct)
+                }) {
+                    Text(isYearly ? "Start Free Trial" : "Subscribe")
+                        .font(.headline)
+                        .foregroundColor(.mangosteenViolet)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color.ambrosiaIvory)
+                        .cornerRadius(50)
+                }
+                .disabled(isLoading)
+            } else {
+                Text("Select a plan above")
+                    .font(.subheadline)
+                    .foregroundColor(.gray2)
+                    .padding(.vertical, 16)
+            }
+        }
     }
     
     // MARK: - Footer Section
     private var footerSection: some View {
         VStack(spacing: 16) {
-            Button("Restore Purchases") {
-                restorePurchases()
-            }
-            .font(.subheadline)
-            .foregroundColor(.pharaohsSeas)
-            .disabled(isLoading)
             
             if let errorMessage = errorMessage {
                 Text(errorMessage)
@@ -244,16 +224,27 @@ struct PaywallView: View {
                 
                 HStack(spacing: 16) {
                     Button("Terms") {
-                        // Handle terms action
+                        if let url = URL(string: "https://sites.google.com/view/klarblick-terms-of-service/") {
+                            openURL(url)
+                        }
                     }
                     .font(.caption)
                     .foregroundColor(.pharaohsSeas)
                     
                     Button("Privacy") {
-                        // Handle privacy action
+                        if let url = URL(string: "https://sites.google.com/view/klarblick-privacy-policy/") {
+                            openURL(url)
+                        }
                     }
                     .font(.caption)
                     .foregroundColor(.pharaohsSeas)
+                    
+                    Button("Restore") {
+                        restorePurchases()
+                    }
+                    .font(.caption)
+                    .foregroundColor(.pharaohsSeas)
+                    .disabled(isLoading)
                 }
             }
         }
@@ -282,6 +273,12 @@ struct PaywallView: View {
     }
     
     // MARK: - Actions
+    private func selectDefaultProduct() {
+        if selectedProduct == nil && !subscriptionManager.availableSubscriptions.isEmpty {
+            selectedProduct = subscriptionManager.availableSubscriptions.first { $0.id == SubscriptionManager.ProductID.yearlySubscription } ?? subscriptionManager.availableSubscriptions.first
+        }
+    }
+    
     private func purchaseProduct(_ product: Product) {
         isLoading = true
         errorMessage = nil

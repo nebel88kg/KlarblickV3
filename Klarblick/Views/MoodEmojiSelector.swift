@@ -10,6 +10,7 @@ import SwiftData
 
 struct MoodEmojiSelector: View {
     @State private var selectedMood: Int? = nil
+    @State private var showMoodSheet = false
     @Environment(\.modelContext) private var modelContext
     @State private var midnightTimer: Timer?
     @State private var isInitialLoad = true
@@ -36,6 +37,7 @@ struct MoodEmojiSelector: View {
                         isInitialLoad: isInitialLoad
                     ) {
                         selectedMood = index
+                        showMoodSheet = true
                     }
                 }
             }
@@ -53,6 +55,9 @@ struct MoodEmojiSelector: View {
             .padding(.top, 4)
         }
         .padding(.horizontal, 20)
+        .sheet(isPresented: $showMoodSheet) {
+            MoodNoteSheet(isPresented: $showMoodSheet)
+        }
         .onAppear {
             loadTodaysMoodSelection()
             scheduleAutomaticReset()
@@ -99,9 +104,10 @@ struct MoodEmojiSelector: View {
             let moodStrings = ["Very Happy", "Happy", "Neutral", "Sad", "Stressed"]
             if let moodIndex = moodStrings.firstIndex(of: todaysMoodEntry.mood) {
                 selectedMood = moodIndex
-            }
-        }
-    }
+                         }
+         }
+     }
+    
 }
 
 struct MoodPill: View {
@@ -221,6 +227,119 @@ extension MoodPill {
             try modelContext.save()
         } catch {
             // Handle save errors silently
+        }
+    }
+}
+
+// MARK: - MoodNoteSheet
+struct MoodNoteSheet: View {
+    @Binding var isPresented: Bool
+    @State private var noteText = ""
+    @Environment(\.modelContext) private var modelContext
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Journal Entry")
+                    .font(.headline)
+                    .foregroundColor(.ambrosiaIvory)
+                
+                TextField("Write your thoughts...", text: $noteText, axis: .vertical)
+                    .lineLimit(4...8)
+                    .padding(.horizontal, 4)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .foregroundColor(.wildMaple)
+                    .padding(20)
+                    .background(Color.white.opacity(0.1))
+                    .cornerRadius(20)
+            }
+            
+            HStack {
+                Spacer()
+                
+                Button("Add Note") {
+                    saveNoteToLatestMoodEntry()
+                    isPresented = false
+                }
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            LinearGradient(
+                                colors: [Color.afterBurn.opacity(0.8), Color.mangosteenViolet.opacity(1)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                )
+                
+                Spacer()
+                
+                Button("Not now") {
+                    isPresented = false
+                }
+                .font(.headline)
+                .foregroundColor(.gray2)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray2, lineWidth: 2)
+                )
+                
+                Spacer()
+            }
+        }
+        .padding()
+        .presentationDetents([.height(300), .medium])
+        .presentationDragIndicator(.visible)
+        .presentationBackground(Color.backgroundSecondary)
+        .onAppear {
+            loadExistingNote()
+        }
+    }
+    
+    private func loadExistingNote() {
+        let descriptor = FetchDescriptor<MoodEntry>()
+        guard let moodEntries = try? modelContext.fetch(descriptor) else { return }
+        
+        let today = Date()
+        
+        // Find today's mood entry and load its note
+        if let todaysMoodEntry = moodEntries.first(where: { entry in
+            Calendar.current.isDate(entry.date, inSameDayAs: today)
+        }) {
+            noteText = todaysMoodEntry.note ?? ""
+        }
+    }
+
+    
+    private func saveNoteToLatestMoodEntry() {
+        // Don't save empty notes
+        guard !noteText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        
+        let descriptor = FetchDescriptor<MoodEntry>()
+        guard let moodEntries = try? modelContext.fetch(descriptor) else { return }
+        
+        let today = Date()
+        
+        // Find today's mood entry
+        if let todaysMoodEntry = moodEntries.first(where: { entry in
+            Calendar.current.isDate(entry.date, inSameDayAs: today)
+        }) {
+            // Update the note for today's mood entry
+            todaysMoodEntry.note = noteText
+            
+            // Save the context
+            do {
+                try modelContext.save()
+            } catch {
+                // Handle save errors silently
+                print("Error saving note: \(error)")
+            }
         }
     }
 }
