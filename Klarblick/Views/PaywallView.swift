@@ -100,7 +100,7 @@ struct PaywallView: View {
     
     private func subscriptionCard(for product: Product) -> some View {
         let info = subscriptionManager.getSubscriptionInfo(for: product)
-        let isYearly = product.id == SubscriptionManager.ProductID.yearlySubscription
+        _ = product.id == SubscriptionManager.ProductID.yearlySubscription
         let isSelected = selectedProduct?.id == product.id
         
         return VStack(spacing: 8) {
@@ -124,7 +124,7 @@ struct PaywallView: View {
                 .fill(Color.mangosteenViolet.opacity(0.4))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(isSelected ? Color.pharaohsSeas : (isYearly ? Color.pharaohsSeas.opacity(0.5) : Color.clear), lineWidth: 2)
+                        .stroke(isSelected ? Color.pharaohsSeas : Color.clear, lineWidth: 2)
                 )
         )
         .onTapGesture {
@@ -184,6 +184,10 @@ struct PaywallView: View {
                     .padding(.horizontal, 20)
                 
                 Button(action: {
+                    // Add haptic feedback
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                    impactFeedback.impactOccurred()
+                    
                     purchaseProduct(selectedProduct)
                 }) {
                     Text(isYearly ? "Start Free Trial" : "Subscribe")
@@ -224,7 +228,7 @@ struct PaywallView: View {
                 
                 HStack(spacing: 16) {
                     Button("Terms") {
-                        if let url = URL(string: "https://sites.google.com/view/klarblick-terms-of-service/") {
+                        if let url = URL(string: "https://sites.google.com/view/klarblick-app/terms-of-service") {
                             openURL(url)
                         }
                     }
@@ -232,7 +236,7 @@ struct PaywallView: View {
                     .foregroundColor(.pharaohsSeas)
                     
                     Button("Privacy") {
-                        if let url = URL(string: "https://sites.google.com/view/klarblick-privacy-policy/") {
+                        if let url = URL(string: "https://sites.google.com/view/klarblick-app/privacy-policy") {
                             openURL(url)
                         }
                     }

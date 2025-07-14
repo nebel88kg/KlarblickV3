@@ -72,7 +72,7 @@ struct ExerciseCardView: View {
                             .fontWeight(.bold)
                             .foregroundColor(isCompleted ? .gray : .ambrosiaIvory)
                         
-                        Text(isCompleted ? "Completed today!" : exercises[index].caption)
+                        Text(isCompleted ? String(localized: "Completed today!") : exercises[index].caption)
                             .font(.caption2)
                             .italic()
                             .foregroundColor(isCompleted ? .gray : .gray2)
@@ -127,6 +127,11 @@ struct ExerciseCardView: View {
         .onDisappear {
             midnightTimer?.invalidate()
             midnightTimer = nil
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // Refresh state when app enters foreground (new day check)
+            loadTodaysCompletions()
+            scheduleAutomaticReset()
         }
         .fullScreenCover(item: $selectedExercise) { exercise in
             ExerciseDetailView(exercise: exercise, isFromCardView: true, onCompletion: {
@@ -190,6 +195,9 @@ struct ExerciseCardView: View {
             do {
                 try modelContext.save()
                 completedCategories.insert(category)
+                
+                // Cancel today's mindfulness reminder since an exercise was completed
+                NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
             } catch {
                 // Handle save errors silently
             }

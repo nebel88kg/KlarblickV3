@@ -56,7 +56,7 @@ struct MoodEmojiSelector: View {
         }
         .padding(.horizontal, 20)
         .sheet(isPresented: $showMoodSheet) {
-            MoodNoteSheet(isPresented: $showMoodSheet)
+            MoodNoteSheet(isPresented: $showMoodSheet, selectedMoodIndex: selectedMood)
         }
         .onAppear {
             loadTodaysMoodSelection()
@@ -70,6 +70,11 @@ struct MoodEmojiSelector: View {
         .onDisappear {
             midnightTimer?.invalidate()
             midnightTimer = nil
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // Refresh state when app enters foreground (new day check)
+            loadTodaysMoodSelection()
+            scheduleAutomaticReset()
         }
     }
     
@@ -94,6 +99,7 @@ struct MoodEmojiSelector: View {
     private func loadTodaysMoodSelection() {
         let descriptor = FetchDescriptor<MoodEntry>()
         guard let moodEntries = try? modelContext.fetch(descriptor) else {
+            selectedMood = nil // Reset if can't fetch
             return
         }
         
@@ -104,9 +110,12 @@ struct MoodEmojiSelector: View {
             let moodStrings = ["Very Happy", "Happy", "Neutral", "Sad", "Stressed"]
             if let moodIndex = moodStrings.firstIndex(of: todaysMoodEntry.mood) {
                 selectedMood = moodIndex
-                         }
-         }
-     }
+            }
+        } else {
+            // FIX: Reset selectedMood if no entry for today
+            selectedMood = nil
+        }
+    }
     
 }
 
@@ -161,6 +170,9 @@ extension MoodPill {
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
             user.currentXp += amount
+            
+            // Check for new badges after XP award (notifications handled by parent view)
+            _ = BadgeChecker.shared.checkForNewBadges(for: user, context: modelContext)
         }
     }
     
@@ -207,6 +219,11 @@ extension MoodPill {
         
         let today = Date()
         
+        // Check if there's already a mood entry for today (before making changes)
+        _ = moodEntries.contains { entry in
+            Calendar.current.isDate(entry.date, inSameDayAs: today)
+        }
+        
         // Check if there's already a mood entry for today
         if let existingEntry = moodEntries.first(where: { entry in
             Calendar.current.isDate(entry.date, inSameDayAs: today)
@@ -225,6 +242,9 @@ extension MoodPill {
         // Try to save the context
         do {
             try modelContext.save()
+            
+            // Cancel today's mood reminder if this is a new entry
+            NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
         } catch {
             // Handle save errors silently
         }
@@ -234,13 +254,29 @@ extension MoodPill {
 // MARK: - MoodNoteSheet
 struct MoodNoteSheet: View {
     @Binding var isPresented: Bool
+    let selectedMoodIndex: Int?
     @State private var noteText = ""
     @Environment(\.modelContext) private var modelContext
+    
+    private let moodStrings = [
+        String(localized: "Very Happy"),
+        String(localized: "Happy"),
+        String(localized: "Neutral"),
+        String(localized: "Sad"),
+        String(localized: "Stressed")
+    ]
+    
+    private var selectedMoodString: String {
+        guard let index = selectedMoodIndex, index < moodStrings.count else {
+            return "Unknown"
+        }
+        return moodStrings[index]
+    }
     
     var body: some View {
         VStack(spacing: 20) {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Journal Entry")
+                Text("Why are you feeling \(selectedMoodString.lowercased())?")
                     .font(.headline)
                     .foregroundColor(.ambrosiaIvory)
                 
@@ -252,6 +288,7 @@ struct MoodNoteSheet: View {
                     .padding(20)
                     .background(Color.white.opacity(0.1))
                     .cornerRadius(20)
+                    .colorScheme(.dark)  // Add this to force dark mode
             }
             
             HStack {
@@ -262,7 +299,7 @@ struct MoodNoteSheet: View {
                     isPresented = false
                 }
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(.ambrosiaIvory)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
                 .background(
@@ -283,7 +320,7 @@ struct MoodNoteSheet: View {
                 }
                 .font(.headline)
                 .foregroundColor(.gray2)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 20)
                 .padding(.vertical, 12)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
@@ -293,7 +330,7 @@ struct MoodNoteSheet: View {
                 Spacer()
             }
         }
-        .padding()
+        .padding(.horizontal, 20)
         .presentationDetents([.height(300), .medium])
         .presentationDragIndicator(.visible)
         .presentationBackground(Color.backgroundSecondary)

@@ -1,8 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
+    "%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@, %@!" : {
       "localizations" : {
@@ -21,7 +34,20 @@
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld entries" : {
       "localizations" : {
@@ -51,6 +77,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld min"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
           }
         }
       }
@@ -120,9 +178,22 @@
       }
     },
     "+10" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+10"
+          }
+        }
+      }
     },
-    "1.0.0" : {
+    "1" : {
 
     },
     "3 days free then %@ per year • Cancel anytime" : {
@@ -141,8 +212,25 @@
         }
       }
     },
-    "5" : {
-
+    "30 Days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 Tage"
+          }
+        }
+      }
+    },
+    "30-day mental wellness plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30-Tage Plan"
+          }
+        }
+      }
     },
     "About" : {
       "localizations" : {
@@ -160,8 +248,25 @@
         }
       }
     },
+    "About this app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über diese App"
+          }
+        }
+      }
+    },
     "Add Note" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notiz speichern"
+          }
+        }
+      }
     },
     "App" : {
       "localizations" : {
@@ -175,22 +280,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App"
-          }
-        }
-      }
-    },
-    "App Version" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Version"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Version"
           }
         }
       }
@@ -243,6 +332,70 @@
         }
       }
     },
+    "Badge Details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge Details"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge Details"
+          }
+        }
+      }
+    },
+    "Badge Earned!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge erhalten!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge Earned!"
+          }
+        }
+      }
+    },
+    "Badge Gallery" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge Galerie"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge Gallery"
+          }
+        }
+      }
+    },
+    "Badges Earned" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badges Earned"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badges Earned"
+          }
+        }
+      }
+    },
     "Balance" : {
       "localizations" : {
         "de" : {
@@ -259,6 +412,22 @@
         }
       }
     },
+    "Begin Breathing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit dem Atmen beginnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin Breathing"
+          }
+        }
+      }
+    },
     "Breathe deeply" : {
       "localizations" : {
         "de" : {
@@ -271,6 +440,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Breathe deeply"
+          }
+        }
+      }
+    },
+    "Build healthy habits, track your progress, and discover the power of mindful living with our comprehensive wellness platform." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bauen Sie gesunde Gewohnheiten auf, verfolgen Sie Ihre Fortschritte und entdecken Sie die Kraft eines achtsamen Lebens mit unserer umfassenden Wellness-Plattform."
           }
         }
       }
@@ -323,6 +502,68 @@
         }
       }
     },
+    "Collection Progress" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sammlungsfortschritt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collection Progress"
+          }
+        }
+      }
+    },
+    "Complete at least one exercise to continue your wellness streak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absolviere mindestens eine Übung, um deine Streak fortzusetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete at least one exercise to continue your wellness streak"
+          }
+        }
+      }
+    },
+    "COMPLETE EXERCISE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÜBUNG FERTIGSTELLEN"
+          }
+        }
+      }
+    },
+    "Completed today!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute geschafft!"
+          }
+        }
+      }
+    },
+    "Contact & Feedback" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt & Feedbak"
+          }
+        }
+      }
+    },
     "Continue" : {
       "localizations" : {
         "de" : {
@@ -339,7 +580,65 @@
         }
       }
     },
-    "Daily reminders" : {
+    "CONTINUE" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WEITER"
+          }
+        }
+      }
+    },
+    "Create My Plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meinen Plan erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create My Plan"
+          }
+        }
+      }
+    },
+    "Creating your plan..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstelle deinen Plan..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creating your plan..."
+          }
+        }
+      }
+    },
+    "Daily Check-in" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Täglicher Check-in"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Check-in"
+          }
+        }
+      }
+    },
+    "Daily Reminders" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -350,7 +649,23 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Daily reminders"
+            "value" : "Daily Reminders"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
         }
       }
@@ -403,6 +718,22 @@
         }
       }
     },
+    "Disabled in Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Einstellungen deaktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled in Settings"
+          }
+        }
+      }
+    },
     "Don't worry, you can change this later" : {
       "localizations" : {
         "de" : {
@@ -415,6 +746,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Don't worry, you can change this later"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Earned %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erhalten %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Earned %@"
+          }
+        }
+      }
+    },
+    "Earned on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erhalten am"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Earned on"
           }
         }
       }
@@ -447,6 +826,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit Your Name"
+          }
+        }
+      }
+    },
+    "Enable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
+          }
+        }
+      }
+    },
+    "Enabled" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
           }
         }
       }
@@ -2004,6 +2415,64 @@
         }
       }
     },
+    "Experience the power of mindfulness with a simple breathing exercise" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlebe die Kraft der Achtsamkeit mit einer einfachen Atemübung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experience the power of mindfulness with a simple breathing exercise"
+          }
+        }
+      }
+    },
+    "Follow the circle with your breath" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folge dem Kreis mit deinem Atem"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow the circle with your breath"
+          }
+        }
+      }
+    },
+    "Get access" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zugang erhalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get access"
+          }
+        }
+      }
+    },
+    "Get in touch or share feedback" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontaktiere uns"
+          }
+        }
+      }
+    },
     "Get Started" : {
       "localizations" : {
         "de" : {
@@ -2100,6 +2569,16 @@
         }
       }
     },
+    "Happy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glücklich"
+          }
+        }
+      }
+    },
     "How are you feeling today?" : {
       "localizations" : {
         "de" : {
@@ -2112,6 +2591,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "How are you feeling today?"
+          }
+        }
+      }
+    },
+    "How are you feeling?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie fühlst du dich?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How are you feeling?"
+          }
+        }
+      }
+    },
+    "How can we call you?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie können wir dich nennen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How can we call you?"
+          }
+        }
+      }
+    },
+    "How old are you?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie alt bist du?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How old are you?"
           }
         }
       }
@@ -2132,9 +2659,6 @@
         }
       }
     },
-    "Journal Entry" : {
-
-    },
     "Klarblick" : {
       "localizations" : {
         "de" : {
@@ -2151,18 +2675,57 @@
         }
       }
     },
-    "Let's Begin" : {
+    "Klarblick helps you maintain mental clarity and emotional balance through guided mindfulness exercises, daily mood tracking, and personalized insights." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lass uns beginnen"
+            "value" : "Klarblick hilft Ihnen, geistige Klarheit und emotionales Gleichgewicht durch geführte Achtsamkeitsübungen, tägliches Stimmungstracking und personalisierte Einblicke zu bewahren."
+          }
+        }
+      }
+    },
+    "klarblick.app@gmail.com" : {
+
+    },
+    "Learn more about Klarblick" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lerne mehr über Klarblick"
+          }
+        }
+      }
+    },
+    "Let's build your" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass uns deinen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Let's Begin"
+            "value" : "Let's build your"
+          }
+        }
+      }
+    },
+    "Let's take a few seconds to feel better" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass uns ein paar Sekunden nutzen, um uns besser zu fühlen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's take a few seconds to feel better"
           }
         }
       }
@@ -2198,6 +2761,9 @@
           }
         }
       }
+    },
+    "Mail Not Available" : {
+
     },
     "Meditation" : {
       "localizations" : {
@@ -2263,6 +2829,22 @@
         }
       }
     },
+    "Mood" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stimmung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood"
+          }
+        }
+      }
+    },
     "Mood History" : {
       "localizations" : {
         "de" : {
@@ -2279,6 +2861,80 @@
         }
       }
     },
+    "My Items" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Gegenstände"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Items"
+          }
+        }
+      }
+    },
+    "Neutral" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neutral"
+          }
+        }
+      }
+    },
+    "Nice work!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gut gemacht!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nice work!"
+          }
+        }
+      }
+    },
+    "Nickname..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spitzname..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname..."
+          }
+        }
+      }
+    },
+    "No mood entries yet" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch keine Stimmungseinträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mood entries yet"
+          }
+        }
+      }
+    },
     "No mood entries yet. Start tracking your mood!" : {
       "localizations" : {
         "de" : {
@@ -2291,6 +2947,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No mood entries yet. Start tracking your mood!"
+          }
+        }
+      }
+    },
+    "No note added" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Notiz hinzugefügt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No note added"
           }
         }
       }
@@ -2312,26 +2984,36 @@
       }
     },
     "Not now" : {
-
-    },
-    "Notifications" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Benachrichtigungen"
+            "value" : "Nicht jetzt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifications"
+            "value" : "Not now"
           }
         }
       }
     },
-    "OK" : {
-
+    "Notification Status" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungsstatus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification Status"
+          }
+        }
+      }
     },
     "Overview" : {
       "localizations" : {
@@ -2345,6 +3027,67 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overview"
+          }
+        }
+      }
+    },
+    "PAUSE TIMER" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAUSE"
+          }
+        }
+      }
+    },
+    "Personalizing your wellness journey" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalisiere deine Wellness-Reise"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizing your wellness journey"
+          }
+        }
+      }
+    },
+    "Plan Duration" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Dauer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Duration"
+          }
+        }
+      }
+    },
+    "Please set up Mail on your device or contact us directly at:" : {
+
+    },
+    "Power Items" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power-Gegenstände"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power Items"
           }
         }
       }
@@ -2429,6 +3172,22 @@
         }
       }
     },
+    "Progress: %lld/%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritt: %1$lld/%2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress: %1$lld/%2$lld"
+          }
+        }
+      }
+    },
     "Reflect" : {
       "localizations" : {
         "de" : {
@@ -2445,8 +3204,37 @@
         }
       }
     },
+    "Reminder Time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerungszeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder Time"
+          }
+        }
+      }
+    },
     "Restore" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederherstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        }
+      }
     },
     "Retry Loading" : {
       "localizations" : {
@@ -2460,6 +3248,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retry Loading"
+          }
+        }
+      }
+    },
+    "Sad" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traurig"
           }
         }
       }
@@ -2480,8 +3278,69 @@
         }
       }
     },
+    "Save Time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Time"
+          }
+        }
+      }
+    },
+    "See what you can achieve in just 30 days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieh was du in nur 30 Tagen erreichen kannst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See what you can achieve in just 30 days"
+          }
+        }
+      }
+    },
+    "See Your Plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieh deinen Plan"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See Your Plan"
+          }
+        }
+      }
+    },
     "Select a plan above" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Plan oben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a plan above"
+          }
+        }
+      }
     },
     "Select Duration" : {
       "localizations" : {
@@ -2515,6 +3374,54 @@
         }
       }
     },
+    "Set Reminder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung einstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Reminder"
+          }
+        }
+      }
+    },
+    "Set Reminder Time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerungszeit einstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Reminder Time"
+          }
+        }
+      }
+    },
+    "Setting up..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einrichtung..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setting up..."
+          }
+        }
+      }
+    },
     "Settings" : {
       "localizations" : {
         "de" : {
@@ -2527,6 +3434,32 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Share Progress" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen"
+          }
+        }
+      }
+    },
+    "Shop" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
           }
         }
       }
@@ -2547,6 +3480,54 @@
         }
       }
     },
+    "Skip Exercise" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übung überspringen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip Exercise"
+          }
+        }
+      }
+    },
+    "Skip for now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für jetzt überspringen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip for now"
+          }
+        }
+      }
+    },
+    "Sort" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort"
+          }
+        }
+      }
+    },
     "Start" : {
       "localizations" : {
         "de" : {
@@ -2563,6 +3544,22 @@
         }
       }
     },
+    "Start Exercise" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übung starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Exercise"
+          }
+        }
+      }
+    },
     "Start Free Trial" : {
       "localizations" : {
         "de" : {
@@ -2575,6 +3572,32 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Start Free Trial"
+          }
+        }
+      }
+    },
+    "START TIMER" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STARTE TIMER"
+          }
+        }
+      }
+    },
+    "Start tracking your mood to see your history here!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginne deine Stimmung zu verfolgen, um deine Historie hier zu sehen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start tracking your mood to see your history here!"
           }
         }
       }
@@ -2611,6 +3634,22 @@
         }
       }
     },
+    "Streak Protection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak-Schutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak Protection"
+          }
+        }
+      }
+    },
     "Stressed" : {
       "localizations" : {
         "de" : {
@@ -2639,6 +3678,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Subscribe"
+          }
+        }
+      }
+    },
+    "Take a moment to practice mindfulness and continue your wellness journey" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimm dir einen Moment für Achtsamkeit und setze deine Wellness-Reise fort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a moment to practice mindfulness and continue your wellness journey"
+          }
+        }
+      }
+    },
+    "Tap to view all" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen, um alle zu sehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to view all"
           }
         }
       }
@@ -2675,6 +3746,70 @@
         }
       }
     },
+    "That's the first step towards clarity" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist der erste Schritt zur Klarheit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That's the first step towards clarity"
+          }
+        }
+      }
+    },
+    "Time for mindfulness" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit für Achtsamkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time for mindfulness"
+          }
+        }
+      }
+    },
+    "Time Manipulation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit-Manipulation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Manipulation"
+          }
+        }
+      }
+    },
+    "to check in daily?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "für den täglichen Check-in?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to check in daily?"
+          }
+        }
+      }
+    },
     "Today's Exercises" : {
       "localizations" : {
         "de" : {
@@ -2687,6 +3822,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Exercises"
+          }
+        }
+      }
+    },
+    "Track your mood and reflect on your day" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfolge deine Stimmung und reflektiere über deinen Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track your mood and reflect on your day"
           }
         }
       }
@@ -2723,6 +3874,25 @@
         }
       }
     },
+    "Updating..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierung..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updating..."
+          }
+        }
+      }
+    },
+    "Version 1.0.0" : {
+
+    },
     "Very Happy" : {
       "localizations" : {
         "de" : {
@@ -2755,6 +3925,38 @@
         }
       }
     },
+    "We'll send you a gentle reminder to check in with yourself and track your progress" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir senden dir eine sanfte Erinnerung, um bei dir selbst einzuchecken und deinen Fortschritt zu verfolgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We'll send you a gentle reminder to check in with yourself and track your progress"
+          }
+        }
+      }
+    },
+    "We'll send you gentle reminders for mindfulness exercises and mood check-ins" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir senden dir sanfte Erinnerungen für Achtsamkeitsübungen und Stimmungs-Check-ins"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We'll send you gentle reminders for mindfulness exercises and mood check-ins"
+          }
+        }
+      }
+    },
     "We're inviting you to a 3-day free trial. Cancel anytime, no strings attached." : {
       "localizations" : {
         "de" : {
@@ -2771,18 +3973,34 @@
         }
       }
     },
-    "Welcome to" : {
+    "Week %lld" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Willkommen bei"
+            "value" : "Woche %lld"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome to"
+            "value" : "Week %lld"
+          }
+        }
+      }
+    },
+    "Welcome to Klarblick" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei Klarblick"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Klarblick"
           }
         }
       }
@@ -2835,24 +4053,133 @@
         }
       }
     },
-    "What's your name?" : {
+    "What do you want most right now?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wie ist dein Name?"
+            "value" : "Was möchtest du gerade am meisten?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What's your name?"
+            "value" : "What do you want most right now?"
+          }
+        }
+      }
+    },
+    "What's your current stress level?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie hoch ist dein aktueller Stress-Level?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's your current stress level?"
+          }
+        }
+      }
+    },
+    "What's your experience with mindfulness?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie sind deine Erfahrungen mit Achtsamkeit?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's your experience with mindfulness?"
+          }
+        }
+      }
+    },
+    "When should we remind you" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wann sollen wir dich erinnern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When should we remind you"
+          }
+        }
+      }
+    },
+    "When should we remind you to check in daily?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wann sollen wir dich täglich an den Check-in erinnern?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When should we remind you to check in daily?"
+          }
+        }
+      }
+    },
+    "Why are you feeling %@?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warum fühlst du dich %@?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why are you feeling %@?"
           }
         }
       }
     },
     "Write your thoughts..." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe deine Gedanken..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write your thoughts..."
+          }
+        }
+      }
+    },
+    "x%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x%lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x%lld"
+          }
+        }
+      }
     },
     "XP" : {
       "localizations" : {
@@ -2866,6 +4193,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XP"
+          }
+        }
+      }
+    },
+    "XP Boosters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XP-Booster"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XP Boosters"
+          }
+        }
+      }
+    },
+    "You just completed your first session" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast gerade deine erste Session abgeschlossen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You just completed your first session"
           }
         }
       }
@@ -2886,18 +4245,92 @@
         }
       }
     },
-    "Your journey to mental clarity starts here" : {
+    "Your Goal" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deine Reise zu mentaler Klarheit beginnt hier"
+            "value" : "Dein Ziel"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your journey to mental clarity starts here"
+            "value" : "Your Goal"
+          }
+        }
+      }
+    },
+    "Your journey to mental clarity" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Reise zu mentaler Klarheit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your journey to mental clarity"
+          }
+        }
+      }
+    },
+    "Your mindfulness companion" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Achtsamkeitsbegleiter"
+          }
+        }
+      }
+    },
+    "Your new safe space for wellbeing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein neuer sicherer Raum für Wohlbefinden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your new safe space for wellbeing"
+          }
+        }
+      }
+    },
+    "Your streak is about to be broken!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Streak ist in Gefahr!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your streak is about to be broken!"
+          }
+        }
+      }
+    },
+    "Your transformation journey" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Transformations-Reise"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your transformation journey"
           }
         }
       }

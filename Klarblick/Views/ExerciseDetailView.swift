@@ -108,6 +108,9 @@ struct ExerciseDetailView: View {
     @State private var pressedButton: String? = nil
     @State private var hapticEngine: CHHapticEngine?
     @State private var continuousPlayer: CHHapticAdvancedPatternPlayer?
+    @State private var earnedBadges: [Badge] = []
+    @State private var showBadgeNotification = false
+    @State private var showShareSheet = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -129,6 +132,21 @@ struct ExerciseDetailView: View {
         currentStepIndex == exercise.instructions.count - 1
     }
     
+    var shareText: String {
+        let duration = exercise.duration != nil ? "\(exercise.duration!/60)" : "1"
+        return """
+        🎉 Just completed a \(exercise.category.rawValue) exercise!
+        
+        📖 \(exercise.title)
+        ⏱️ \(duration) minutes
+        ✨ +10 XP earned
+        
+        Taking care of my mental wellness one step at a time! 🌱
+        
+        #Mindfulness #MentalHealth #Klarblick
+        """
+    }
+    
     var body: some View {
         ZStack {
             // Background gradient
@@ -145,6 +163,9 @@ struct ExerciseDetailView: View {
             } else {
                 exerciseView
             }
+            
+            // Badge notification overlay
+            BadgeNotificationView(badges: earnedBadges, isShowing: $showBadgeNotification)
         }
         .onAppear {
             setupExercise()
@@ -389,7 +410,7 @@ struct ExerciseDetailView: View {
                 if timerSeconds == 0 {
                     // Timer completed - show continue/complete button
                     ExerciseButton(
-                        title: isLastStep ? "COMPLETE EXERCISE" : "CONTINUE",
+                        title: isLastStep ? String(localized: "COMPLETE EXERCISE") : String(localized: "CONTINUE"),
                         backgroundColor: .orange,
                         foregroundColor: .white,
                         buttonId: "timer_complete",
@@ -401,7 +422,7 @@ struct ExerciseDetailView: View {
                 } else {
                     // Timer not completed - show timer control button
                     ExerciseButton(
-                        title: isTimerRunning ? "PAUSE TIMER" : "START TIMER",
+                        title: isTimerRunning ? String(localized: "PAUSE TIMER") : String(localized: "START TIMER"),
                         backgroundColor: isTimerRunning ? .red : .cyan,
                         foregroundColor: .white,
                         buttonId: "timer_control",
@@ -414,7 +435,7 @@ struct ExerciseDetailView: View {
             } else {
                 // Regular continue button for non-timer steps
                 ExerciseButton(
-                    title: isLastStep ? "COMPLETE EXERCISE" : "CONTINUE",
+                    title: isLastStep ? String(localized: "COMPLETE EXERCISE") : String(localized: "CONTINUE"),
                     backgroundColor: .afterBurn,
                     foregroundColor: .ambrosiaIvory,
                     isDisabled: !canContinue,
@@ -508,7 +529,7 @@ struct ExerciseDetailView: View {
                 
                 HStack(spacing: 0) {
                     VStack(spacing: 8) {
-                        Text(exercise.duration != nil ? "\(exercise.duration!/60)" : "5")
+                        Text(exercise.duration != nil ? "\(exercise.duration!/60)" : "1")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.red)
@@ -540,9 +561,9 @@ struct ExerciseDetailView: View {
                         .frame(width: 1, height: 50)
                     
                     VStack(spacing: 8) {
-                        Image(systemName: "heart.fill")
+                        Image(systemName: categoryIconName)
                             .font(.largeTitle)
-                            .foregroundColor(.red)
+                            .foregroundColor(.cyan)
                         
                         Text(exercise.category.rawValue)
                             .font(.caption)
@@ -563,7 +584,7 @@ struct ExerciseDetailView: View {
             // Bottom buttons
             VStack(spacing: 16) {
                 ExerciseButton(
-                    title: "CONTINUE",
+                    title: String(localized: "CONTINUE"),
                     backgroundColor: .afterBurn,
                     foregroundColor: .ambrosiaIvory,
                     buttonId: "completion_continue",
@@ -574,12 +595,13 @@ struct ExerciseDetailView: View {
                 }
                 
                 SecondaryExerciseButton(
-                    title: "Share Progress",
-                    foregroundColor: .orange,
+                    title: String(localized: "Share Progress"),
+                    foregroundColor: .afterBurn,
                     buttonId: "share_progress",
                     pressedButton: $pressedButton
                 ) {
                     performHapticFeedback(.light)
+                    showShareSheet = true
                 }
             }
             .scaleEffect(showBottomButtons ? 1.0 : 0.0)
@@ -588,6 +610,9 @@ struct ExerciseDetailView: View {
         .padding(.horizontal, 24)
         .onAppear {
             startCompletionAnimation()
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ShareSheet(activityItems: [shareText])
         }
     }
     
@@ -616,6 +641,9 @@ struct ExerciseDetailView: View {
             }
             awardXp(10)
             incrementStreakIfNeeded()
+            
+            // Cancel today's mindfulness reminder since an exercise was completed
+            NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
             
             // Call completion handler if from card view
             if isFromCardView {
@@ -679,6 +707,13 @@ struct ExerciseDetailView: View {
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
             user.currentXp += amount
+            
+            // Check for new badges after XP award
+            let newBadges = BadgeChecker.shared.checkForNewBadges(for: user, context: modelContext)
+            if !newBadges.isEmpty {
+                earnedBadges = newBadges
+                showBadgeNotification = true
+            }
         }
     }
     
@@ -686,6 +721,13 @@ struct ExerciseDetailView: View {
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
             user.currentStreak += 1
+            
+            // Check for new badges after streak increment
+            let newBadges = BadgeChecker.shared.checkForNewBadges(for: user, context: modelContext)
+            if !newBadges.isEmpty {
+                earnedBadges = newBadges
+                showBadgeNotification = true
+            }
         }
     }
     
@@ -817,6 +859,21 @@ struct ExerciseDetailView: View {
     }
 
     
+}
+
+// MARK: - ShareSheet
+struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Preview

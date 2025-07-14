@@ -47,6 +47,7 @@ struct KlarblickApp: App {
                         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                             checkAndResetStreakIfNeeded()
                             refreshSubscriptionStatus()
+                            requestNotificationPermissionIfNeeded()
                         }
                         .transition(.opacity)
                 }
@@ -65,6 +66,8 @@ struct KlarblickApp: App {
                 appStateManager.handleOnboardingComplete()
                 // Start subscription check after onboarding
                 checkSubscriptionStatus()
+                // Request notification permission if not already done during onboarding
+                requestNotificationPermissionIfNeeded()
             }
         }
     }
@@ -85,6 +88,11 @@ struct KlarblickApp: App {
         do {
             let users = try context.fetch(descriptor)
             let hasUser = !users.isEmpty
+            
+            // Initialize badges for existing users
+            if hasUser, let user = users.first {
+                BadgeManager.shared.initializeBadgesForUser(user, context: context)
+            }
             
             // Update app state based on user existence
             appStateManager.handleUserCheckComplete(hasUser: hasUser)
@@ -147,74 +155,54 @@ struct KlarblickApp: App {
             }
         }
     }
+    
+    private func requestNotificationPermissionIfNeeded() {
+        // Only request permission if user has completed onboarding
+        // This prevents the request from showing during onboarding flow
+        guard appStateManager.currentState == .main else { return }
+        
+        Task {
+            let granted = await NotificationManager.shared.requestAuthorizationIfNeeded()
+            if granted {
+                // If permission was just granted and we have a stored reminder time, schedule notifications
+                let reminderTime = NotificationManager.shared.getReminderTime()
+                await NotificationManager.shared.scheduleDailyReminders(at: reminderTime)
+            }
+        }
+    }
 }
 
 // MARK: - Loading View (styled like the original splash screen)
 struct LoadingView: View {
     @State private var isLoading = true
-    @State private var scale: CGFloat = 0.5
-    @State private var opacity: Double = 0
     
     var body: some View {
         ZStack {
             // Background gradient (same as original splash)
-            LinearGradient(
-                gradient: Gradient(colors: [.blue.opacity(0.3), .purple.opacity(0.3)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            Color.backgroundSecondary
             .ignoresSafeArea()
             
             VStack(spacing: 30) {
-                // App icon or logo placeholder (same as original splash)
-                Image(systemName: "brain.head.profile")
-                    .font(.system(size: 80))
-                    .foregroundColor(.primary)
-                    .scaleEffect(scale)
-                    .opacity(opacity)
-                    .animation(.easeInOut(duration: 1.0), value: scale)
-                    .animation(.easeInOut(duration: 1.0), value: opacity)
-                
-                // App name (same as original splash)
-                Text("Klarblick")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .opacity(opacity)
-                    .animation(.easeInOut(duration: 1.0).delay(0.2), value: opacity)
+                HStack{
+                    // App icon or logo placeholder (same as original splash)
+                    Image("AppLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .cornerRadius(12)
+
+                    
+                    // App name (same as original splash)
+                    Text("Klarblick")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.wildMaple)
+                }
                 
                 // Tagline (same as original splash)
                 Text("Clarity in Mind")
                     .font(.headline)
-                    .foregroundColor(.secondary)
-                    .opacity(opacity)
-                    .animation(.easeInOut(duration: 1.0).delay(0.4), value: opacity)
-                
-                // Loading indicator (same animated dots as original splash)
-                if isLoading {
-                    HStack(spacing: 8) {
-                        ForEach(0..<3) { index in
-                            Circle()
-                                .fill(Color.blue)
-                                .frame(width: 8, height: 8)
-                                .scaleEffect(scale)
-                                .animation(
-                                    .easeInOut(duration: 0.6)
-                                    .repeatForever(autoreverses: true)
-                                    .delay(Double(index) * 0.2),
-                                    value: scale
-                                )
-                        }
-                    }
-                    .opacity(opacity)
-                    .animation(.easeInOut(duration: 1.0).delay(0.6), value: opacity)
-                }
-            }
-        }
-        .onAppear {
-            withAnimation {
-                scale = 1.0
-                opacity = 1.0
+                    .foregroundColor(.purpleCarolite)
             }
         }
     }

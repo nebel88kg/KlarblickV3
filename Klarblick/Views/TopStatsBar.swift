@@ -11,6 +11,7 @@ import SwiftData
 struct TopStatsBar: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var users: [User]
+    @State private var showingShop = false
     
     var body: some View {
         let user = users.first
@@ -32,15 +33,17 @@ struct TopStatsBar: View {
                 Spacer()
 
                 // XP Counter (Right)
-                HStack(spacing: 8) {
-                    Text("\(user?.currentXp ?? 0)")
-                        .font(.body)
-                        .fontWeight(.bold)
-                        .foregroundColor(.pharaohsSeas)
-                    
-                    Image(systemName: "suit.diamond.fill")
-                        .foregroundColor(.pharaohsSeas)
-                        .font(.body)
+//                Button(action: { showingShop = true }) {
+                    HStack(spacing: 8) {
+                        Text("\(user?.currentXp ?? 0)")
+                            .font(.body)
+                            .fontWeight(.bold)
+                            .foregroundColor(.pharaohsSeas)
+                        
+                        Image(systemName: "suit.diamond.fill")
+                            .foregroundColor(.pharaohsSeas)
+                            .font(.body)
+//                    }
                 }
             }
             .padding(.horizontal, 20)
@@ -52,6 +55,9 @@ struct TopStatsBar: View {
                 .frame(height: 2)
         }
         .background(Color.backgroundSecondary.opacity(0.3))
+        .fullScreenCover(isPresented: $showingShop) {
+            ShopView()
+        }
     }
 }
 
