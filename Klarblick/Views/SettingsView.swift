@@ -13,11 +13,15 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var users: [User]
+    @Query private var moodEntries: [MoodEntry]
+    @Query private var exerciseCompletions: [ExerciseCompletion]
+    @Query private var badges: [Badge]
     @State private var userName: String = ""
     @State private var showingNameEditor = false
     @State private var showingReminderTimeEditor = false
     @State private var showingAboutApp = false
     @State private var showingMailComposer = false
+    @State private var showingDeleteConfirmation = false
     @State private var reminderTime = Date()
     @State private var notificationsEnabled = false
     @State private var isUpdatingReminder = false
@@ -78,6 +82,35 @@ struct SettingsView: View {
                                     .foregroundColor(.wildMaple)
                             }
                             .padding(16)
+                            .background(Color.backgroundSecondary.opacity(0.3))
+                            .cornerRadius(12)
+                        }
+                        
+                        // Delete Account
+                        Button(action: { showingDeleteConfirmation = true }) {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .font(.body)
+                                    .foregroundColor(.wildMaple)
+                                    .padding(.horizontal, 6)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Delete Account")
+                                        .font(.caption)
+                                        .foregroundColor(.ambrosiaIvory)
+                                    
+                                    Text("Permanently remove all data.")
+                                        .font(.caption2)
+                                        .foregroundColor(.gray)
+                                }
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.right")
+                                    .font(.caption2)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(10)
                             .background(Color.backgroundSecondary.opacity(0.3))
                             .cornerRadius(12)
                         }
@@ -257,6 +290,14 @@ struct SettingsView: View {
                 MailNotAvailableView()
             }
         }
+        .alert("Delete Account", isPresented: $showingDeleteConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                deleteAccount()
+            }
+        } message: {
+            Text("Are you sure you want to delete your account? This action cannot be undone and will permanently delete all your data including mood entries, exercise progress, and personal information.")
+        }
         .onAppear {
             userName = users.first?.name ?? ""
             loadNotificationSettings()
@@ -283,6 +324,40 @@ struct SettingsView: View {
     private func openAppSettings() {
         if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(settingsUrl)
+        }
+    }
+    
+    private func deleteAccount() {
+        // Delete all user data
+        for user in users {
+            modelContext.delete(user)
+        }
+        
+        for moodEntry in moodEntries {
+            modelContext.delete(moodEntry)
+        }
+        
+        for exerciseCompletion in exerciseCompletions {
+            modelContext.delete(exerciseCompletion)
+        }
+        
+        for badge in badges {
+            modelContext.delete(badge)
+        }
+        
+        do {
+            try modelContext.save()
+            
+            // Dismiss settings and trigger onboarding
+            dismiss()
+            
+            // Post notification to restart the app flow
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                NotificationCenter.default.post(name: NSNotification.Name("AccountDeleted"), object: nil)
+            }
+            
+        } catch {
+            print("Error deleting account: \(error)")
         }
     }
 }

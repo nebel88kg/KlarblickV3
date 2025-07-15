@@ -268,6 +268,26 @@
         }
       }
     },
+    "Already trust us" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vetrauen uns"
+          }
+        }
+      }
+    },
+    "Analyzing answers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analysiere Antworten"
+          }
+        }
+      }
+    },
     "App" : {
       "localizations" : {
         "de" : {
@@ -296,6 +316,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to delete all %lld mood entries? This action cannot be undone."
+          }
+        }
+      }
+    },
+    "Are you sure you want to delete your account? This action cannot be undone and will permanently delete all your data including mood entries, exercise progress, and personal information." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchten Sie Ihr Konto wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten, einschließlich Stimmungseinträge, Trainingsfortschritte und persönliche Informationen, werden dauerhaft gelöscht."
           }
         }
       }
@@ -412,6 +442,16 @@
         }
       }
     },
+    "Based approach" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "basierter Ansatz"
+          }
+        }
+      }
+    },
     "Begin Breathing" : {
       "localizations" : {
         "de" : {
@@ -440,6 +480,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Breathe deeply"
+          }
+        }
+      }
+    },
+    "Breathe In" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atme ein"
+          }
+        }
+      }
+    },
+    "Breathe Out" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atme aus"
           }
         }
       }
@@ -482,6 +542,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Checking goals" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe Ziele"
           }
         }
       }
@@ -544,6 +614,16 @@
         }
       }
     },
+    "Complete!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig!"
+          }
+        }
+      }
+    },
     "Completed today!" : {
       "localizations" : {
         "de" : {
@@ -602,6 +682,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create My Plan"
+          }
+        }
+      }
+    },
+    "Creating recommendations" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstelle Empfehlungen"
           }
         }
       }
@@ -682,6 +772,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dear %@,"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lösche"
+          }
+        }
+      }
+    },
+    "Delete Account" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lösche Account"
           }
         }
       }
@@ -2473,6 +2583,16 @@
         }
       }
     },
+    "Get Ready" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit?"
+          }
+        }
+      }
+    },
     "Get Started" : {
       "localizations" : {
         "de" : {
@@ -2575,6 +2695,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Glücklich"
+          }
+        }
+      }
+    },
+    "Hold" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halten"
           }
         }
       }
@@ -2703,7 +2833,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lass uns deinen"
+            "value" : "Erstelle deinen"
           }
         },
         "en" : {
@@ -3041,6 +3171,19 @@
         }
       }
     },
+    "Permanently remove all data." : {
+
+    },
+    "Personalizing experience" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalisiere Erfahrung"
+          }
+        }
+      }
+    },
     "Personalizing your wellness journey" : {
       "localizations" : {
         "de" : {
@@ -3204,6 +3347,16 @@
         }
       }
     },
+    "Relax" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entspannen"
+          }
+        }
+      }
+    },
     "Reminder Time" : {
       "localizations" : {
         "de" : {
@@ -3262,6 +3415,16 @@
         }
       }
     },
+    "Satisfaction rate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufriedenheitsrate"
+          }
+        }
+      }
+    },
     "Save" : {
       "localizations" : {
         "de" : {
@@ -3294,6 +3457,16 @@
         }
       }
     },
+    "Science" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wissenschaft"
+          }
+        }
+      }
+    },
     "See what you can achieve in just 30 days" : {
       "localizations" : {
         "de" : {
@@ -3315,7 +3488,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sieh deinen Plan"
+            "value" : "Zum Plan"
           }
         },
         "en" : {
@@ -3758,6 +3931,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "That's the first step towards clarity"
+          }
+        }
+      }
+    },
+    "Thousands" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tausende"
           }
         }
       }
@@ -4324,7 +4507,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deine Transformations-Reise"
+            "value" : "Deine Transformation"
           }
         },
         "en" : {

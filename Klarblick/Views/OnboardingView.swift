@@ -234,7 +234,7 @@ struct OnboardingView: View {
     private var benefitsStep: some View {
         VStack(spacing: 0) {
             VStack(spacing: 10) {
-                Text("Welcome to Klarblick")
+                Text(String(localized: "Welcome to Klarblick"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
@@ -243,7 +243,7 @@ struct OnboardingView: View {
                     .opacity(isBenefitsAnimating ? 1.0 : 0)
                     .animation(.spring(response: 0.7, dampingFraction: 0.8, blendDuration: 0).delay(0.1), value: isBenefitsAnimating)
                 
-                Text("Your new safe space for wellbeing")
+                Text(String(localized: "Your new safe space for wellbeing"))
                     .font(.subheadline)
                     .foregroundColor(.ambrosiaIvory)
                     .multilineTextAlignment(.center)
@@ -255,22 +255,22 @@ struct OnboardingView: View {
             
             VStack(spacing: 60) {
                 BenefitRow(
-                    title: "Thousands",
-                    subtitle: "Already trust us"
+                    title: String(localized: "Thousands"),
+                    subtitle: String(localized: "Already trust us")
                 )
                 .opacity(isBenefitsAnimating ? 1.0 : 0)
                 .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0).delay(0.5), value: isBenefitsAnimating)
                 
                 BenefitRow(
                     title: "96%",
-                    subtitle: "Satisfaction rate"
+                    subtitle: String(localized: "Satisfaction rate")
                 )
                 .opacity(isBenefitsAnimating ? 1.0 : 0)
                 .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0).delay(1), value: isBenefitsAnimating)
                 
                 BenefitRow(
-                    title: "Science",
-                    subtitle: "Based approach"
+                    title: String(localized: "Science"),
+                    subtitle: String(localized: "Based approach")
                 )
                 .opacity(isBenefitsAnimating ? 1.0 : 0)
                 .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0).delay(1.5), value: isBenefitsAnimating)
@@ -284,7 +284,7 @@ struct OnboardingView: View {
                     currentStep = 2
                 }
             }) {
-                Text("Continue")
+                Text(String(localized: "Continue"))
                     .font(.headline)
                     .foregroundColor(.ambrosiaIvory)
                     .frame(maxWidth: .infinity)
@@ -302,13 +302,13 @@ struct OnboardingView: View {
         VStack(spacing: 10) {
 
                 
-                Text("Let's take a few seconds to feel better")
+                Text(String(localized: "Let's take a few seconds to feel better"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
                     .multilineTextAlignment(.center)
 
-            Text("Experience the power of mindfulness with a simple breathing exercise")
+            Text(String(localized: "Experience the power of mindfulness with a simple breathing exercise"))
                 .font(.subheadline)
                 .foregroundColor(.wildMaple)
                 .multilineTextAlignment(.center)
@@ -323,7 +323,7 @@ struct OnboardingView: View {
                         currentStep = 3
                     }
                 }) {
-                    Text("Start Exercise")
+                    Text(String(localized: "Start Exercise"))
                         .font(.headline)
                         .foregroundColor(.ambrosiaIvory)
                         .frame(maxWidth: .infinity)
@@ -338,7 +338,7 @@ struct OnboardingView: View {
                         currentStep = 5  // Skip to name input
                     }
                 }) {
-                    Text("Skip for now")
+                    Text(String(localized: "Skip for now"))
                         .font(.subheadline)
                         .foregroundColor(.ambrosiaIvory)
                 }
@@ -373,18 +373,18 @@ struct OnboardingView: View {
                     .animation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0), value: isAnimating)
                 
                 VStack(spacing: 15) {
-                    Text("Nice work!")
+                    Text(String(localized: "Nice work!"))
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.ambrosiaIvory)
                         .multilineTextAlignment(.center)
                     
-                    Text("You just completed your first session")
+                    Text(String(localized: "You just completed your first session"))
                         .font(.title3)
                         .foregroundColor(.wildMaple)
                         .multilineTextAlignment(.center)
                     
-                    Text("That's the first step towards clarity")
+                    Text(String(localized: "That's the first step towards clarity"))
                         .font(.subheadline)
                         .foregroundColor(.ambrosiaIvory)
                         .multilineTextAlignment(.center)
@@ -401,7 +401,7 @@ struct OnboardingView: View {
                     currentStep = 5
                 }
             }) {
-                Text("Continue")
+                Text(String(localized: "Continue"))
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -415,7 +415,7 @@ struct OnboardingView: View {
     private var goalSelectionStep: some View {
         VStack(spacing: 40) {
             VStack(spacing: 20) {
-                Text("What do you want most right now?")
+                Text(String(localized: "What do you want most right now?"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
@@ -476,7 +476,7 @@ struct OnboardingView: View {
                         currentStep = 8
                     }
                 }) {
-                    Text("Back")
+                    Text(String(localized: "Back"))
                         .font(.headline)
                         .foregroundColor(.afterBurn)
                         .frame(maxWidth: .infinity)
@@ -491,7 +491,7 @@ struct OnboardingView: View {
                         currentStep = 10
                     }
                 }) {
-                    Text("Continue")
+                    Text(String(localized: "Continue"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -507,13 +507,13 @@ struct OnboardingView: View {
     private var reminderTimeStep: some View {
         VStack(spacing: 40) {
             VStack(spacing: 10) {
-                Text("When should we remind you")
+                Text(String(localized: "When should we remind you"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
                     .multilineTextAlignment(.center)
                 
-                Text("to check in daily?")
+                Text(String(localized: "to check in daily?"))
                     .font(.subheadline)
                     .foregroundColor(.wildMaple)
                     .multilineTextAlignment(.center)
@@ -521,7 +521,7 @@ struct OnboardingView: View {
             
             VStack(spacing: 30) {
                 DatePicker(
-                    "Reminder Time",
+                    String(localized: "Reminder Time"),
                     selection: $reminderTime,
                     displayedComponents: .hourAndMinute
                 )
@@ -531,7 +531,7 @@ struct OnboardingView: View {
                 .colorScheme(.dark)
 
                 
-                Text("We'll send you a gentle reminder to check in with yourself and track your progress")
+                Text(String(localized: "We'll send you a gentle reminder to check in with yourself and track your progress"))
                     .font(.caption)
                     .foregroundColor(.ambrosiaIvory)
                     .multilineTextAlignment(.center)
@@ -547,7 +547,7 @@ struct OnboardingView: View {
                         currentStep = 9
                     }
                 }) {
-                    Text("Back")
+                    Text(String(localized: "Back"))
                         .font(.headline)
                         .foregroundColor(.afterBurn)
                         .frame(maxWidth: .infinity)
@@ -580,7 +580,7 @@ struct OnboardingView: View {
                                 .scaleEffect(0.8)
                                 .foregroundColor(.white)
                         }
-                        Text(isRequestingNotificationPermission ? "Setting up..." : "Set Reminder")
+                        Text(isRequestingNotificationPermission ? String(localized: "Setting up...") : String(localized: "Set Reminder"))
                             .font(.headline)
                             .foregroundColor(.white)
                     }
@@ -596,10 +596,10 @@ struct OnboardingView: View {
     
     private var loadingSteps: [String] {
         [
-            "Analyzing answers",
-            "Checking goals",
-            "Creating recommendations",
-            "Personalizing experience"
+            String(localized: "Analyzing answers"),
+            String(localized: "Checking goals"),
+            String(localized: "Creating recommendations"),
+            String(localized: "Personalizing experience")
         ]
     }
     
@@ -1376,7 +1376,7 @@ struct BreathingExerciseView: View {
     @State private var currentPhase: BreathingPhase = .inhale
     @State private var breathCount = 0
     @State private var isActive = false
-    @State private var phaseText = "Get Ready"
+    @State private var phaseText = String(localized: "Get Ready")
     @State private var showCompletionAnimation = false
     
     private let totalBreaths = 4 // 3 minutes ≈ 6 breaths for demo
@@ -1542,7 +1542,7 @@ struct BreathingExerciseView: View {
         
         switch currentPhase {
         case .inhale:
-            phaseText = "Breathe In"
+            phaseText = String(localized: "Breathe In")
             breathingScale = 1
             triggerHaptic(.light)
             
@@ -1552,7 +1552,7 @@ struct BreathingExerciseView: View {
             }
             
         case .exhale:
-            phaseText = "Breathe Out"
+            phaseText = String(localized: "Breathe Out")
             breathingScale = 0.7
             triggerHaptic(.light)
             
@@ -1562,7 +1562,7 @@ struct BreathingExerciseView: View {
             }
             
         case .hold:
-            phaseText = "Hold"
+            phaseText = String(localized: "Hold")
             triggerHaptic(.medium)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + holdTime) {
@@ -1571,7 +1571,7 @@ struct BreathingExerciseView: View {
             }
             
         case .pause:
-            phaseText = "Relax"
+            phaseText = String(localized: "Relax")
             breathingScale = 0.7
             breathCount += 1
             
@@ -1588,7 +1588,7 @@ struct BreathingExerciseView: View {
     
     private func completeExercise() {
         isActive = false
-        phaseText = "Complete!"
+        phaseText = String(localized: "Complete!")
         breathingScale = 1.0
         triggerHaptic(.success)
         

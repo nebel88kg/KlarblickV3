@@ -52,6 +52,12 @@ struct KlarblickApp: App {
                         .transition(.opacity)
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("AccountDeleted"))) { _ in
+                // Reset app state and trigger onboarding
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    appStateManager.resetForAccountDeletion()
+                }
+            }
         }
         .modelContainer(modelContainer)
         .onChange(of: subscriptionManager.isSubscribed) { _, isSubscribed in

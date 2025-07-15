@@ -91,6 +91,19 @@ class AppStateManager: ObservableObject {
         transitionTo(.loading)
     }
     
+    func resetForAccountDeletion() {
+        // Reset all state for account deletion
+        hasUser = false
+        isOnboardingComplete = false
+        isSubscribed = false
+        userCheckCompleted = false
+        subscriptionCheckCompleted = false
+        isLoading = false
+        
+        // Transition directly to onboarding
+        transitionTo(.onboarding)
+    }
+    
     // MARK: - State Validation
     var isValidState: Bool {
         switch currentState {
