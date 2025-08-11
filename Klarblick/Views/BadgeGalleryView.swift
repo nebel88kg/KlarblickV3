@@ -226,6 +226,7 @@ struct BadgeGalleryCard: View {
                 }
             }
             .padding(16)
+            .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.backgroundSecondary.opacity(isEarned ? 0.8 : 0.4))
@@ -290,8 +291,8 @@ struct BadgeDetailView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack(spacing: 24) {
-                Spacer()
                 
                 // Large badge icon
                 ZStack {
@@ -348,10 +349,19 @@ struct BadgeDetailView: View {
                     }
                 }
                 
-                Spacer()
             }
             .frame(maxWidth: .infinity)
-            .padding()
+            .padding(.vertical, 20)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.backgroundSecondary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(rarityColor, lineWidth: 2)
+                    )
+            )
+            .padding(.horizontal, 40)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 RadialGradient(
                     colors: [Color.backgroundSecondary.opacity(1), Color.purpleCarolite.opacity(1)],

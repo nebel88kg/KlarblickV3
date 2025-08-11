@@ -636,11 +636,25 @@ struct ExerciseDetailView: View {
             resetInteractiveElements()
         } else {
             // Exercise completed
+            print("🎯 Exercise completed: \(exercise.title)")
             withAnimation(.easeInOut(duration: 2)) {
                 isCompleted = true
             }
             awardXp(10)
             incrementStreakIfNeeded()
+            
+            // Create ExerciseCompletion record
+            let completion = ExerciseCompletion(date: Date(), category: exercise.category, source: "library")
+            modelContext.insert(completion)
+            print("📝 Created ExerciseCompletion record: category=\(exercise.category.rawValue), date=\(completion.date), source=library")
+            
+            // Save the context to persist all changes (streak, XP, completion record)
+            do {
+                try modelContext.save()
+                print("💾 Successfully saved model context after exercise completion")
+            } catch {
+                print("❌ Failed to save exercise completion: \(error)")
+            }
             
             // Cancel today's mindfulness reminder since an exercise was completed
             NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
@@ -720,29 +734,63 @@ struct ExerciseDetailView: View {
     private func incrementStreak(){
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
+            let oldStreak = user.currentStreak
             user.currentStreak += 1
+            print("📈 Incremented streak: \(oldStreak) → \(user.currentStreak)")
             
             // Check for new badges after streak increment
             let newBadges = BadgeChecker.shared.checkForNewBadges(for: user, context: modelContext)
             if !newBadges.isEmpty {
                 earnedBadges = newBadges
                 showBadgeNotification = true
+                print("🏆 Earned new badges: \(newBadges.map { $0.name })")
             }
+        } else {
+            print("❌ Could not find user to increment streak")
         }
     }
     
     private func incrementStreakIfNeeded(){
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
-            let today = Calendar.current.startOfDay(for: Date())
-            let lastExerciseDate = user.lastExerciseDate ?? Date.distantPast
-            let lastExerciseDay = Calendar.current.startOfDay(for: lastExerciseDate)
+            let calendar = Calendar.current
+            let today = calendar.startOfDay(for: Date())
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
             
-            // Check if no exercise has been completed today
-            if lastExerciseDay < today {
+            print("🔍 Checking if streak increment needed (using ExerciseCompletion records):")
+            print("   Today: \(today)")
+            print("   Current streak: \(user.currentStreak)")
+            
+            // Check if any exercises were completed today
+            let todayDescriptor = FetchDescriptor<ExerciseCompletion>(
+                predicate: #Predicate<ExerciseCompletion> { completion in
+                    completion.date >= today && completion.date < tomorrow
+                }
+            )
+            
+            do {
+                let todayCompletions = try modelContext.fetch(todayDescriptor)
+                print("   Found \(todayCompletions.count) exercise completions today")
+                
+                for completion in todayCompletions {
+                    print("     - Category: \(completion.category), Date: \(completion.date), Source: \(completion.source)")
+                }
+                
+                // Only increment streak if no exercises completed today yet
+                if todayCompletions.isEmpty {
+                    print("✅ No exercises completed today yet, incrementing streak")
+                    incrementStreak()
+                } else {
+                    print("⏭️ Exercise already completed today, not incrementing streak")
+                }
+                
+            } catch {
+                print("❌ Failed to check today's exercise completions: \(error)")
+                // In case of error, fall back to incrementing (safer than not incrementing)
                 incrementStreak()
-                user.lastExerciseDate = Date()
             }
+        } else {
+            print("❌ Could not find user to check streak increment")
         }
     }
     

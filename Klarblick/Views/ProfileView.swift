@@ -26,6 +26,10 @@ struct ProfileView: View {
     @State private var showingBadgeGallery = false
     @State private var showingMoodHistory = false
     
+    private var shouldScroll: Bool {
+        UIScreen.main.bounds.height <= 800
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -55,12 +59,15 @@ struct ProfileView: View {
     // MARK: - View Components
     
     private var mainContentView: some View {
-        VStack(spacing: 0) {
-            avatarSection
-            overviewHeader
-            statsSection
-            moodHistorySection
-            Spacer()
+        Group {
+            if shouldScroll {
+                ScrollView(.vertical, showsIndicators: false) {
+                    profileContent
+                        .padding(.bottom, 20) // Extra bottom padding for scroll
+                }
+            } else {
+                profileContent
+            }
         }
         .padding(20)
         .background(RadialGradient(
@@ -69,6 +76,18 @@ struct ProfileView: View {
             startRadius: 100,
             endRadius: 900
         ))
+    }
+    
+    private var profileContent: some View {
+        VStack(spacing: 0) {
+            avatarSection
+            overviewHeader
+            statsSection
+            moodHistorySection
+            if !shouldScroll {
+                Spacer()
+            }
+        }
     }
     
     private var avatarSection: some View {

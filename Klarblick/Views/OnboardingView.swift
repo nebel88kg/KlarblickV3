@@ -8,6 +8,11 @@
 import SwiftUI
 import SwiftData
 
+// MARK: - Localization Protocol
+protocol Localizable {
+    var localizedTitle: String { get }
+}
+
 enum HapticType {
     case light, medium, heavy, success, selection
     
@@ -55,14 +60,9 @@ struct OnboardingView: View {
         }
     }
     
-
     
-    enum WellnessGoal: String, CaseIterable {
-        case lessAnxiety = "Less anxiety"
-        case moreEnergy = "More energy"
-        case betterSleep = "Better sleep"
-        case focus = "Clear head"
-        case createHabit = "Create a habit"
+    enum WellnessGoal: String, CaseIterable, Localizable {
+        case lessAnxiety, moreEnergy, betterSleep, focus, createHabit
         
         var icon: String {
             switch self {
@@ -83,27 +83,55 @@ struct OnboardingView: View {
             case .createHabit: return .green
             }
         }
+        
+        var localizedTitle: String {
+            switch self {
+            case .lessAnxiety: return String(localized: "goal_less_anxiety")
+            case .moreEnergy: return String(localized: "goal_more_energy")
+            case .betterSleep: return String(localized: "goal_better_sleep")
+            case .focus: return String(localized: "goal_clear_head")
+            case .createHabit: return String(localized: "goal_create_habit")
+            }
+        }
     }
     
-    enum AgeRange: String, CaseIterable {
-        case teens = "under 20"
-        case twenties = "20-29"
-        case thirties = "30-39"
-        case forties = "40-49"
-        case fifties = "50+"
+    enum AgeRange: String, CaseIterable, Localizable {
+        case teens, twenties, thirties, forties, fifties
+        
+        var localizedTitle: String {
+            switch self {
+            case .teens: return String(localized: "age_under_20")
+            case .twenties: return String(localized: "age_20_29")
+            case .thirties: return String(localized: "age_30_39")
+            case .forties: return String(localized: "age_40_49")
+            case .fifties: return String(localized: "age_50_plus")
+            }
+        }
     }
     
-    enum MindfulnessExperience: String, CaseIterable {
-        case beginner = "Complete beginner"
-        case some = "I have some experience"
-        case experienced = "Meditating regularly"
+    enum MindfulnessExperience: String, CaseIterable, Localizable {
+        case beginner, some, experienced
+        
+        var localizedTitle: String {
+            switch self {
+            case .beginner: return String(localized: "experience_complete_beginner")
+            case .some: return String(localized: "experience_some_experience")
+            case .experienced: return String(localized: "experience_meditating_regularly")
+            }
+        }
     }
     
-    enum StressLevel: String, CaseIterable {
-        case low = "Low stress"
-        case moderate = "Moderate stress"
-        case high = "High stress"
-        case notSure = "Not sure"
+    enum StressLevel: String, CaseIterable, Localizable {
+        case low, moderate, high, notSure
+        
+        var localizedTitle: String {
+            switch self {
+            case .low: return String(localized: "stress_low")
+            case .moderate: return String(localized: "stress_moderate")
+            case .high: return String(localized: "stress_high")
+            case .notSure: return String(localized: "stress_not_sure")
+            }
+        }
     }
     
     private var timeFormatter: DateFormatter {
@@ -162,6 +190,7 @@ struct OnboardingView: View {
             }
             .padding(.horizontal ,30)
             .padding(.top, 100)
+
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 0.8)) {
@@ -224,11 +253,14 @@ struct OnboardingView: View {
                     .padding(12)
                     .background(Color.afterBurn)
                     .cornerRadius(12)
+                    .padding(.bottom, 34)
             }
             .scaleEffect(isAnimating ? 1.0 : 0.95)
             .opacity(isAnimating ? 1.0 : 0)
             .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0).delay(0.3), value: isAnimating)
         }
+        .ignoresSafeArea(edges: .bottom)
+        
     }
     
     private var benefitsStep: some View {
@@ -434,7 +466,7 @@ struct OnboardingView: View {
                                 .foregroundColor(goal.color)
                                 .frame(width: 30)
                             
-                            Text(goal.rawValue)
+                            Text(goal.localizedTitle)
                                 .font(.headline)
                                 .foregroundColor(.ambrosiaIvory)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -770,7 +802,7 @@ struct OnboardingView: View {
                                 Text("Your Goal")
                                     .font(.caption)
                                     .foregroundColor(.wildMaple)
-                                Text(goal.rawValue)
+                                Text(goal.localizedTitle)
                                     .font(.headline)
                                     .foregroundColor(.ambrosiaIvory)
                             }
@@ -876,32 +908,32 @@ struct OnboardingView: View {
             VStack(spacing: 10) {
                 WeekProgressView(
                     weekNumber: 1,
-                    title: "Foundation",
-                    description: "Build routine",
+                    title: String(localized: "week_1_title"),
+                    description: String(localized: "week_1_description"),
                     icon: "seedling",
                     isVisible: animatedWeekCards >= 1
                 )
                 
                 WeekProgressView(
                     weekNumber: 2,
-                    title: "Growth",
-                    description: "Notice improvements",
+                    title: String(localized: "week_2_title"),
+                    description: String(localized: "week_2_description"),
                     icon: "leaf",
                     isVisible: animatedWeekCards >= 2
                 )
                 
                 WeekProgressView(
                     weekNumber: 3,
-                    title: "Confidence",
-                    description: "Feel in control",
+                    title: String(localized: "week_3_title"),
+                    description: String(localized: "week_3_description"),
                     icon: "sun.max",
                     isVisible: animatedWeekCards >= 3
                 )
                 
                 WeekProgressView(
                     weekNumber: 4,
-                    title: "Transformation",
-                    description: "Lasting change",
+                    title: String(localized: "week_4_title"),
+                    description: String(localized: "week_4_description"),
                     icon: "star",
                     isVisible: animatedWeekCards >= 4
                 )
@@ -948,7 +980,7 @@ struct OnboardingView: View {
                         selectedAge = age
                     }) {
                         HStack(spacing: 15) {
-                            Text(age.rawValue)
+                            Text(age.localizedTitle)
                                 .font(.headline)
                                 .foregroundColor(.ambrosiaIvory)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -1035,7 +1067,7 @@ struct OnboardingView: View {
                         selectedExperience = experience
                     }) {
                         HStack(spacing: 15) {
-                            Text(experience.rawValue)
+                            Text(experience.localizedTitle)
                                 .font(.headline)
                                 .foregroundColor(.ambrosiaIvory)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -1122,7 +1154,7 @@ struct OnboardingView: View {
                         selectedStressLevel = stress
                     }) {
                         HStack(spacing: 15) {
-                            Text(stress.rawValue)
+                            Text(stress.localizedTitle)
                                 .font(.headline)
                                 .foregroundColor(.ambrosiaIvory)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -1209,10 +1241,6 @@ struct OnboardingView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
-                
-                Text("We'd love to personalize your experience")
-                    .font(.subheadline)
-                    .foregroundColor(.wildMaple)
                     .multilineTextAlignment(.center)
             }
             
@@ -1242,22 +1270,22 @@ struct OnboardingView: View {
             Spacer()
             
                 
-                Button(action: {
-                    if !userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                        triggerHaptic(.medium)
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            currentStep = 6
-                        }
+            Button(action: {
+                if !userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    triggerHaptic(.medium)
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        currentStep = 6
                     }
-                }) {
-                    Text("Continue")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(12)
-                        .background(userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray : Color.afterBurn)
-                        .cornerRadius(12)
                 }
+            }) {
+                Text("Continue")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(12)
+                    .background(userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray : Color.afterBurn)
+                    .cornerRadius(12)
+            }
                 .disabled(userName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             
         }
@@ -1631,14 +1659,15 @@ struct WeekProgressView: View {
 
             // Week indicator
             VStack(alignment: .trailing, spacing: 8) {
-                Text("Week \(weekNumber)")
+                Text(String(localized: "week_number", defaultValue: "Week \(weekNumber)"))
                     .font(.subheadline)
                     .foregroundColor(.ambrosiaIvory)
 
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(20)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 20)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(LinearGradient(colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.7)], startPoint: .trailing, endPoint: .leading))

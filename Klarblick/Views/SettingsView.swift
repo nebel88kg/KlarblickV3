@@ -28,8 +28,8 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 24) {
-                // Header
+            VStack(spacing: 0) {
+                // Header - Fixed at top
                 ZStack {
                     Text("Settings")
                         .font(.title2)
@@ -45,224 +45,228 @@ struct SettingsView: View {
                         Spacer()
                     }
                 }
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 16)
                 
-                // Settings Content
-                VStack(spacing: 20) {
-                    // Profile Settings
-                    VStack(spacing: 16) {
-                        HStack {
-                            Text("Profile")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.ambrosiaIvory)
-                            Spacer()
-                        }
-                        
-                        // Edit Name
-                        Button(action: { showingNameEditor = true }) {
+                // Scrollable Settings Content
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 20) {
+                        // Profile Settings
+                        VStack(spacing: 16) {
                             HStack {
-                                Image(systemName: "person.circle")
-                                    .font(.title2)
-                                    .foregroundColor(.wildMaple)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Edit Name")
-                                        .font(.body)
-                                        .foregroundColor(.ambrosiaIvory)
-                                    
-                                    Text(users.first?.name ?? "User")
-                                        .font(.caption)
-                                        .foregroundColor(.wildMaple)
-                                }
-                                
+                                Text("Profile")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
                                 Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundColor(.wildMaple)
                             }
-                            .padding(16)
-                            .background(Color.backgroundSecondary.opacity(0.3))
-                            .cornerRadius(12)
-                        }
-                        
-                        // Delete Account
-                        Button(action: { showingDeleteConfirmation = true }) {
-                            HStack {
-                                Image(systemName: "trash")
-                                    .font(.body)
-                                    .foregroundColor(.wildMaple)
-                                    .padding(.horizontal, 6)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Delete Account")
-                                        .font(.caption)
-                                        .foregroundColor(.ambrosiaIvory)
-                                    
-                                    Text("Permanently remove all data.")
-                                        .font(.caption2)
-                                        .foregroundColor(.gray)
-                                }
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.caption2)
-                                    .foregroundColor(.gray)
-                            }
-                            .padding(10)
-                            .background(Color.backgroundSecondary.opacity(0.3))
-                            .cornerRadius(12)
-                        }
-                    }
-                    
-                    // App Settings
-                    VStack(spacing: 16) {
-                        HStack {
-                            Text("App")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.ambrosiaIvory)
-                            Spacer()
-                        }
-                        
-                        // Reminder Time
-                        Button(action: { showingReminderTimeEditor = true }) {
-                            HStack {
-                                Image(systemName: "bell")
-                                    .font(.title2)
-                                    .foregroundColor(.wildMaple)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Daily Reminders")
-                                        .font(.body)
-                                        .foregroundColor(.ambrosiaIvory)
-                                    
-                                    Text(formatTime(reminderTime))
-                                        .font(.caption)
+                            
+                            // Edit Name
+                            Button(action: { showingNameEditor = true }) {
+                                HStack {
+                                    Image(systemName: "person.circle")
+                                        .font(.title2)
                                         .foregroundColor(.wildMaple)
-                                }
-                                
-                                Spacer()
-                                
-                                if isUpdatingReminder {
-                                    ProgressView()
-                                        .scaleEffect(0.8)
-                                        .foregroundColor(.wildMaple)
-                                } else {
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Edit Name")
+                                            .font(.body)
+                                            .foregroundColor(.ambrosiaIvory)
+                                        
+                                        Text(users.first?.name ?? "User")
+                                            .font(.caption)
+                                            .foregroundColor(.wildMaple)
+                                    }
+                                    
+                                    Spacer()
+                                    
                                     Image(systemName: "chevron.right")
                                         .font(.caption)
                                         .foregroundColor(.wildMaple)
                                 }
+                                .padding(16)
+                                .background(Color.backgroundSecondary.opacity(0.3))
+                                .cornerRadius(12)
                             }
-                            .padding(16)
-                            .background(Color.backgroundSecondary.opacity(0.3))
-                            .cornerRadius(12)
-                        }
-                        .disabled(isUpdatingReminder)
-                        
-                        // Notifications Status
-                        HStack {
-                            Image(systemName: notificationsEnabled ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .font(.title2)
-                                .foregroundColor(notificationsEnabled ? .green : .red)
                             
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Notification Status")
-                                    .font(.body)
+                            // Delete Account
+                            Button(action: { showingDeleteConfirmation = true }) {
+                                HStack {
+                                    Image(systemName: "trash")
+                                        .font(.body)
+                                        .foregroundColor(.wildMaple)
+                                        .padding(.horizontal, 6)
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Delete Account")
+                                            .font(.caption)
+                                            .foregroundColor(.ambrosiaIvory)
+                                        
+                                        Text("Permanently remove all data.")
+                                            .font(.caption2)
+                                            .foregroundColor(.gray)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption2)
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(10)
+                                .background(Color.backgroundSecondary.opacity(0.3))
+                                .cornerRadius(12)
+                            }
+                        }
+                        
+                        // App Settings
+                        VStack(spacing: 16) {
+                            HStack {
+                                Text("App")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
                                     .foregroundColor(.ambrosiaIvory)
-                                
-                                Text(notificationsEnabled ? "Enabled" : "Disabled in Settings")
-                                    .font(.caption)
-                                    .foregroundColor(.wildMaple)
+                                Spacer()
                             }
                             
-                            Spacer()
-                            
-                            if !notificationsEnabled {
-                                Button("Enable") {
-                                    openAppSettings()
+                            // Reminder Time
+                            Button(action: { showingReminderTimeEditor = true }) {
+                                HStack {
+                                    Image(systemName: "bell")
+                                        .font(.title2)
+                                        .foregroundColor(.wildMaple)
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Daily Reminders")
+                                            .font(.body)
+                                            .foregroundColor(.ambrosiaIvory)
+                                        
+                                        Text(formatTime(reminderTime))
+                                            .font(.caption)
+                                            .foregroundColor(.wildMaple)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    if isUpdatingReminder {
+                                        ProgressView()
+                                            .scaleEffect(0.8)
+                                            .foregroundColor(.wildMaple)
+                                    } else {
+                                        Image(systemName: "chevron.right")
+                                            .font(.caption)
+                                            .foregroundColor(.wildMaple)
+                                    }
                                 }
-                                .font(.caption)
-                                .foregroundColor(.afterBurn)
+                                .padding(16)
+                                .background(Color.backgroundSecondary.opacity(0.3))
+                                .cornerRadius(12)
                             }
-                        }
-                        .padding(16)
-                        .background(Color.backgroundSecondary.opacity(0.3))
-                        .cornerRadius(12)
-                    }
-                    
-                    // About Section
-                    VStack(spacing: 16) {
-                        HStack {
-                            Text("About")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.ambrosiaIvory)
-                            Spacer()
-                        }
-                        
-                        // About this app
-                        Button(action: { showingAboutApp = true }) {
+                            .disabled(isUpdatingReminder)
+                            
+                            // Notifications Status
                             HStack {
-                                Image(systemName: "info.circle")
+                                Image(systemName: notificationsEnabled ? "checkmark.circle.fill" : "xmark.circle.fill")
                                     .font(.title2)
-                                    .foregroundColor(.wildMaple)
+                                    .foregroundColor(notificationsEnabled ? .green : .red)
                                 
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("About this app")
+                                    Text("Notification Status")
                                         .font(.body)
                                         .foregroundColor(.ambrosiaIvory)
                                     
-                                    Text("Learn more about Klarblick")
+                                    Text(notificationsEnabled ? "Enabled" : "Disabled in Settings")
                                         .font(.caption)
                                         .foregroundColor(.wildMaple)
                                 }
                                 
                                 Spacer()
                                 
-                                Image(systemName: "chevron.right")
+                                if !notificationsEnabled {
+                                    Button("Enable") {
+                                        openAppSettings()
+                                    }
                                     .font(.caption)
-                                    .foregroundColor(.wildMaple)
+                                    .foregroundColor(.afterBurn)
+                                }
                             }
                             .padding(16)
                             .background(Color.backgroundSecondary.opacity(0.3))
                             .cornerRadius(12)
                         }
                         
-                        // Contact & Feedback
-                        Button(action: { showingMailComposer = true }) {
+                        // About Section
+                        VStack(spacing: 16) {
                             HStack {
-                                Image(systemName: "envelope")
-                                    .font(.title2)
-                                    .foregroundColor(.wildMaple)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Contact & Feedback")
-                                        .font(.body)
-                                        .foregroundColor(.ambrosiaIvory)
+                                Text("About")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
+                                Spacer()
+                            }
+                            
+                            // About this app
+                            Button(action: { showingAboutApp = true }) {
+                                HStack {
+                                    Image(systemName: "info.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.wildMaple)
                                     
-                                    Text("Get in touch or share feedback")
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("About this app")
+                                            .font(.body)
+                                            .foregroundColor(.ambrosiaIvory)
+                                        
+                                        Text("Learn more about Klarblick")
+                                            .font(.caption)
+                                            .foregroundColor(.wildMaple)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
                                         .font(.caption)
                                         .foregroundColor(.wildMaple)
                                 }
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundColor(.wildMaple)
+                                .padding(16)
+                                .background(Color.backgroundSecondary.opacity(0.3))
+                                .cornerRadius(12)
                             }
-                            .padding(16)
-                            .background(Color.backgroundSecondary.opacity(0.3))
-                            .cornerRadius(12)
+                            
+                            // Contact & Feedback
+                            Button(action: { showingMailComposer = true }) {
+                                HStack {
+                                    Image(systemName: "envelope")
+                                        .font(.title2)
+                                        .foregroundColor(.wildMaple)
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Contact & Feedback")
+                                            .font(.body)
+                                            .foregroundColor(.ambrosiaIvory)
+                                        
+                                        Text("Get in touch or share feedback")
+                                            .font(.caption)
+                                            .foregroundColor(.wildMaple)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption)
+                                        .foregroundColor(.wildMaple)
+                                }
+                                .padding(16)
+                                .background(Color.backgroundSecondary.opacity(0.3))
+                                .cornerRadius(12)
+                            }
                         }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 40) // Extra bottom padding for comfortable scrolling
                 }
-                
-                Spacer()
             }
-            .padding(20)
             .background(RadialGradient(
                 colors: [Color.backgroundSecondary.opacity(1), Color.purpleCarolite.opacity(1)],
                 center: .bottom,

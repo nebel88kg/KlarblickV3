@@ -200,13 +200,13 @@ class SubscriptionManager: ObservableObject {
         switch product.id {
         case ProductID.yearlySubscription:
             return (
-                title: "Yearly",
+                title: String(localized: "Yearly"),
                 description: "Get full access with 3-day free trial",
                 price: "\(priceString)"
             )
         case ProductID.monthlySubscription:
             return (
-                title: "Monthly",
+                title: String(localized: "Monthly"),
                 description: "Get full access monthly",
                 price: "\(priceString)"
             )

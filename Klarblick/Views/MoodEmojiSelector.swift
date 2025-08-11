@@ -292,8 +292,6 @@ struct MoodNoteSheet: View {
             }
             
             HStack {
-                Spacer()
-                
                 Button("Add Note") {
                     saveNoteToLatestMoodEntry()
                     isPresented = false
@@ -304,13 +302,7 @@ struct MoodNoteSheet: View {
                 .padding(.vertical, 12)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.afterBurn.opacity(0.8), Color.mangosteenViolet.opacity(1)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(Color.afterBurn)
                 )
                 
                 Spacer()
@@ -321,13 +313,12 @@ struct MoodNoteSheet: View {
                 .font(.headline)
                 .foregroundColor(.gray2)
                 .padding(.horizontal, 20)
-                .padding(.vertical, 12)
+                .padding(.vertical, 11)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.gray2, lineWidth: 2)
                 )
                 
-                Spacer()
             }
         }
         .padding(.horizontal, 20)

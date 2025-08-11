@@ -1,6 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-20%" : {
+
+    },
+    "/mo" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/Mo"
+          }
+        }
+      }
+    },
     "%@" : {
       "localizations" : {
         "de" : {
@@ -193,24 +206,48 @@
         }
       }
     },
-    "1" : {
-
-    },
-    "3 days free then %@ per year • Cancel anytime" : {
+    "✓  Become present in every moment." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3 Tage kostenlos dann %@ pro Jahr • Jederzeit kündbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "3 days free then %@ per year • Cancel anytime"
+            "value" : "✓  Werde präsent in jedem Moment"
           }
         }
       }
+    },
+    "✓  Build inner calm & self-trust." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✓  Baue innere Ruhe & Selbstvertrauen auf."
+          }
+        }
+      }
+    },
+    "✓  Establish a sustainable mindfulness habit." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✓  Etabliere eine nachhaltige Mindfulness-routine."
+          }
+        }
+      }
+    },
+    "✓  Feel more grounded and balanced." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✓  Fühle dich geerdet und ausgeglichener."
+          }
+        }
+      }
+    },
+    "1" : {
+
     },
     "30 Days" : {
       "localizations" : {
@@ -264,6 +301,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notiz speichern"
+          }
+        }
+      }
+    },
+    "age_20_29" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20-29"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20-29"
+          }
+        }
+      }
+    },
+    "age_30_39" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30-39"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30-39"
+          }
+        }
+      }
+    },
+    "age_40_49" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "40-49"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "40-49"
+          }
+        }
+      }
+    },
+    "age_50_plus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50+"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50+"
+          }
+        }
+      }
+    },
+    "age_under_20" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unter 20"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "under 20"
           }
         }
       }
@@ -464,6 +581,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Begin Breathing"
+          }
+        }
+      }
+    },
+    "Billed %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgerechnet %@"
           }
         }
       }
@@ -2541,6 +2668,54 @@
         }
       }
     },
+    "experience_complete_beginner" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompletter Anfänger"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete beginner"
+          }
+        }
+      }
+    },
+    "experience_meditating_regularly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditiere regelmäßig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditating regularly"
+          }
+        }
+      }
+    },
+    "experience_some_experience" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich habe etwas Erfahrung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have some experience"
+          }
+        }
+      }
+    },
     "Follow the circle with your breath" : {
       "localizations" : {
         "de" : {
@@ -2605,6 +2780,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get Started"
+          }
+        }
+      }
+    },
+    "goal_better_sleep" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besserer Schlaf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Better sleep"
+          }
+        }
+      }
+    },
+    "goal_clear_head" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klarer Kopf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear head"
+          }
+        }
+      }
+    },
+    "goal_create_habit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Gewohnheit schaffen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create a habit"
+          }
+        }
+      }
+    },
+    "goal_less_anxiety" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weniger Angst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less anxiety"
+          }
+        }
+      }
+    },
+    "goal_more_energy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr Energie"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More energy"
           }
         }
       }
@@ -2959,6 +3214,16 @@
         }
       }
     },
+    "Monthly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatlich"
+          }
+        }
+      }
+    },
     "Mood" : {
       "localizations" : {
         "de" : {
@@ -3263,22 +3528,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Process your experiences and emotions"
-          }
-        }
-      }
-    },
-    "Processing..." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verarbeitung..."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Processing..."
           }
         }
       }
@@ -3823,6 +4072,70 @@
         }
       }
     },
+    "stress_high" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoher Stress"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High stress"
+          }
+        }
+      }
+    },
+    "stress_low" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niedriger Stress"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low stress"
+          }
+        }
+      }
+    },
+    "stress_moderate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittlerer Stress"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moderate stress"
+          }
+        }
+      }
+    },
+    "stress_not_sure" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bin mir nicht sicher"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not sure"
+          }
+        }
+      }
+    },
     "Stressed" : {
       "localizations" : {
         "de" : {
@@ -3899,22 +4212,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terms"
-          }
-        }
-      }
-    },
-    "Test one month • It's less than a cocktail • Cancel anytime" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Teste einen Monat • Kostet weniger als ein Cocktail • Jederzeit kündbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Test one month • It's less than a cocktail • Cancel anytime"
           }
         }
       }
@@ -4025,22 +4322,6 @@
         }
       }
     },
-    "Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Teste Klarblick für einen Monat. Es kostet weniger als ein Cocktail. Keine versteckten Kosten, jederzeit kündbar."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime."
-          }
-        }
-      }
-    },
     "Type" : {
       "localizations" : {
         "de" : {
@@ -4092,22 +4373,6 @@
         }
       }
     },
-    "We'd love to personalize your experience" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wir würden gerne deine Erfahrung personalisieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We'd love to personalize your experience"
-          }
-        }
-      }
-    },
     "We'll send you a gentle reminder to check in with yourself and track your progress" : {
       "localizations" : {
         "de" : {
@@ -4140,23 +4405,135 @@
         }
       }
     },
-    "We're inviting you to a 3-day free trial. Cancel anytime, no strings attached." : {
+    "week_1_description" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir laden dich zu einer 3-tägigen kostenlosen Testversion ein. Jederzeit kündbar, ohne Verpflichtungen."
+            "value" : "Routine aufbauen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We're inviting you to a 3-day free trial. Cancel anytime, no strings attached."
+            "value" : "Build routine"
           }
         }
       }
     },
-    "Week %lld" : {
+    "week_1_title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fundament"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foundation"
+          }
+        }
+      }
+    },
+    "week_2_description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbesserungen bemerken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice improvements"
+          }
+        }
+      }
+    },
+    "week_2_title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachstum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Growth"
+          }
+        }
+      }
+    },
+    "week_3_description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrolle spüren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feel in control"
+          }
+        }
+      }
+    },
+    "week_3_title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selbstvertrauen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confidence"
+          }
+        }
+      }
+    },
+    "week_4_description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dauerhafte Veränderung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lasting change"
+          }
+        }
+      }
+    },
+    "week_4_title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transformation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transformation"
+          }
+        }
+      }
+    },
+    "week_number" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4392,6 +4769,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XP Boosters"
+          }
+        }
+      }
+    },
+    "Yearly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jährlich"
           }
         }
       }

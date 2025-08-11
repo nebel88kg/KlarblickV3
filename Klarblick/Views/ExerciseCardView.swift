@@ -24,6 +24,11 @@ struct ExerciseCardView: View {
     @State private var midnightTimer: Timer?
     @Environment(\.modelContext) private var modelContext
     
+    private var cardHeight: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+        return screenHeight <= 800 ? 80 : 110
+    }
+    
     private let exercises = [
         ExerciseCard(
             title: String(localized: "Awareness"),
@@ -89,7 +94,7 @@ struct ExerciseCardView: View {
                         .scaleEffect(pressedIndex == index ? 0.9 : 1.0)
                         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedIndex)
                 }
-                .frame(height: 110)
+                .frame(height: cardHeight)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .background(
@@ -107,12 +112,14 @@ struct ExerciseCardView: View {
                 .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressedIndex)
                 .onTapGesture {
                     if !isCompleted {
-                        performHapticFeedback(.medium)
                         selectRandomExercise(from: exercises[index].category)
                     }
                 }
                 .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
                     if !isCompleted {
+                        if pressing {
+                            performHapticFeedback(.medium)
+                        }
                         withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                             pressedIndex = pressing ? index : nil
                         }

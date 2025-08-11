@@ -15,6 +15,22 @@ struct LibraryView: View {
     @State private var showMeditation = false
     @State private var pressedCard: LibraryCardType? = nil
     
+    // Adaptive heights based on screen size
+    private var largeCardHeight: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+        return screenHeight <= 800 ? 280 : 353
+    }
+    
+    private var smallCardHeight: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+        return screenHeight <= 800 ? 137 : 174
+    }
+    
+    private var awarenessCardHeight: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+        return screenHeight <= 800 ? 180 : 220
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -32,7 +48,7 @@ struct LibraryView: View {
                         // Reflect Card (larger)
                         NavigationLink(destination: CategoryExerciseListView(category: .reflect)) {
                             ReflectCard()
-                                .frame(width: 180, height: 353)
+                                .frame(width: 180, height: largeCardHeight)
                         }
                         .buttonStyle(PlainButtonStyle())
                         .scaleEffect(pressedCard == .reflect ? 0.95 : 1.0)
@@ -51,6 +67,7 @@ struct LibraryView: View {
                         VStack(spacing: 5) {
                             NavigationLink(destination: CategoryExerciseListView(category: .balance)) {
                                 BalanceCard()
+                                    .frame(height: smallCardHeight)
                             }
                             .buttonStyle(PlainButtonStyle())
                             .scaleEffect(pressedCard == .balance ? 0.95 : 1.0)
@@ -69,6 +86,7 @@ struct LibraryView: View {
                                 showMeditation = true
                             }) {
                                 MeditationCard()
+                                    .frame(height: smallCardHeight)
                             }
                             .buttonStyle(PlainButtonStyle())
                             .scaleEffect(pressedCard == .meditation ? 0.95 : 1.0)
@@ -83,13 +101,12 @@ struct LibraryView: View {
                                 }
                             }, perform: {})
                         }
-                        .frame(height: 353)
                     }
                     
                     // Bottom Awareness card (full width)
                     NavigationLink(destination: CategoryExerciseListView(category: .awareness)) {
                         AwarenessCard()
-                            .frame(height: 220)
+                            .frame(height: awarenessCardHeight)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .scaleEffect(pressedCard == .awareness ? 0.95 : 1.0)

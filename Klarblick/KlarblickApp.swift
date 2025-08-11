@@ -45,6 +45,7 @@ struct KlarblickApp: App {
                     MainView()
                         .environmentObject(subscriptionManager)
                         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                            print("🚀 App entered foreground, running checks...")
                             checkAndResetStreakIfNeeded()
                             refreshSubscriptionStatus()
                             requestNotificationPermissionIfNeeded()
@@ -105,6 +106,8 @@ struct KlarblickApp: App {
             
             // If user exists, continue with subscription check
             if hasUser {
+                print("👤 Existing user found during startup, checking streak...")
+                checkAndResetStreakIfNeeded()
                 checkSubscriptionStatus()
             }
             
@@ -142,23 +145,98 @@ struct KlarblickApp: App {
     }
     
     private func checkAndResetStreakIfNeeded() {
+        print("🔄 checkAndResetStreakIfNeeded called")
         let context = modelContainer.mainContext
         
         let descriptor = FetchDescriptor<User>()
-        if let user = try? context.fetch(descriptor).first {
-            guard let lastExerciseDate = user.lastExerciseDate else { return }
-            
-            let today = Calendar.current.startOfDay(for: Date())
-            let lastExerciseDay = Calendar.current.startOfDay(for: lastExerciseDate)
-            
-            // Calculate days difference
-            let daysDifference = Calendar.current.dateComponents([.day], from: lastExerciseDay, to: today).day ?? 0
-            
-            // If last exercise was day before yesterday or earlier, reset streak
-            if daysDifference >= 2 {
-                user.currentStreak = 0
-                try? context.save()
+        guard let user = try? context.fetch(descriptor).first else { 
+            print("❌ No user found for streak check")
+            return 
+        }
+        
+        print("👤 Current user streak: \(user.currentStreak)")
+        
+        // Debug: Show ALL exercise completions in the database
+        let allCompletionsDescriptor = FetchDescriptor<ExerciseCompletion>()
+        do {
+            let allCompletions = try context.fetch(allCompletionsDescriptor)
+            print("🗄️ Total ExerciseCompletion records in database: \(allCompletions.count)")
+            for completion in allCompletions {
+                print("   - Category: \(completion.category), Date: \(completion.date), Source: \(completion.source)")
             }
+            
+            // Check if this might be the user's first exercise ever
+            if allCompletions.isEmpty {
+                print("🎯 No exercise completions found - this might be before the first exercise")
+                return // Don't reset streak if no exercises have been completed yet
+            }
+            
+        } catch {
+            print("❌ Failed to fetch all completions: \(error)")
+        }
+        
+        // Calculate yesterday's date range
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
+        let startOfYesterday = calendar.startOfDay(for: yesterday)
+        
+        print("📆 Date ranges:")
+        print("   Today: \(today)")
+        print("   Yesterday: \(yesterday)")
+        print("   Start of yesterday: \(startOfYesterday)")
+        
+        // Check if any exercises were completed yesterday
+        let exerciseDescriptor = FetchDescriptor<ExerciseCompletion>(
+            predicate: #Predicate<ExerciseCompletion> { completion in
+                completion.date >= startOfYesterday && completion.date < today
+            }
+        )
+        
+        do {
+            let yesterdayCompletions = try context.fetch(exerciseDescriptor)
+            print("📝 Found \(yesterdayCompletions.count) exercise completions for yesterday")
+            
+            for completion in yesterdayCompletions {
+                print("   - Category: \(completion.category), Date: \(completion.date), Source: \(completion.source)")
+            }
+            
+            // Check if any exercises were completed today
+            let todayDescriptor = FetchDescriptor<ExerciseCompletion>(
+                predicate: #Predicate<ExerciseCompletion> { completion in
+                    completion.date >= today
+                }
+            )
+            let todayCompletions = try context.fetch(todayDescriptor)
+            print("📝 Found \(todayCompletions.count) exercise completions for today")
+            
+            // If no exercises completed yesterday, check if this is a valid scenario to keep the streak
+            if yesterdayCompletions.isEmpty {
+                // Case 1: First exercise ever (streak = 1, exercises today, none yesterday)
+                if todayCompletions.count > 0 && user.currentStreak == 1 {
+                    print("🎯 First exercise scenario detected - user has 1 streak, exercises today, none yesterday")
+                    print("✅ Keeping streak intact for first exercise")
+                    return // Don't reset the streak for the first exercise
+                }
+                
+                // Case 2: Streak restart scenario (streak = 0, exercises today, none yesterday)
+                if todayCompletions.count > 0 && user.currentStreak == 0 {
+                    print("🔄 Streak restart scenario detected - user has 0 streak, exercises today, none yesterday")
+                    print("✅ User is starting fresh, no need to reset streak (already 0)")
+                    return // Don't reset the streak when it's already 0 and user is starting fresh
+                }
+                
+                // Case 3: Actual streak break (streak > 1, no exercises yesterday)
+                print("⚠️ No exercises completed yesterday, resetting streak from \(user.currentStreak) to 0")
+                user.currentStreak = 0
+                try context.save()
+                print("💾 Streak reset saved to context")
+            } else {
+                print("✅ Exercises were completed yesterday, keeping streak at \(user.currentStreak)")
+            }
+        } catch {
+            // If we can't check exercise completions, don't reset the streak
+            print("❌ Failed to check exercise completions: \(error)")
         }
     }
     
@@ -168,11 +246,14 @@ struct KlarblickApp: App {
         guard appStateManager.currentState == .main else { return }
         
         Task {
-            let granted = await NotificationManager.shared.requestAuthorizationIfNeeded()
-            if granted {
-                // If permission was just granted and we have a stored reminder time, schedule notifications
+            let result = await NotificationManager.shared.requestAuthorizationIfNeeded()
+            if result.wasJustGranted {
+                // Only reschedule if permission was just granted (not on every app foreground)
+                print("🔔 Notification permission was just granted, scheduling daily reminders")
                 let reminderTime = NotificationManager.shared.getReminderTime()
                 await NotificationManager.shared.scheduleDailyReminders(at: reminderTime)
+            } else if result.isEnabled {
+                print("🔔 Notifications already enabled, no need to reschedule")
             }
         }
     }

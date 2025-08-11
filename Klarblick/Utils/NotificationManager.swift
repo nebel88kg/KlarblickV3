@@ -23,13 +23,14 @@ class NotificationManager: ObservableObject {
         }
     }
     
-    func requestAuthorizationIfNeeded() async -> Bool {
+    func requestAuthorizationIfNeeded() async -> (isEnabled: Bool, wasJustGranted: Bool) {
         // Check if we've already requested authorization
         let hasRequestedBefore = UserDefaults.standard.bool(forKey: "notification_permission_requested")
         
         if hasRequestedBefore {
-            // Already requested, just return current status
-            return await areNotificationsEnabled()
+            // Already requested, just return current status (no new grant)
+            let isEnabled = await areNotificationsEnabled()
+            return (isEnabled: isEnabled, wasJustGranted: false)
         }
         
         // Check current authorization status
@@ -37,11 +38,13 @@ class NotificationManager: ObservableObject {
         
         // If not determined, request authorization
         if currentStatus == .notDetermined {
-            return await requestAuthorization()
+            let granted = await requestAuthorization()
+            return (isEnabled: granted, wasJustGranted: granted)
         } else {
             // Already determined (granted or denied), mark as requested
             UserDefaults.standard.set(true, forKey: "notification_permission_requested")
-            return currentStatus == .authorized
+            let isEnabled = currentStatus == .authorized
+            return (isEnabled: isEnabled, wasJustGranted: false)
         }
     }
     

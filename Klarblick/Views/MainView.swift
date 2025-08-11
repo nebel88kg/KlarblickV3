@@ -33,11 +33,10 @@ struct MainView: View {
             .toolbarBackground(.visible, for: .tabBar)
         }
         .accentColor(.ambrosiaIvory)
-        .sheet(isPresented: $showPaywall) {
+        .fullScreenCover(isPresented: $showPaywall) {
             PaywallView()
                 .environmentObject(subscriptionManager)
                 .interactiveDismissDisabled(true)
-                .presentationDetents([.medium])
                 .presentationDragIndicator(.hidden)
         }
         .onAppear {

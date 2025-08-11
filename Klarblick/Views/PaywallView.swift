@@ -16,30 +16,58 @@ struct PaywallView: View {
     }
     
     var body: some View {
-        ZStack {
-            // Background
-            Color.backgroundSecondary
-                .ignoresSafeArea()
+        // Main content - this should be first to establish proper layout
+        VStack(spacing: 4) {
+            // Plan description
+            topSection
 
-                // Main content
-                ScrollView {
-                    VStack(spacing: 24) {
-                        // Plan description
-                        topSection
-
-                        
-                        // Subscription options
-                        subscriptionOptionsSection
-                                                
-                        // Single purchase button
-                        purchaseButtonSection
-                        
-                        // Footer
-                        footerSection
-                    }
-                    .padding(20)
-                }
+            Spacer()
+            // Subscription options
+            subscriptionOptionsSection
+                                    
+            // Single purchase button
+            purchaseButtonSection
+            
+            // Footer
+            footerSection
         }
+        .padding(20)
+        .background(
+            // Background with image and fade effect
+            ZStack {
+                // Solid background color for areas not covered by image
+                Color.backgroundSecondary
+                    .ignoresSafeArea()
+                
+                // Background image with fade effect
+                VStack {
+                    ZStack {
+                        // PaywallPic background image
+                        Image("PaywallPic")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: UIScreen.main.bounds.height * 0.5)
+                            .clipped()
+                        
+                        // Gradient overlay for fade effect
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color.clear, location: 0.0),
+                                .init(color: Color.clear, location: 0.5),
+                                .init(color: Color.backgroundSecondary.opacity(0.1), location: 0.7),
+                                .init(color: Color.backgroundSecondary, location: 1.0)
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(height: UIScreen.main.bounds.height * 0.5)
+                    }
+                    
+                    Spacer()
+                }
+                .ignoresSafeArea(edges: .top)
+            }
+        )
         .task {
             await subscriptionManager.loadProducts()
             // Auto-select yearly product after loading
@@ -91,8 +119,40 @@ struct PaywallView: View {
                     .background(Color.mangosteenViolet.opacity(0.4))
                     .cornerRadius(16)
                 } else {
-                    ForEach(subscriptionManager.availableSubscriptions, id: \.id) { product in
-                        subscriptionCard(for: product)
+                    VStack(alignment: .leading){
+                                Text("✓  Build inner calm & self-trust.")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
+                                    .padding(.bottom, 4)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Text("✓  Become present in every moment.")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
+                                    .padding(.bottom, 4)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Text("✓  Feel more grounded and balanced.")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
+                                    .padding(.bottom, 4)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Text("✓  Establish a sustainable mindfulness habit.")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.ambrosiaIvory)
+                                    .padding(.bottom, 10)
+                                    .multilineTextAlignment(.leading)
+
+                        HStack(spacing: 14) {
+                            ForEach(subscriptionManager.availableSubscriptions, id: \.id) { product in
+                                subscriptionCard(for: product)
+                            }
+                        }
                     }
                 }
             }
@@ -100,22 +160,49 @@ struct PaywallView: View {
     
     private func subscriptionCard(for product: Product) -> some View {
         let info = subscriptionManager.getSubscriptionInfo(for: product)
-        _ = product.id == SubscriptionManager.ProductID.yearlySubscription
+        let isYearly = product.id == SubscriptionManager.ProductID.yearlySubscription
         let isSelected = selectedProduct?.id == product.id
         
-        return VStack(spacing: 8) {
-                VStack(spacing: 4) {
-                    Text(info.title)
-                        .font(.subheadline)
-                        .foregroundColor(.ambrosiaIvory)
-                }
-                                
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(info.price)
-                        .font(.body)
-                        .fontWeight(.bold)
-                        .foregroundColor(.ambrosiaIvory)
-                }
+        // Calculate monthly price for display
+        let monthlyPrice: String = {
+            if isYearly {
+                // For yearly subscription, divide by 12 to get monthly equivalent
+                let yearlyPrice = product.price
+                let monthlyEquivalent = yearlyPrice / 12
+                
+                // Format as currency using the current locale
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                formatter.locale = Locale.current
+                return formatter.string(from: monthlyEquivalent as NSDecimalNumber) ?? product.displayPrice
+            } else {
+                // For monthly subscription, use the display price directly
+                return product.displayPrice
+            }
+        }()
+        
+        return ZStack{
+            VStack(spacing: 6) {
+            Text(info.title)
+                .font(.subheadline)
+                .foregroundColor(.ambrosiaIvory)
+            
+            HStack(alignment: .bottom, spacing: 4){
+                Text(monthlyPrice)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.ambrosiaIvory)
+                Text("/mo")
+                    .font(.caption)
+                    .foregroundColor(.gray2)
+                    .padding(.bottom, 1)
+            }
+            
+            Text("Billed \(info.title.lowercased())")
+                .font(.caption)
+                .foregroundColor(.gray2)
+            
+            
         }
         .padding(14)
         .frame(maxWidth: .infinity)
@@ -124,49 +211,44 @@ struct PaywallView: View {
                 .fill(Color.mangosteenViolet.opacity(0.4))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(isSelected ? Color.pharaohsSeas : Color.clear, lineWidth: 2)
+                        .stroke(isSelected ? Color.pharaohsSeas : Color.gray.opacity(0.5), lineWidth: 2)
                 )
         )
         .onTapGesture {
             selectedProduct = product
         }
+        
+            if isYearly{
+                Text("-20%")
+                    .font(.subheadline)
+                    .foregroundStyle(.green)
+                    .fontWeight(.bold)
+                    .padding(2)
+                    .padding(.horizontal, 6)
+                    .background(Color.backgroundSecondary.opacity(0.7))
+                    .background(Color.green)
+                    .cornerRadius(20)
+                    .padding(.bottom, 100)
+
+            }
+        }
     }
     
     // MARK: - Plan Description
         private var topSection: some View {
-        VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text("Dear \(userName),")
                     .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundColor(.ambrosiaIvory)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.purpleCarolite)
                 
                 Text("Welcome to your mindfulness journey. We're excited to help you unlock your full potential.")
-                    .font(.body)
-                    .foregroundColor(.gray2)
-            
-
-            HStack() {
-                if let selectedProduct = selectedProduct {
-                    let isYearly = selectedProduct.id == SubscriptionManager.ProductID.yearlySubscription
-                    
-                    if isYearly {
-                        Text("We're inviting you to a 3-day free trial. Cancel anytime, no strings attached.")
-                            .font(.subheadline)
-                            .foregroundColor(.gray2)
-                        Spacer()
-                        
-                        
-                    } else {
-                        Text("Try Klarblick for one month. It costs less than a cocktail. No hidden costs, cancel anytime.")
-                            .font(.subheadline)
-                            .foregroundColor(.gray2)
-                        Spacer()
-                    }
-                }
+                    .foregroundColor(.mangosteenViolet)
+                    .font(.callout)
             }
-        }
-        } // Close the outer VStack for topSection
+            .padding(12)
+            .background(.ultraThinMaterial.opacity(0.8))
+            .cornerRadius(10)
     }
     
     // MARK: - Single Purchase Button
@@ -174,14 +256,14 @@ struct PaywallView: View {
         VStack(spacing: 12) {
             if let selectedProduct = selectedProduct {
                 let isYearly = selectedProduct.id == SubscriptionManager.ProductID.yearlySubscription
-                let info = subscriptionManager.getSubscriptionInfo(for: selectedProduct)
+//                let info = subscriptionManager.getSubscriptionInfo(for: selectedProduct)
                 
                 // Price description
-                Text(isYearly ? "3 days free then \(info.price) per year • Cancel anytime" : "Test one month • It's less than a cocktail • Cancel anytime")
-                    .font(.subheadline)
-                    .foregroundColor(.gray2)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
+//                Text(isYearly ? "3 days free then \(info.price) per year • Cancel anytime" : "Test one month • It's less than a cocktail • Cancel anytime")
+//                    .font(.subheadline)
+//                    .foregroundColor(.gray2)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.horizontal, 20)
                 
                 Button(action: {
                     // Add haptic feedback
@@ -252,30 +334,9 @@ struct PaywallView: View {
                 }
             }
         }
-        .padding(.bottom, 32)
+        .padding(.top, 12)
     }
-    
-    // MARK: - Loading Overlay
-    private var loadingOverlay: some View {
-        ZStack {
-            Color.black.opacity(0.3)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 16) {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .ambrosiaIvory))
-                    .scaleEffect(1.2)
-                
-                Text("Processing...")
-                    .font(.subheadline)
-                    .foregroundColor(.ambrosiaIvory)
-            }
-            .padding(24)
-            .background(Color.mangosteenViolet)
-            .cornerRadius(16)
-        }
-    }
-    
+        
     // MARK: - Actions
     private func selectDefaultProduct() {
         if selectedProduct == nil && !subscriptionManager.availableSubscriptions.isEmpty {
