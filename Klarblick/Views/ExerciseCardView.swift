@@ -203,8 +203,6 @@ struct ExerciseCardView: View {
                 try modelContext.save()
                 completedCategories.insert(category)
                 
-                // Cancel today's mindfulness reminder since an exercise was completed
-                NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
             } catch {
                 // Handle save errors silently
             }

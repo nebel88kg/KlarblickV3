@@ -111,6 +111,10 @@ struct ExerciseDetailView: View {
     @State private var earnedBadges: [Badge] = []
     @State private var showBadgeNotification = false
     @State private var showShareSheet = false
+    @State private var showStreakEncouragement = false
+    @State private var oldStreakValue = 0
+    @State private var newStreakValue = 0
+    @State private var streakWasIncreased = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -591,7 +595,7 @@ struct ExerciseDetailView: View {
                     pressedButton: $pressedButton
                 ) {
                     performHapticFeedback(.medium)
-                    dismiss()
+                    handleContinueButtonTap()
                 }
                 
                 SecondaryExerciseButton(
@@ -613,6 +617,19 @@ struct ExerciseDetailView: View {
         }
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(activityItems: [shareText])
+        }
+        .overlay {
+            if showStreakEncouragement {
+                StreakEncouragementView(
+                    oldStreak: oldStreakValue,
+                    newStreak: newStreakValue,
+                    isPresented: $showStreakEncouragement,
+                    onDismiss: {
+                        dismiss()
+                    }
+                )
+                .zIndex(1000)
+            }
         }
     }
     
@@ -643,10 +660,14 @@ struct ExerciseDetailView: View {
             awardXp(10)
             incrementStreakIfNeeded()
             
-            // Create ExerciseCompletion record
-            let completion = ExerciseCompletion(date: Date(), category: exercise.category, source: "library")
-            modelContext.insert(completion)
-            print("📝 Created ExerciseCompletion record: category=\(exercise.category.rawValue), date=\(completion.date), source=library")
+            // Create ExerciseCompletion record only if not from card view
+            if !isFromCardView {
+                let completion = ExerciseCompletion(date: Date(), category: exercise.category, source: "library")
+                modelContext.insert(completion)
+                print("📝 Created ExerciseCompletion record: category=\(exercise.category.rawValue), date=\(completion.date), source=library")
+            } else {
+                print("📝 Skipping ExerciseCompletion record creation - will be handled by card view")
+            }
             
             // Save the context to persist all changes (streak, XP, completion record)
             do {
@@ -658,6 +679,11 @@ struct ExerciseDetailView: View {
             
             // Cancel today's mindfulness reminder since an exercise was completed
             NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
+            
+            // Schedule next day's streak warning
+            Task {
+                await NotificationManager.shared.scheduleNextDayStreakWarning()
+            }
             
             // Call completion handler if from card view
             if isFromCardView {
@@ -731,12 +757,17 @@ struct ExerciseDetailView: View {
         }
     }
     
-    private func incrementStreak(){
+        private func incrementStreak(){
         let descriptor = FetchDescriptor<User>()
         if let user = try? modelContext.fetch(descriptor).first {
             let oldStreak = user.currentStreak
             user.currentStreak += 1
             print("📈 Incremented streak: \(oldStreak) → \(user.currentStreak)")
+            
+            // Store values for streak encouragement animation
+            oldStreakValue = oldStreak
+            newStreakValue = user.currentStreak
+            streakWasIncreased = true
             
             // Check for new badges after streak increment
             let newBadges = BadgeChecker.shared.checkForNewBadges(for: user, context: modelContext)
@@ -746,7 +777,17 @@ struct ExerciseDetailView: View {
                 print("🏆 Earned new badges: \(newBadges.map { $0.name })")
             }
         } else {
-            print("❌ Could not find user to increment streak")
+print("❌ Could not find user to increment streak")
+        }
+    }
+    
+    private func handleContinueButtonTap() {
+        if streakWasIncreased {
+            // Show streak encouragement screen first
+            showStreakEncouragement = true
+        } else {
+            // No streak increase, just dismiss normally
+            dismiss()
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D2A65362E58A8BB007828D3 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2A65352E58A8BB007828D3 /* RiveRuntime */; };
 		6DC28FF92E1C37CF0074213C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC28FF82E1C37CF0074213C /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DC28FF92E1C37CF0074213C /* StoreKit.framework in Frameworks */,
+				6D2A65362E58A8BB007828D3 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,7 @@
 			);
 			name = Klarblick;
 			packageProductDependencies = (
+				6D2A65352E58A8BB007828D3 /* RiveRuntime */,
 			);
 			productName = Klarblick;
 			productReference = 6DB3BC442E1489D60006CB3F /* Klarblick.app */;
@@ -110,6 +113,9 @@
 			);
 			mainGroup = 6DB3BC3B2E1489D60006CB3F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6D2A65342E58A8BB007828D3 /* XCRemoteSwiftPackageReference "rive-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6DB3BC452E1489D60006CB3F /* Products */;
 			projectDirPath = "";
@@ -270,7 +276,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SL97SMTAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -286,7 +292,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dominiknebel.Klarblick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -305,7 +311,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SL97SMTAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -321,7 +327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dominiknebel.Klarblick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -356,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D2A65342E58A8BB007828D3 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D2A65352E58A8BB007828D3 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D2A65342E58A8BB007828D3 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6DB3BC3C2E1489D60006CB3F /* Project object */;
 }

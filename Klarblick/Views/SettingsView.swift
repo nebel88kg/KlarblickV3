@@ -407,7 +407,7 @@ struct AboutAppView: View {
                 
                 Spacer()
                 
-                Text("Version 1.0.0")
+                Text("Version 1.0.2")
                     .font(.caption)
                     .foregroundColor(.wildMaple)
                     .padding(.bottom, 20)

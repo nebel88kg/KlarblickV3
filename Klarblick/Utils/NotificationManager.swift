@@ -70,8 +70,7 @@ class NotificationManager: ObservableObject {
         let moodMinute = (minute + 15) % 60
         await scheduleMoodCheckInReminder(hour: moodHour, minute: moodMinute)
         
-        // Schedule streak warning notification at 10 PM
-        await scheduleStreakWarningReminder(hour: 22, minute: 0)
+        // Note: Streak warning is scheduled separately after exercise completion
         
         print("Daily reminders scheduled for \(hour):\(String(format: "%02d", minute))")
     }
@@ -159,10 +158,9 @@ class NotificationManager: ObservableObject {
     func cancelAllDailyReminders() async {
         center.removePendingNotificationRequests(withIdentifiers: [
             "daily_mindfulness_reminder",
-            "daily_mood_reminder",
-            "daily_streak_warning"
+            "daily_mood_reminder"
         ])
-        print("All daily reminders cancelled")
+        print("All daily reminders cancelled (streak warning managed separately)")
     }
     
     func cancelTodaysMindfulnessReminder() {
@@ -178,6 +176,15 @@ class NotificationManager: ObservableObject {
     func cancelTodaysStreakWarning() {
         center.removePendingNotificationRequests(withIdentifiers: ["daily_streak_warning"])
         print("Today's streak warning cancelled")
+    }
+    
+    func scheduleNextDayStreakWarning() async {
+        // Cancel any existing streak warning first
+        cancelTodaysStreakWarning()
+        
+        // Schedule for next day at 10 PM
+        await scheduleStreakWarningReminder(hour: 22, minute: 0)
+        print("Next day streak warning scheduled for 22:00")
     }
     
     // MARK: - Check if tasks completed today
