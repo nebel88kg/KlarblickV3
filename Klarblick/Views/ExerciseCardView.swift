@@ -203,6 +203,16 @@ struct ExerciseCardView: View {
                 try modelContext.save()
                 completedCategories.insert(category)
                 
+                // Cancel today's notifications since an exercise was completed
+                NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
+                
+                // Schedule next day's streak warning
+                Task {
+                    await NotificationManager.shared.scheduleNextDayStreakWarning()
+                }
+                
+                print("📝 ExerciseCompletion record created, notifications cancelled, and next day streak warning scheduled")
+                
             } catch {
                 // Handle save errors silently
             }

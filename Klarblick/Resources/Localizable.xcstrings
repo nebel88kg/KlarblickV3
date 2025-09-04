@@ -1,15 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "-20%" : {
-
-    },
-    "/mo" : {
+    "-%lld%%" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "/Mo"
+            "value" : "-%lld%%"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld%%"
           }
         }
       }
@@ -211,7 +214,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "✓  Werde präsent in jedem Moment"
+            "value" : "✓  Werde präsent in jedem Moment."
           }
         }
       }
@@ -246,11 +249,25 @@
         }
       }
     },
-    "🔥" : {
-
+    "🚨 Your streak is in danger!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚨 Deine Streak ist in Gefahr!"
+          }
+        }
+      }
     },
     "1" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1"
+          }
+        }
+      }
     },
     "30 Days" : {
       "localizations" : {
@@ -294,6 +311,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Über diese App"
+          }
+        }
+      }
+    },
+    "Absolutely incredible!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absolut unglaublich!"
           }
         }
       }
@@ -384,6 +411,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "under 20"
+          }
+        }
+      }
+    },
+    "Almost there!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fast geschafft!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost there!"
           }
         }
       }
@@ -588,16 +631,6 @@
         }
       }
     },
-    "Billed %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abgerechnet %@"
-          }
-        }
-      }
-    },
     "Breathe deeply" : {
       "localizations" : {
         "de" : {
@@ -640,6 +673,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bauen Sie gesunde Gewohnheiten auf, verfolgen Sie Ihre Fortschritte und entdecken Sie die Kraft eines achtsamen Lebens mit unserer umfassenden Wellness-Plattform."
+          }
+        }
+      }
+    },
+    "Building momentum!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwung aufgebaut!"
           }
         }
       }
@@ -891,7 +934,14 @@
       }
     },
     "day streak" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage Streak"
+          }
+        }
+      }
     },
     "Dear %@," : {
       "localizations" : {
@@ -1117,6 +1167,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter your name"
+          }
+        }
+      }
+    },
+    "Evening" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evening"
           }
         }
       }
@@ -2674,18 +2740,18 @@
         }
       }
     },
-    "experience_complete_beginner" : {
+    "experience_beginner" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kompletter Anfänger"
+            "value" : "Ein- oder zweimal ausprobiert"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Complete beginner"
+            "value" : "Tried it once or twice"
           }
         }
       }
@@ -2706,6 +2772,22 @@
         }
       }
     },
+    "experience_none" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
     "experience_some_experience" : {
       "localizations" : {
         "de" : {
@@ -2718,6 +2800,32 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "I have some experience"
+          }
+        }
+      }
+    },
+    "experience_stopped_meditating" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevor, aber jetzt nicht mehr"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used to but stopped"
+          }
+        }
+      }
+    },
+    "Fifty days legendary!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fünfzig Tage legendär!"
           }
         }
       }
@@ -2950,12 +3058,28 @@
         }
       }
     },
+    "Great start!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Großartiger Start!"
+          }
+        }
+      }
+    },
     "Happy" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Glücklich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happy"
           }
         }
       }
@@ -2966,6 +3090,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Halten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold"
           }
         }
       }
@@ -3002,18 +3132,12 @@
         }
       }
     },
-    "How can we call you?" : {
+    "How may we call you?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wie können wir dich nennen?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How can we call you?"
+            "value" : "Wie dürfen wir dich nennen?"
           }
         }
       }
@@ -3050,6 +3174,16 @@
         }
       }
     },
+    "Keep it up!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter so!"
+          }
+        }
+      }
+    },
     "Klarblick" : {
       "localizations" : {
         "de" : {
@@ -3077,7 +3211,14 @@
       }
     },
     "klarblick.app@gmail.com" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "klarblick.app@gmail.com"
+          }
+        }
+      }
     },
     "Learn more about Klarblick" : {
       "localizations" : {
@@ -3101,6 +3242,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Let's build your"
+          }
+        }
+      }
+    },
+    "Let's do this!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los geht's!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's do this!"
           }
         }
       }
@@ -3154,7 +3311,14 @@
       }
     },
     "Mail Not Available" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail nicht verfügbar"
+          }
+        }
+      }
     },
     "Meditation" : {
       "localizations" : {
@@ -3172,6 +3336,22 @@
         }
       }
     },
+    "Meditation isn't magic, but stick with it and you'll build the resilience to face and embrace life's ups and downs." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation ist keine Zauberei, aber bleib dran und du wirst die Widerstandsfähigkeit aufbauen, um den Höhen und Tiefen des Lebens zu begegnen und sie zu meistern."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation isn't magic, but stick with it and you'll build the resilience to face and embrace life's ups and downs."
+          }
+        }
+      }
+    },
     "Meditation Tips:" : {
       "localizations" : {
         "de" : {
@@ -3184,6 +3364,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meditation Tips:"
+          }
+        }
+      }
+    },
+    "Midday" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midday"
           }
         }
       }
@@ -3227,6 +3423,12 @@
             "state" : "translated",
             "value" : "Monatlich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly"
+          }
         }
       }
     },
@@ -3262,6 +3464,22 @@
         }
       }
     },
+    "Morning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morning"
+          }
+        }
+      }
+    },
     "My Items" : {
       "localizations" : {
         "de" : {
@@ -3281,6 +3499,12 @@
     "Neutral" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neutral"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Neutral"
@@ -3416,6 +3640,36 @@
         }
       }
     },
+    "One hundred days epic!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hundert Tage episch!"
+          }
+        }
+      }
+    },
+    "One month incredible!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Monat unglaublich!"
+          }
+        }
+      }
+    },
+    "One week strong!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Woche stark!"
+          }
+        }
+      }
+    },
     "Overview" : {
       "localizations" : {
         "de" : {
@@ -3442,8 +3696,31 @@
         }
       }
     },
+    "PERFECT TIMING!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERFEKTES TIMING!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERFECT TIMING!"
+          }
+        }
+      }
+    },
     "Permanently remove all data." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten dauerhaft entfernen."
+          }
+        }
+      }
     },
     "Personalizing experience" : {
       "localizations" : {
@@ -3488,7 +3765,14 @@
       }
     },
     "Please set up Mail on your device or contact us directly at:" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte richte Mail auf deinem Gerät ein oder kontaktiere uns direkt unter:"
+          }
+        }
+      }
     },
     "Power Items" : {
       "localizations" : {
@@ -3609,6 +3893,12 @@
             "state" : "translated",
             "value" : "Entspannen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relax"
+          }
         }
       }
     },
@@ -3667,6 +3957,12 @@
             "state" : "translated",
             "value" : "Traurig"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sad"
+          }
         }
       }
     },
@@ -3676,6 +3972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zufriedenheitsrate"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satisfaction rate"
           }
         }
       }
@@ -3718,6 +4020,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wissenschaft"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Science"
           }
         }
       }
@@ -4248,6 +4556,16 @@
         }
       }
     },
+    "Three in a row!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drei in Folge!"
+          }
+        }
+      }
+    },
     "Time for mindfulness" : {
       "localizations" : {
         "de" : {
@@ -4276,22 +4594,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Time Manipulation"
-          }
-        }
-      }
-    },
-    "to check in daily?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "für den täglichen Check-in?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "to check in daily?"
           }
         }
       }
@@ -4328,6 +4630,16 @@
         }
       }
     },
+    "Two weeks amazing!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei Wochen fantastisch!"
+          }
+        }
+      }
+    },
     "Type" : {
       "localizations" : {
         "de" : {
@@ -4360,7 +4672,24 @@
         }
       }
     },
-    "Version 1.0.2" : {
+    "Version 1.0.4" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version 1.0.4"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version 1.0.4"
+          }
+        }
+      }
+    },
+    "Version 1.0.5" : {
 
     },
     "Very Happy" : {
@@ -4379,18 +4708,28 @@
         }
       }
     },
-    "We'll send you a gentle reminder to check in with yourself and track your progress" : {
+    "We make it easy to learn the basics of meditation and find stress less stressful." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir senden dir eine sanfte Erinnerung, um bei dir selbst einzuchecken und deinen Fortschritt zu verfolgen"
+            "value" : "Wir machen es einfach, die Grundlagen der Meditation zu erlernen und Stress weniger stressig zu finden."
+          }
+        }
+      }
+    },
+    "We'll remind you at..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir erinnern dich um..."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We'll send you a gentle reminder to check in with yourself and track your progress"
+            "value" : "We'll remind you at..."
           }
         }
       }
@@ -4571,6 +4910,22 @@
         }
       }
     },
+    "WELCOME TO THE CLUB!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WILLKOMMEN IM CLUB!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WELCOME TO THE CLUB!"
+          }
+        }
+      }
+    },
     "Welcome to your mindfulness journey. We're excited to help you unlock your full potential." : {
       "localizations" : {
         "de" : {
@@ -4667,18 +5022,18 @@
         }
       }
     },
-    "When should we remind you" : {
+    "When do you want to meditate?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wann sollen wir dich erinnern"
+            "value" : "Wann möchtest du meditieren?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When should we remind you"
+            "value" : "When do you want to meditate?"
           }
         }
       }
@@ -4786,6 +5141,12 @@
             "state" : "translated",
             "value" : "Jährlich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yearly"
+          }
         }
       }
     },
@@ -4810,13 +5171,55 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du bist bereit für deine Reise zu mentaler Klarheit und Wohlbefinden."
+            "value" : "Du bist bereit, deine Reise zu geistiger Klarheit und Wohlbefinden zu beginnen."
+          }
+        }
+      }
+    },
+    "You're building a powerful daily practice. Consistency is the key to unlocking inner peace and mental clarity." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du baust eine kraftvolle tägliche Praxis auf. Beständigkeit ist der Schlüssel, um inneren Frieden und mentale Klarheit zu erlangen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You're all set to begin your journey to mental clarity and wellbeing."
+            "value" : "You're building a powerful daily practice. Consistency is the key to unlocking inner peace and mental clarity."
+          }
+        }
+      }
+    },
+    "YOU'RE IN LUCK!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DU HAST GLÜCK!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YOU'RE IN LUCK!"
+          }
+        }
+      }
+    },
+    "You're unstoppable!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du bist nicht zu stoppen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're unstoppable!"
           }
         }
       }
@@ -4879,34 +5282,12 @@
         }
       }
     },
-    "Your streak is about to be broken!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deine Streak ist in Gefahr!"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your streak is about to be broken!"
-          }
-        }
-      }
-    },
-    "Your transformation journey" : {
+    "Your transformation" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deine Transformation"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your transformation journey"
           }
         }
       }

@@ -163,23 +163,6 @@ struct PaywallView: View {
         let isYearly = product.id == SubscriptionManager.ProductID.yearlySubscription
         let isSelected = selectedProduct?.id == product.id
         
-        // Calculate monthly price for display
-        let monthlyPrice: String = {
-            if isYearly {
-                // For yearly subscription, divide by 12 to get monthly equivalent
-                let yearlyPrice = product.price
-                let monthlyEquivalent = yearlyPrice / 12
-                
-                // Format as currency using the current locale
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .currency
-                formatter.locale = Locale.current
-                return formatter.string(from: monthlyEquivalent as NSDecimalNumber) ?? product.displayPrice
-            } else {
-                // For monthly subscription, use the display price directly
-                return product.displayPrice
-            }
-        }()
         
         return ZStack{
             VStack(spacing: 6) {
@@ -188,19 +171,19 @@ struct PaywallView: View {
                 .foregroundColor(.ambrosiaIvory)
             
             HStack(alignment: .bottom, spacing: 4){
-                Text(monthlyPrice)
+                Text(product.displayPrice)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.ambrosiaIvory)
-                Text("/mo")
-                    .font(.caption)
-                    .foregroundColor(.gray2)
-                    .padding(.bottom, 1)
+//                Text("/mo")
+//                    .font(.caption)
+//                    .foregroundColor(.gray2)
+//                    .padding(.bottom, 1)
             }
             
-            Text("Billed \(info.title.lowercased())")
-                .font(.caption)
-                .foregroundColor(.gray2)
+//            Text("Billed \(info.title.lowercased())")
+//                .font(.caption)
+//                .foregroundColor(.gray2)
             
             
         }
@@ -219,17 +202,19 @@ struct PaywallView: View {
         }
         
             if isYearly{
-                Text("-20%")
-                    .font(.subheadline)
-                    .foregroundStyle(.green)
-                    .fontWeight(.bold)
-                    .padding(2)
-                    .padding(.horizontal, 6)
-                    .background(Color.backgroundSecondary.opacity(0.7))
-                    .background(Color.green)
-                    .cornerRadius(20)
-                    .padding(.bottom, 100)
-
+                let discountPercentage = subscriptionManager.calculateYearlyDiscount()
+                if discountPercentage > 0 {
+                    Text("-\(discountPercentage)%")
+                        .font(.subheadline)
+                        .foregroundStyle(.green)
+                        .fontWeight(.bold)
+                        .padding(2)
+                        .padding(.horizontal, 6)
+                        .background(Color.backgroundSecondary.opacity(0.7))
+                        .background(Color.green)
+                        .cornerRadius(20)
+                        .padding(.bottom, 80)
+                }
             }
         }
     }
@@ -247,7 +232,7 @@ struct PaywallView: View {
                     .font(.callout)
             }
             .padding(12)
-            .background(.ultraThinMaterial.opacity(0.8))
+            .background(.white.opacity(0.4))
             .cornerRadius(10)
     }
     

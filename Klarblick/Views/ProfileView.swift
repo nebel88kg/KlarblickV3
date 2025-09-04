@@ -187,8 +187,8 @@ struct ProfileView: View {
         if let user = users.first {
             VStack(spacing: 10) {
                 HStack(spacing: 10) {
-                    StatItem(title: "Day Streak", value: "\(user.currentStreak)")
-                    StatItem(title: "Total XP", value: "\(user.currentXp)")
+                    StatItem(title: "Day Streak", value: "\(user.currentStreak)", symbol: "flame.fill", symbolColor: .afterBurn)
+                    StatItem(title: "Total XP", value: "\(user.currentXp)", symbol: "suit.diamond.fill", symbolColor: .pharaohsSeas)
                 }
                 
                 HStack(spacing: 10) {
@@ -388,13 +388,29 @@ struct ProfileView: View {
 struct StatItem: View {
     let title: String
     let value: String
+    let symbol: String?
+    let symbolColor: Color?
+    
+    init(title: String, value: String, symbol: String? = nil, symbolColor: Color? = nil) {
+        self.title = title
+        self.value = value
+        self.symbol = symbol
+        self.symbolColor = symbolColor
+    }
     
     var body: some View {
         VStack(spacing: 4) {
-            Text(value)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.ambrosiaIvory)
+            HStack(spacing: 6) {
+                if let symbol = symbol {
+                    Image(systemName: symbol)
+                        .foregroundColor(symbolColor ?? .ambrosiaIvory)
+                        .font(.title3)
+                }
+                Text(value)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.ambrosiaIvory)
+            }
             Text(title)
                 .font(.caption)
                 .foregroundColor(Color.gray2)

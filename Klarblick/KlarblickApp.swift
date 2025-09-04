@@ -276,7 +276,7 @@ struct LoadingView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 40, height: 40)
-                        .cornerRadius(12)
+                        .cornerRadius(10)
 
                     
                     // App name (same as original splash)

@@ -677,12 +677,15 @@ struct ExerciseDetailView: View {
                 print("❌ Failed to save exercise completion: \(error)")
             }
             
-            // Cancel today's mindfulness reminder since an exercise was completed
-            NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
-            
-            // Schedule next day's streak warning
-            Task {
-                await NotificationManager.shared.scheduleNextDayStreakWarning()
+            // Only handle notifications if this exercise was completed from library (not card view)
+            // Card view will handle notification cancellation after creating its completion record
+            if !isFromCardView {
+                // Cancel today's mindfulness reminder since an exercise was completed
+                NotificationManager.shared.checkAndCancelTodaysNotifications(context: modelContext)
+                
+                Task {
+                    await NotificationManager.shared.scheduleNextDayStreakWarning()
+                }
             }
             
             // Call completion handler if from card view

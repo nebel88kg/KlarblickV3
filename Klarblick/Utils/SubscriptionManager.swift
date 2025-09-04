@@ -219,6 +219,26 @@ class SubscriptionManager: ObservableObject {
         }
     }
     
+    // MARK: - Discount Calculation
+    func calculateYearlyDiscount() -> Int {
+        guard let yearlyProduct = availableSubscriptions.first(where: { $0.id == ProductID.yearlySubscription }),
+              let monthlyProduct = availableSubscriptions.first(where: { $0.id == ProductID.monthlySubscription }) else {
+            return 0
+        }
+        
+        let yearlyPrice = yearlyProduct.price
+        let monthlyPrice = monthlyProduct.price
+        let monthlyAnnualPrice = monthlyPrice * 12
+        
+        // Convert to Double for calculation
+        let yearlyDouble = Double(truncating: yearlyPrice as NSNumber)
+        let monthlyAnnualDouble = Double(truncating: monthlyAnnualPrice as NSNumber)
+        
+        // Calculate discount percentage
+        let discount = (monthlyAnnualDouble - yearlyDouble) / monthlyAnnualDouble * 100
+        return max(0, Int(discount.rounded()))
+    }
+    
     // MARK: - Trial Information
     func hasActiveFreeTrial() async -> Bool {
         for await result in Transaction.currentEntitlements {

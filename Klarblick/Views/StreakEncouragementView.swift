@@ -41,7 +41,6 @@ struct StreakEncouragementView: View {
     var body: some View {
         ZStack {
             // Background overlay
-            
             RadialGradient(
                 colors: [Color.backgroundSecondary.opacity(1), Color.purpleCarolite.opacity(1)],
                 center: .bottom,
@@ -52,18 +51,19 @@ struct StreakEncouragementView: View {
             .onTapGesture {
                 dismissView()
             }
+            RiveViewModel(fileName: "fire").view()
+                .frame(width: 150, height: 150)
+                .offset(y: -250)
+                .opacity(animationPhase != .initial ? 1 : 0)
+                .animation(.bouncy(duration: 2.0).delay(0.3), value: animationPhase)
+
             
             VStack(spacing: 70) {
                 Spacer()
                 Spacer()
                     VStack(spacing: 0) {
-                        // Fire emoji
-                        Text("🔥")
-                            .font(.system(size: 100))
-                            .opacity(animationPhase != .initial ? 1 : 0)
-                            .animation(.bouncy(duration: 0.6).delay(0.3), value: animationPhase)
-                        
-                                                 // Rolling streak number
+
+                        // Rolling streak number
                         Text("\(currentDisplayedStreak)")
                             .font(.system(size: 120, weight: .bold, design: .rounded))
                             .foregroundColor(numberColor)
@@ -73,7 +73,7 @@ struct StreakEncouragementView: View {
                             .animation(.spring(response: 0.6, dampingFraction: 0.7), value: animationPhase)
                         
                         // "Day Streak" text
-                        Text("day streak")
+                        Text(String(localized: "day streak"))
                             .font(.system(size: 32, weight: .medium, design: .rounded))
                             .foregroundColor(.orange)
                             .opacity(animationPhase == .celebration ? 1 : 0)
@@ -83,20 +83,21 @@ struct StreakEncouragementView: View {
                 .frame(width: 250, height: 250)
                                 
                 // Encouragement message
-                ZStack() {
+                VStack() {
                     
                     // Celebration text
                     Text(celebrationText)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.ambrosiaIvory)
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.ambrosiaIvory, lineWidth: 2)
-                        .frame(width: .infinity, height: 50)
-                        .padding(.horizontal, 20)
-                    
-
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(
+                                    Color.ambrosiaIvory, lineWidth: 2)
+                        )
                 }
                 .opacity(animationPhase == .celebration ? 1 : 0)
                 .animation(.easeInOut(duration: 0.5).delay(1.5), value: animationPhase)
@@ -105,7 +106,7 @@ struct StreakEncouragementView: View {
                 
                 // Continue button
                 ExerciseButton(
-                    title: "Continue",
+                    title: String(localized: "Continue"),
                     backgroundColor: .afterBurn,
                     foregroundColor: .ambrosiaIvory,
                     buttonId: "streak_continue",
@@ -116,7 +117,7 @@ struct StreakEncouragementView: View {
                 .opacity(animationPhase == .celebration ? 1 : 0)
                 .animation(.easeInOut(duration: 0.5).delay(2.5), value: animationPhase)
             }
-            .padding()
+            .padding(.horizontal, 20)
             
             
         }
@@ -158,28 +159,28 @@ struct StreakEncouragementView: View {
     private func getCelebrationText() -> String {
         switch newStreak {
         case 1:
-            return "Great start!"
+            return String(localized: "Great start!")
         case 2:
-            return "Building momentum!"
+            return String(localized: "Building momentum!")
         case 3:
-            return "Three in a row!"
+            return String(localized: "Three in a row!")
         case 7:
-            return "One week strong!"
+            return String(localized: "One week strong!")
         case 14:
-            return "Two weeks amazing!"
+            return String(localized: "Two weeks amazing!")
         case 30:
-            return "One month incredible!"
+            return String(localized: "One month incredible!")
         case 50:
-            return "Fifty days legendary!"
+            return String(localized: "Fifty days legendary!")
         case 100:
-            return "One hundred days epic!"
+            return String(localized: "One hundred days epic!")
         default:
             if newStreak < 7 {
-                return "Keep it up!"
+                return String(localized: "Keep it up!")
             } else if newStreak < 30 {
-                return "You're unstoppable!"
+                return String(localized: "You're unstoppable!")
             } else {
-                return "Absolutely incredible!"
+                return String(localized: "Absolutely incredible!")
             }
         }
     }

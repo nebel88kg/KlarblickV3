@@ -45,6 +45,11 @@ struct OnboardingView: View {
     @State private var animatedWeekCards = 0
     @Binding var isOnboardingComplete: Bool
     
+    // MARK: - Preset Times
+    enum PresetTime {
+        case morning, midday, evening
+    }
+    
     // MARK: - Haptic Feedback
     private func triggerHaptic(_ type: HapticType) {
         switch type {
@@ -110,12 +115,14 @@ struct OnboardingView: View {
     }
     
     enum MindfulnessExperience: String, CaseIterable, Localizable {
-        case beginner, some, experienced
+        case none, beginner, some, stopped, experienced
         
         var localizedTitle: String {
             switch self {
-            case .beginner: return String(localized: "experience_complete_beginner")
+            case .none: return String(localized: "experience_none")
+            case .beginner: return String(localized: "experience_beginner")
             case .some: return String(localized: "experience_some_experience")
+            case .stopped: return String(localized: "experience_stopped_meditating")
             case .experienced: return String(localized: "experience_meditating_regularly")
             }
         }
@@ -138,6 +145,43 @@ struct OnboardingView: View {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         return formatter
+    }
+    
+    // MARK: - Preset Time Helper Functions
+    private func setPresetTime(_ preset: PresetTime) {
+        triggerHaptic(.selection)
+        let calendar = Calendar.current
+        let now = Date()
+        
+        switch preset {
+        case .morning:
+            reminderTime = calendar.date(bySettingHour: 8, minute: 0, second: 0, of: now) ?? now
+        case .midday:
+            reminderTime = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: now) ?? now
+        case .evening:
+            reminderTime = calendar.date(bySettingHour: 19, minute: 0, second: 0, of: now) ?? now
+        }
+    }
+    
+    private func isMorningSelected() -> Bool {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: reminderTime)
+        let minute = calendar.component(.minute, from: reminderTime)
+        return hour == 8 && minute == 0
+    }
+    
+    private func isMiddaySelected() -> Bool {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: reminderTime)
+        let minute = calendar.component(.minute, from: reminderTime)
+        return hour == 12 && minute == 0
+    }
+    
+    private func isEveningSelected() -> Bool {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: reminderTime)
+        let minute = calendar.component(.minute, from: reminderTime)
+        return hour == 19 && minute == 0
     }
     
     var body: some View {
@@ -175,16 +219,22 @@ struct OnboardingView: View {
                 } else if currentStep == 7 {
                     experienceSelectionStep
                 } else if currentStep == 8 {
-                    stressLevelStep
+                    reinforcementStep1 // After age + experience
                 } else if currentStep == 9 {
-                    goalSelectionStep
+                    stressLevelStep
                 } else if currentStep == 10 {
-                    reminderTimeStep
+                    goalSelectionStep
                 } else if currentStep == 11 {
-                    planOverviewStep
+                    reinforcementStep2 // After stress + goal
                 } else if currentStep == 12 {
-                    completionStep
+                    reminderTimeStep
                 } else if currentStep == 13 {
+                    reinforcementStep3 // After reminder setup
+                } else if currentStep == 14 {
+                    planOverviewStep
+                } else if currentStep == 15 {
+                    completionStep
+                } else if currentStep == 16 {
                     thirtyDayPlanStep
                 }
             }
@@ -215,7 +265,7 @@ struct OnboardingView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
-                    .cornerRadius(12)
+                    .cornerRadius(10)
                     .scaleEffect(isAnimating ? 1.0 : 0.8)
                     .opacity(isAnimating ? 1.0 : 0)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0), value: isAnimating)
@@ -332,9 +382,8 @@ struct OnboardingView: View {
     
     private var breathingIntroStep: some View {
         VStack(spacing: 10) {
-
-                
-                Text(String(localized: "Let's take a few seconds to feel better"))
+            
+            Text(String(localized: "Let's take a few seconds to feel better"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
@@ -444,6 +493,117 @@ struct OnboardingView: View {
         }
     }
     
+    private var reinforcementStep1: some View {
+        VStack(spacing: 80) {
+            
+            Spacer()
+            
+                VStack(spacing: 8) {
+                    Text(String(localized: "YOU'RE IN LUCK!"))
+                        .font(.callout)
+                        .fontWeight(.bold)
+                        .foregroundColor(.afterBurn)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(String(localized: "Meditation isn't magic, but stick with it and you'll build the resilience to face and embrace life's ups and downs."))
+                        .font(.callout)
+                        .foregroundColor(.ambrosiaIvory)
+                        .multilineTextAlignment(.center)
+                }
+
+            Spacer()
+            
+            Button(action: {
+                triggerHaptic(.success)
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
+                    currentStep = 9
+                }
+            }) {
+                Text(String(localized: "Continue"))
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(12)
+                    .background(Color.afterBurn)
+                    .cornerRadius(12)
+            }
+        }
+    }
+    
+    private var reinforcementStep2: some View {
+        VStack(spacing: 80) {
+            
+            Spacer()
+            
+                VStack(spacing: 8) {
+                    Text(String(localized: "WELCOME TO THE CLUB!"))
+                        .font(.callout)
+                        .fontWeight(.bold)
+                        .foregroundColor(.afterBurn)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(String(localized: "We make it easy to learn the basics of meditation and find stress less stressful."))
+                        .font(.callout)
+                        .foregroundColor(.ambrosiaIvory)
+                        .multilineTextAlignment(.center)
+                }
+
+            Spacer()
+            
+            Button(action: {
+                triggerHaptic(.success)
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
+                    currentStep = 12
+                }
+            }) {
+                Text(String(localized: "Let's do this!"))
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(12)
+                    .background(Color.afterBurn)
+                    .cornerRadius(12)
+            }
+        }
+    }
+    
+    private var reinforcementStep3: some View {
+        VStack(spacing: 80) {
+            
+            Spacer()
+            
+                VStack(spacing: 8) {
+                    Text(String(localized: "PERFECT TIMING!"))
+                        .font(.callout)
+                        .fontWeight(.bold)
+                        .foregroundColor(.afterBurn)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(String(localized: "You're building a powerful daily practice. Consistency is the key to unlocking inner peace and mental clarity."))
+                        .font(.callout)
+                        .foregroundColor(.ambrosiaIvory)
+                        .multilineTextAlignment(.center)
+                }
+
+            Spacer()
+            
+            Button(action: {
+                triggerHaptic(.success)
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
+                    currentStep = 14
+                }
+            }) {
+                Text(String(localized: "Almost there!"))
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(12)
+                    .background(Color.afterBurn)
+                    .cornerRadius(12)
+            }
+        }
+    }
+    
     private var goalSelectionStep: some View {
         VStack(spacing: 40) {
             VStack(spacing: 20) {
@@ -505,7 +665,7 @@ struct OnboardingView: View {
                 Button(action: {
                     triggerHaptic(.light)
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
-                        currentStep = 8
+                        currentStep = 9
                     }
                 }) {
                     Text(String(localized: "Back"))
@@ -520,7 +680,7 @@ struct OnboardingView: View {
                 Button(action: {
                     triggerHaptic(.medium)
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
-                        currentStep = 10
+                        currentStep = 11
                     }
                 }) {
                     Text(String(localized: "Continue"))
@@ -539,35 +699,51 @@ struct OnboardingView: View {
     private var reminderTimeStep: some View {
         VStack(spacing: 40) {
             VStack(spacing: 10) {
-                Text(String(localized: "When should we remind you"))
+                Text(String(localized: "When do you want to meditate?"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
                     .multilineTextAlignment(.center)
-                
-                Text(String(localized: "to check in daily?"))
-                    .font(.subheadline)
-                    .foregroundColor(.wildMaple)
-                    .multilineTextAlignment(.center)
             }
             
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
+                // Preset time buttons
+                HStack(spacing: 12) {
+                    PresetTimeButton(
+                        title: String(localized: "Morning"),
+                        icon: "sunrise.fill",
+                        isSelected: isMorningSelected(),
+                        action: { setPresetTime(.morning) }
+                    )
+                    
+                    PresetTimeButton(
+                        title: String(localized: "Midday"),
+                        icon: "sun.max.fill",
+                        isSelected: isMiddaySelected(),
+                        action: { setPresetTime(.midday) }
+                    )
+                    
+                    PresetTimeButton(
+                        title: String(localized: "Evening"),
+                        icon: "sunset.fill",
+                        isSelected: isEveningSelected(),
+                        action: { setPresetTime(.evening) }
+                    )
+                }
+                
+                Text(String(localized: "We'll remind you at..."))
+                    .font(.caption)
+                    .foregroundColor(.wildMaple)
+                    .padding(.top, 10)
+                
                 DatePicker(
                     String(localized: "Reminder Time"),
                     selection: $reminderTime,
                     displayedComponents: .hourAndMinute
                 )
                 .foregroundColor(.ambrosiaIvory)
-                .datePickerStyle(WheelDatePickerStyle())
                 .labelsHidden()
                 .colorScheme(.dark)
-
-                
-                Text(String(localized: "We'll send you a gentle reminder to check in with yourself and track your progress"))
-                    .font(.caption)
-                    .foregroundColor(.ambrosiaIvory)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
             }
             
             Spacer()
@@ -576,7 +752,7 @@ struct OnboardingView: View {
                 Button(action: {
                     triggerHaptic(.light)
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
-                        currentStep = 9
+                        currentStep = 10
                     }
                 }) {
                     Text(String(localized: "Back"))
@@ -602,7 +778,7 @@ struct OnboardingView: View {
                         isRequestingNotificationPermission = false
                         
                         withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
-                            currentStep = 11
+                            currentStep = 13
                         }
                     }
                 }) {
@@ -873,7 +1049,7 @@ struct OnboardingView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 8.5) {
                         withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
                             isCreatingPlan = false
-                            currentStep = 12
+                            currentStep = 15
                         }
                     }
                 }) {
@@ -890,9 +1066,9 @@ struct OnboardingView: View {
     }
     
     private var thirtyDayPlanStep: some View {
-        VStack(spacing: 30) {
-            VStack(spacing: 10) {
-                Text("Your transformation journey")
+        VStack(spacing: 70) {
+            VStack(spacing: 6) {
+                Text("Your transformation")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
@@ -905,7 +1081,7 @@ struct OnboardingView: View {
             }
             
             // 4-week progression
-            VStack(spacing: 10) {
+            VStack(spacing: 14) {
                 WeekProgressView(
                     weekNumber: 1,
                     title: String(localized: "week_1_title"),
@@ -1209,7 +1385,7 @@ struct OnboardingView: View {
                     triggerHaptic(.medium)
                     createUser()
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
-                        currentStep = 9
+                        currentStep = 10
                     }
                 }) {
                     Text("Continue")
@@ -1237,7 +1413,7 @@ struct OnboardingView: View {
     private var nameInputStep: some View {
         VStack(spacing: 30) {
             VStack(spacing: 10) {
-                Text("How can we call you?")
+                Text("How may we call you?")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.ambrosiaIvory)
@@ -1316,7 +1492,7 @@ struct OnboardingView: View {
             Button(action: {
                 triggerHaptic(.medium)
                 withAnimation(.easeInOut(duration: 0.5)) {
-                    currentStep = 13
+                    currentStep = 16
                 }
             }) {
                 Text("See Your Plan")
@@ -1407,9 +1583,9 @@ struct BreathingExerciseView: View {
     @State private var phaseText = String(localized: "Get Ready")
     @State private var showCompletionAnimation = false
     
-    private let totalBreaths = 4 // 3 minutes ≈ 6 breaths for demo
+    private let totalBreaths = 4 // 3 minutes ≈ 4 breaths for demo
     private let inhaleTime: Double = 5.0
-    private let holdTime: Double = 2.0
+    private let holdTime: Double = 1.0
     private let exhaleTime: Double = 5.0
     
     enum BreathingPhase {
@@ -1643,39 +1819,70 @@ struct WeekProgressView: View {
     var body: some View {
         HStack(spacing: 20) {
             // Content
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
                 
-                Text(title)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.ambrosiaIvory)
+                HStack{
+                    Text(title)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.ambrosiaIvory)
+                    Spacer()
+                    Text(String(localized: "week_number", defaultValue: "Week \(weekNumber)"))
+                        .font(.subheadline)
+                        .foregroundColor(.afterBurn)
+                }
                 Text(description)
                     .font(.subheadline)
                     .foregroundColor(.wildMaple)
                     .multilineTextAlignment(.leading)
             }
             
-            Spacer()
-
-            // Week indicator
-            VStack(alignment: .trailing, spacing: 8) {
-                Text(String(localized: "week_number", defaultValue: "Week \(weekNumber)"))
-                    .font(.subheadline)
-                    .foregroundColor(.ambrosiaIvory)
-
-            }
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
         .padding(.horizontal, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(LinearGradient(colors: [Color.purpleCarolite, Color.afterBurn.opacity(0.7)], startPoint: .trailing, endPoint: .leading))
-        )
-        .shadow(radius: 8)
+        .background(Color.white.opacity(0.1))
+        .cornerRadius(12)
         .opacity(isVisible ? 1.0 : 0.0)
         .offset(x: isVisible ? 0 : 50)
         .animation(.spring(response: 0.7, dampingFraction: 0.8, blendDuration: 0), value: isVisible)
+    }
+}
+
+struct PresetTimeButton: View {
+    let title: String
+    let icon: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.system(size: 34))
+                    .foregroundColor(.afterBurn)
+                    .padding(.vertical, 12)
+                
+                Text(title)
+                    .font(.system(size: 14))
+                    .fontWeight(.heavy)
+                    .foregroundColor(.ambrosiaIvory)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(isSelected ? Color.afterBurn.opacity(0.1) : Color.white.opacity(0.05))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(isSelected ? Color.afterBurn : Color.gray.opacity(0.3), lineWidth: 1.5)
+                    )
+            )
+            .scaleEffect(isSelected ? 1.05 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: isSelected)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
